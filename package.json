@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "generate": "immaculata generate"
+    "generate": "immaculata generate",
+    "watch": "tsc --build --watch"
   },
   "dependencies": {
     "immaculata": "^0.0.5",
@@ -8,6 +9,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.2.0"
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
   }
 }

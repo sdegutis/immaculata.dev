@@ -1,0 +1,38 @@
+html {
+  background-color: #222;
+  color: #bbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui;
+}
+
+body {
+  margin: 3em;
+  max-width: 30em;
+}
+
+a {
+  color: #19f;
+
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+nav {
+
+  margin-bottom: 2em;
+  display: flex;
+  gap: 1em;
+
+  .selected {
+    font-weight: bold;
+  }
+
+}
+
+:is(h1, h2, h3) {
+  color: #fff;
+  margin-top: 2em;
+}
