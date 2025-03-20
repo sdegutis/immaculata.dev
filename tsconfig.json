@@ -7,10 +7,10 @@
     ],
     "jsx": "react-native",
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
     "rootDir": "site",
     "noEmit": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
     "types": [
       "node",
       "immaculata/runtime.d.ts"

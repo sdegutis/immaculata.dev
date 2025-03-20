@@ -32,6 +32,11 @@ nav {
 
 }
 
+pre:has(>code) {
+  padding: 1em;
+  overflow: auto;
+}
+
 :is(h1, h2, h3) {
   color: #fff;
   margin-top: 2em;
