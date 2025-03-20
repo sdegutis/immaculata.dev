@@ -1,4 +1,5 @@
 import * as ShikiMarkdownIt from '@shikijs/markdown-it'
+import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import MarkdownIt from "markdown-it"
 import { createHighlighterCoreSync } from 'shiki/core'
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
@@ -13,16 +14,31 @@ const bash = require('@shikijs/langs/bash').default
 const json = require('@shikijs/langs/json').default
 const jsonc = require('@shikijs/langs/jsonc').default
 const yaml = require('@shikijs/langs/yaml').default
+const typescript = require('@shikijs/langs/typescript').default
 
 const darkplus = require('@shikijs/themes/dark-plus').default
 
 const shiki = createHighlighterCoreSync({
   themes: [darkplus],
-  langs: [javascript, bash, json, jsonc, yaml],
-  engine: createJavaScriptRegexEngine()
+  langs: [typescript, javascript, bash, json, jsonc, yaml],
+  engine: createJavaScriptRegexEngine(),
 })
 
-ShikiMarkdownIt.setupMarkdownIt(md, shiki as any, { theme: 'dark-plus' })
+ShikiMarkdownIt.setupMarkdownIt(md, shiki as any, {
+  theme: 'dark-plus',
+  transformers: [
+    transformerTwoslash({
+      renderer: rendererRich(),
+      twoslashOptions: {
+        compilerOptions: {
+          "types": [
+            "immaculata/runtime.d.ts"
+          ]
+        }
+      }
+    }),
+  ]
+})
 
 
 const dec = new TextDecoder()
@@ -37,6 +53,7 @@ export default <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Immaculata.dev</title>
       <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="/twoslash.css" />
     </head>
     <body>
 

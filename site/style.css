@@ -7,9 +7,13 @@ html {
   font-family: system-ui;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 3em;
-  max-width: 30em;
+  max-width: 40em;
 }
 
 a {
@@ -34,10 +38,13 @@ nav {
 
 pre:has(>code) {
   padding: 1em;
-  overflow: auto;
 }
 
 :is(h1, h2, h3) {
   color: #fff;
   margin-top: 2em;
+}
+
+:root:root {
+  --twoslash-popup-bg: #1b1b1b;
 }
