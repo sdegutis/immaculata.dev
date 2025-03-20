@@ -22,8 +22,8 @@ export default <>
       <main>
         <h1>Immaculata.dev</h1>
         <nav>
-          <a class='selected' href='/'>Rationale</a>
-          <a href='https://github.com/sdegutis/immaculata.dev'>Docs</a>
+          <a class='selected' href='/'>Docs</a>
+          <a href='https://github.com/sdegutis/immaculata.dev'>GitHub</a>
         </nav>
         {md.render(tostring(page.content))}
       </main>
