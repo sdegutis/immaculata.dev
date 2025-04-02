@@ -45,6 +45,8 @@ tree.enableModules()
 const exports = await import('./site/foo.ts') as any
 ```
 
+This is useful for code sharing at build time and in the browser.
+
 ### JSX at build time
 
 This optionally takes a JSX/TSX transformer so that you can use .jsx/.tsx files at build time. Helpers are provided for convenience.
@@ -67,6 +69,8 @@ tree.enableModules(immaculata.makeModuleJsxTransformer(
 
 const exports = await import('./site/foo.tsx') as any
 ```
+
+This *could* be useful for code sharing, depending on your setup.
 
 ### File preprocessors
 
@@ -134,6 +138,10 @@ tree.watch({}, async () => {
 ```
 
 It could be useful to inject an SSE reloading script into HTML files using the preprocessor you define.
+
+### Real world example
+
+[This website's source](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts) is a good example, since it uses complex syntax highlighting and HTML injection.
 
 ### License
 
