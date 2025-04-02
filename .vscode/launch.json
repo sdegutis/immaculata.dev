@@ -6,15 +6,12 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/node_modules/immaculata/out/cli.js",
-      "args": [
-        "dev"
-      ],
+      "type": "node",
       "request": "launch",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "node"
+      "program": "${workspaceFolder}/main.ts",
+      "args": [ "dev" ],
+      "skipFiles": [ "<node_internals>/**" ],
+      "runtimeArgs": [ "--watch-path=main.ts", "--disable-warning=ExperimentalWarning" ],
     }
   ]
 }

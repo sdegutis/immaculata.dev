@@ -13,7 +13,8 @@ html {
 
 body {
   margin: 3em;
-  max-width: 40em;
+  width: 30em;
+  max-width: 90%;
 }
 
 a {
@@ -24,16 +25,16 @@ a {
   }
 }
 
-nav {
+main {
+  > header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 
-  margin-bottom: 2em;
-  display: flex;
-  gap: 1em;
-
-  .selected {
-    font-weight: bold;
+    > nav > a > img {
+      height: 20px;
+    }
   }
-
 }
 
 pre:has(>code) {

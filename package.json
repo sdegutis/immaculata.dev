@@ -1,12 +1,13 @@
 {
   "scripts": {
     "generate": "immaculata generate",
-    "watch": "tsc --build --watch"
+    "watch": "tsc --watch"
   },
   "dependencies": {
-    "immaculata": "^0.0.5",
+    "immaculata": "^0.1.2",
     "markdown-it": "^14.1.0"
   },
+  "type": "module",
   "devDependencies": {
     "@shikijs/langs": "^3.2.1",
     "@shikijs/markdown-it": "^3.2.1",

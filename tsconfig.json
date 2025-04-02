@@ -1,20 +1,10 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable",
-    ],
-    "jsx": "react-native",
     "target": "ESNext",
     "module": "NodeNext",
-    "rootDir": "site",
-    "noEmit": true,
     "moduleResolution": "nodenext",
-    "types": [
-      "node",
-      "immaculata/runtime.d.ts"
-    ],
+    "rootDir": ".",
+    "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
