@@ -38,6 +38,7 @@ main {
 }
 
 pre:has(>code) {
+  overflow: hidden;
   padding: 1em;
 }
 
@@ -48,4 +49,11 @@ pre:has(>code) {
 
 :root:root {
   --twoslash-popup-bg: #1b1b1b;
+}
+
+:not(pre) > code:not(.twoslash-popup-code) {
+  background-color: #0003;
+  padding: 3px;
+  border-radius: 3px;
+  /* font-family: monospace, monospace; */
 }
