@@ -20,7 +20,7 @@ console.log(tree.files.get('/index.html')?.content)
 
 ### Hot reloading
 
-For hot reloading, just use `tree.watch`.
+To keep its files up to date, use `tree.watch`, which uses Chokidar and takes its options mandatorily.
 
 ```typescript
 import * as immaculata from 'immaculata'
@@ -42,7 +42,7 @@ import * as immaculata from 'immaculata'
 const tree = new immaculata.LiveTree('site', import.meta.url)
 // ---cut---
 tree.enableModules()
-import('./site/foo.ts')
+const exports = await import('./site/foo.ts') as any
 ```
 
 ### JSX at build time
@@ -50,6 +50,7 @@ import('./site/foo.ts')
 This optionally takes a JSX/TSX transformer so that you can use .jsx/.tsx files at build time. Helpers are provided for convenience.
 
 ```typescript
+//@noErrors
 import * as immaculata from 'immaculata'
 const tree = new immaculata.LiveTree('site', import.meta.url)
 // ---cut---
@@ -63,6 +64,8 @@ tree.enableModules(immaculata.transformModuleJsxToRootJsx)
 tree.enableModules(immaculata.makeModuleJsxTransformer(
   (treeRoot, path, src, isTs) => treeRoot + '/my/jsx/impl.ts')
 )
+
+const exports = await import('./site/foo.tsx') as any
 ```
 
 ### File preprocessors
