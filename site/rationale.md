@@ -34,7 +34,9 @@ tree.watch({}, (paths) => {
 
 ### Importing live modules
 
-To import files within the given tree, use `tree.enableModules`, which also invalidates modules that have changed and any modules that depended on them, using Node's loader hooks.
+To import files within the given tree, use `tree.enableModules`.
+
+This is useful for code sharing at build time and in the browser.
 
 ```typescript
 //@noErrors
@@ -45,7 +47,31 @@ tree.enableModules()
 const exports = await import('./site/foo.ts') as any
 ```
 
-This is useful for code sharing at build time and in the browser.
+### Module invalidation
+
+Using `tree.enableModules()` also invalidates modules that have changed and any modules that depended on them, so that importing them again will re-run their code:
+
+```typescript
+// @filename: test.js
+import("./site/foo.js")
+// change & save site/foo.js
+// then import again:
+import("./site/foo.js")
+
+// @filename: site/foo.js
+import "./bar.js"
+console.log('in foo') // prints twice
+
+// @filename: site/bar.js
+console.log('in bar') // prints twice
+```
+
+
+So if you import `site/foo.ts` which imports `site/bar.ts`, and change `site/bar.ts` in your editor, importing `site/foo.ts` will re-eval both modules.
+
+This can be very useful for speeding up development time of large codebases by only reloading a portion of them when they change.
+
+This module invalidation is done through Node's official module hooks, which means it works natively within Node's module system.
 
 ### JSX at build time
 
