@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "generate": "immaculata generate",
+    "generate": "node main.ts generate",
     "watch": "tsc --watch"
   },
   "dependencies": {

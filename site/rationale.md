@@ -163,13 +163,6 @@ Notice the `/` at the end of the import. That's what causes this to be a dir imp
 
 The path is relative to your site's root, rather than your local file system.
 
-```typescript
-// @noErrors
-import foo from './pages/'
-foo[0].
-//     ^|
-```
-
 ### Array files
 
 A blog with just a ToC is useless, so we need to emit the blog files too.
