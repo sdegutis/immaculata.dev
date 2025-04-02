@@ -32,15 +32,17 @@ tree.watch({}, (paths) => {
 })
 ```
 
-### Module invalidation
+### Importing live modules
 
 To import files within the given tree, use `tree.enableModules`, which also invalidates modules that have changed and any modules that depended on them, using Node's loader hooks.
 
 ```typescript
+//@noErrors
 import * as immaculata from 'immaculata'
 const tree = new immaculata.LiveTree('site', import.meta.url)
 // ---cut---
 tree.enableModules()
+import('./site/foo.ts')
 ```
 
 ### JSX at build time
@@ -57,12 +59,82 @@ tree.enableModules(immaculata.transformModuleJsxToStrings)
 // defers to your code at <tree.root>/jsx-node.ts
 tree.enableModules(immaculata.transformModuleJsxToRootJsx)
 
-// point it to whatever file you want
+// point it to whatever import-path you want
 tree.enableModules(immaculata.makeModuleJsxTransformer(
   (treeRoot, path, src, isTs) => treeRoot + '/my/jsx/impl.ts')
 )
 ```
 
+### File preprocessors
+
+Before using as a website, preprocessing of a tree is useful:
+
+```typescript
+const addCopyright = (s:string) => s
+const precompileJsx = (s:string) => s
+const minifyCss = (s:string) => s
+import * as immaculata from 'immaculata'
+const tree = new immaculata.LiveTree('site', import.meta.url)
+// ---cut---
+const outfiles = await tree.processFiles(files => {
+
+  files.with(/\.d\.ts$/).remove()
+
+  files.with(/\.tsx?$/).do(f => {
+    f.path = f.path.replace(/\.tsx?$/, '.js')
+    f.text = precompileJsx(f.text)
+  })
+
+  files.with(/\.css$/).do(f => f.text = minifyCss(f.text))
+
+  files.with(/\.html$/).do(f => f.text = addCopyright(f.text))
+  files.with(/\.js$/).do(f => f.text = addCopyright(f.text))
+
+})
+```
+
+### Writing output to disk
+
+When publishing to e.g. GitHub Pages:
+
+```typescript
+import * as immaculata from 'immaculata'
+const tree = new immaculata.LiveTree('site', import.meta.url)
+// ---cut---
+const outfiles = await tree.processFiles(files => {
+  // ...
+})
+immaculata.generateFiles(outfiles)
+```
+
+### Running a dev server
+
+For local development:
+
+```typescript
+import * as immaculata from 'immaculata'
+const tree = new immaculata.LiveTree('site', import.meta.url)
+// ---cut---
+async function process() {
+  return tree.processFiles(files => {
+    // ...
+  })
+}
+
+const server = new immaculata.DevServer(8080, '/reload')
+server.files = await process()
+
+tree.watch({}, async () => {
+  server.files = await process()
+  server.reload() // invokes SSE at "/reload" per arg above
+})
+```
+
+It could be useful to inject an SSE reloading script into HTML files using the preprocessor you define.
+
+### License
+
+Standard MIT
 
 ### Special thanks
 
