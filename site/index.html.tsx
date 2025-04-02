@@ -63,7 +63,7 @@ export default <>
           <a class='selected' href='/'>Docs</a>
           <a href='https://github.com/sdegutis/immaculata.dev'>GitHub</a>
         </nav>
-        {md.render(tostring(page.content))}
+        <p><i>Docs coming soon.</i></p>
       </main>
 
     </body>
