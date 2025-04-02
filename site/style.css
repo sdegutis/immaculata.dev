@@ -56,3 +56,7 @@ pre:has(>code) {
   border-radius: 3px;
   /* font-family: monospace, monospace; */
 }
+
+.twoslash .twoslash-hover:not(:hover) > .twoslash-popup-container {
+  display: none;
+}
