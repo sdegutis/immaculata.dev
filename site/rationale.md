@@ -141,7 +141,7 @@ It could be useful to inject an SSE reloading script into HTML files using the p
 
 ### Real world example
 
-[This website's source](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts) is a good example, since it uses complex syntax highlighting and HTML injection.
+[This website's source](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts) is a good example, since it uses markdown, complex syntax highlighting, and HTML injection.
 
 ### License
 
