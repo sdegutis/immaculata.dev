@@ -31,7 +31,7 @@ main {
     align-items: baseline;
     justify-content: space-between;
 
-    > nav > a > img {
+    > a > img {
       height: 20px;
     }
   }
