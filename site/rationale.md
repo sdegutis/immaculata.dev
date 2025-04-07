@@ -4,6 +4,8 @@
 npm i immaculata
 ```
 
+**NOTE**: These docs are halfway outdated. Will try to update soon.
+
 ### In memory file tree
 
 At the core is `LiveTree`, which loads a given directory into memory.
