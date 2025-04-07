@@ -1,6 +1,7 @@
 import { readFileSync } from "fs"
 import * as immaculata from 'immaculata'
 import { md } from "./highlight.ts"
+import { mainPage } from "./index.html.tsx"
 
 const twoslashStyle = readFileSync('node_modules/@shikijs/twoslash/style-rich.css')
 
@@ -18,9 +19,7 @@ export async function processSite(tree: immaculata.LiveTree) {
     const content = files.with('^/rationale.md$').all()[0]?.text!
     files.del('^/rationale.md$')
 
-    files.with('^/index.html$').do(f => f.text = f.text.replace('<!-- CONTENT -->', reloader + md.render(content)))
-
-    console.log(files.paths())
+    files.add('/index.html', mainPage(reloader + md.render(content)))
 
   })
 }

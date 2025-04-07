@@ -4,6 +4,7 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "rootDir": ".",
+    "jsx": "preserve",
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "allowImportingTsExtensions": true,

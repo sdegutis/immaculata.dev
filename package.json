@@ -4,6 +4,7 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
+    "@swc/core": "^1.11.16",
     "immaculata": "^0.1.5",
     "markdown-it": "^14.1.0"
   },

@@ -1,8 +1,29 @@
+import { transformSync } from '@swc/core'
 import * as immaculata from 'immaculata'
 import { registerHooks } from 'module'
 
 const tree = new immaculata.LiveTree('site', import.meta.url)
 registerHooks(tree.moduleHook())
+registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+registerHooks(immaculata.compileJsxTsxModuleHook(str => {
+  return transformSync(str, {
+
+    isModule: true,
+    sourceMaps: 'inline',
+    jsc: {
+      keepClassNames: true,
+      target: 'esnext',
+      parser: { syntax: 'typescript', tsx: true, decorators: true },
+      transform: {
+        react: {
+          throwIfNamespace: false,
+          runtime: 'automatic'
+        },
+      },
+    },
+
+  }).code
+}))
 
 if (process.argv[2] === 'dev') {
   const server = new immaculata.DevServer(8080, '/reload')
