@@ -6,6 +6,7 @@
     "rootDir": ".",
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
     "strict": true,
     "noImplicitAny": true,
     // "downlevelIteration": true,
