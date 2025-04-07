@@ -1,10 +1,8 @@
-*Web build tool for serious engineers.*
+*Surgical web build tool.*
 
 ```bash
 npm i immaculata
 ```
-
-Rather than brute forcing solutions, Immaculata provides carefully thought out functions and classes with orthogonal behavior, aiming to reach the perfect blend of convenience and flexibility.
 
 ### In memory file tree
 
