@@ -39,6 +39,7 @@ main {
 
 pre:has(>code) {
   padding: 1em;
+  border-radius: 7px;
 }
 
 :is(h1, h2, h3) {
