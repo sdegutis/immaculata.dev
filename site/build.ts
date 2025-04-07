@@ -16,9 +16,7 @@ export async function processSite(tree: immaculata.LiveTree) {
 
     files.add("/twoslash.css", twoslashStyle)
 
-    const content = files.with('^/rationale.md$').all()[0]?.text!
-    files.del('^/rationale.md$')
-
+    const content = tree.files.get('/rationale.md')!.content.toString()
     files.add('/index.html', mainPage(reloader + md.render(content)))
 
   })
