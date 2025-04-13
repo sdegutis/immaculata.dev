@@ -3,7 +3,7 @@ import * as immaculata from 'immaculata'
 import { registerHooks } from 'module'
 
 const tree = new immaculata.LiveTree('site', import.meta.url)
-registerHooks(tree.moduleHook())
+registerHooks(tree.enableImportsModuleHook())
 registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 registerHooks(immaculata.compileJsxTsxModuleHook(compileJsx))
 
