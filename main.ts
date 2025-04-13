@@ -11,9 +11,7 @@ if (process.argv[2] === 'dev') {
   const server = new immaculata.DevServer(8085, '/reload')
   server.files = await processSite()
 
-  tree.watch({
-    ignored: (str) => str.endsWith('/site/api.d.ts')
-  }, async (paths) => {
+  tree.watch({}, async (paths) => {
     console.log('paths changed')
     try { server.files = await processSite() }
     catch (e) { console.error(e) }
