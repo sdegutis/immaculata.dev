@@ -12,7 +12,6 @@ if (process.argv[2] === 'dev') {
   server.files = await processSite()
 
   tree.watch({}, async (paths) => {
-    console.log('paths changed')
     try { server.files = await processSite() }
     catch (e) { console.error(e) }
     server.reload()
