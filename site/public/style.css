@@ -47,17 +47,9 @@ pre:has(>code) {
   margin-top: 2em;
 }
 
-:root:root {
-  --twoslash-popup-bg: #1b1b1b;
-}
-
-:not(pre) > code:not(.twoslash-popup-code) {
+:not(pre) > code {
   background-color: #0003;
   padding: 3px;
   border-radius: 3px;
   /* font-family: monospace, monospace; */
-}
-
-.twoslash .twoslash-hover:not(:hover) > .twoslash-popup-container {
-  display: none;
 }
