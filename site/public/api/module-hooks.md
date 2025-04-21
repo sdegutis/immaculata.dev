@@ -1,38 +1,41 @@
 # Module hooks
 
-## API
 
-```typescript
-// enables Node.js to try .ts, .tsx, and .jsx extensions
-// when importing a path with .js fails
+
+## `tryTsTsxJsxModuleHook`
+
+```ts
 const tryTsTsxJsxModuleHook: ModuleHook
+```
 
-// .tsx and .jsx files to be transpiled with a given fn
+Resolver hook for `module.registerHooks` that looks for
+`.{ts,tsx,jsx}` when `.js` is not found.
+
+
+
+## `compileJsxTsxModuleHook`
+
+```ts
 function compileJsxTsxModuleHook(
   fn: (src: string, url: string) => string
 ): ModuleHook
+```
 
-// remap "react/jsx-runtime" to a given module specifier
+Loader hook for JSX/JSX files which just passes the
+source code and file URL to your function to compile.
+
+
+
+## `jsxRuntimeModuleHook`
+
+```ts
 function jsxRuntimeModuleHook(jsx: string): ModuleHook
 ```
 
-## Usage
+Remaps the `react/jsx-runtime` import to the given module specifier.
 
-```typescript
-import * as immaculata from 'immaculata'
-import { registerHooks } from 'module'
 
-// enable looking for foo.ts when importing foo.js
-registerHooks(immaculata.tryTsTsxJsxModuleHook)
 
-// transform jsx/tsx to javascript via myCompileJsx
-registerHooks(immaculata.compileJsxTsxModuleHook(myCompileJsx)
+## `liveTree.enableImportsModuleHook`
 
-// make jsx files import the impl from module named "foo"
-registerHooks(immaculata.jsxRuntimeModuleHook('foo'))
-
-// make JSX use become a simple string-builder inside Node.js
-registerHooks(immaculata.jsxRuntimeModuleHook(
-  'immaculata/dist/jsx-strings.js'
-))
-```
+See [LiveTree](/api/live-tree.html)
