@@ -23,6 +23,7 @@ export function template(content: string) {
           <a href='/guides/enabling-jsx.html'>JSX for Node.js</a>
           <a href='/guides/enabling-hmr.html'>HMR for Node.js</a>
           <a href='/guides/enabling-ts.html'>TS/TSX for Node.js</a>
+          <a href='/guides/simple-build-tool.html'>Simple build tool</a>
 
           <h3>API</h3>
           <a href='/api/live-tree.html'>LiveTree</a>
