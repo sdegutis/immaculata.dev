@@ -16,8 +16,10 @@ const tree = new LiveTree('site', import.meta.url)
 let files = tree.files.values().toArray()
 
 // now do your site processing
-files = files.filter(/* ... */)
-files = files.map(/* ... */)
+files = files.filter(f => /* ... */)
+files = files.map(f => /* ... */)
+files.forEach(f => /* ... */)
+await Promise.all(files.forEach(async f => /* ... */))
 
 const fileMap = new Map(files.map(f => [f.path, f.content]))
 server.files = fileMap
