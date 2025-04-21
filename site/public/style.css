@@ -18,16 +18,23 @@ html {
     color: rgb(220, 220, 141);
   }
 
-  a {
-    color: inherit;
+  --link-color: rgb(89, 154, 203);
 
-    &.current {
-      color: rgb(89, 154, 203);
-    }
+  a {
+    color: var(--link-color);
 
     &:not(:hover) {
       text-decoration: none;
     }
+  }
+
+  body nav a {
+    color: #777;
+
+    &:is(.current, :hover) {
+      color: var(--link-color);
+    }
+
   }
 
   body {
