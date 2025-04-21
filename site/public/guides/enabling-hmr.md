@@ -17,7 +17,6 @@ Using `immaculata`, you can:
 * Tell the Node.js module system to load from this tree
 * Invalidate modules when changed for re-execution
 * Invalidate modules when their dependencies change
-* Tell Node.js to look for `.{ts,tsx,jsx}` when `.js` isn't found
 
 A simple example of enabling HMR in Node.js:
 
