@@ -1,5 +1,16 @@
 # Enabling JSX in Node.js
 
+By default, the native Node.js module system:
+
+* Refuses to consider `.jsx` or `.tsx` files to be importable modules
+* Doesn't know how to transpile JSX syntax into JavaScript
+
+Using `immaculata`, you can:
+
+* Make Node.js recognize `.jsx` and `.tsx` files as valid modules
+* Tell Node.js how to transform JSX/TSX into valid JavaScript
+* Remap the default `react/jsx-runtime` to another module
+
 ```ts
 import * as immaculata from "immaculata"
 import ts from 'typescript'
