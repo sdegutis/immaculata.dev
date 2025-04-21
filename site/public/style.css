@@ -19,7 +19,11 @@ html {
   }
 
   a {
-    color: rgb(89, 154, 203);
+    color: inherit;
+
+    &.current {
+      color: rgb(89, 154, 203);
+    }
 
     &:not(:hover) {
       text-decoration: none;

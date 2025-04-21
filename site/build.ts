@@ -1,6 +1,7 @@
 import * as immaculata from 'immaculata'
 import { md } from "./markdown.ts"
 import { template } from "./template.tsx"
+import { compileJsx } from './transpile.ts'
 
 let reloader = ''
 if (process.argv[2] === 'dev') reloader = `
@@ -20,6 +21,11 @@ export async function processSite(tree: immaculata.LiveTree) {
     files.with(/\.md$/).do(f => {
       f.path = f.path.replace('.md', '.html')
       f.text = template(reloader + md.render(f.text))
+    })
+
+    files.with(/\.tsx?$/).do(f => {
+      f.path = f.path.replace(/\.tsx?$/, '.js')
+      f.text = compileJsx(f.text)
     })
 
   })

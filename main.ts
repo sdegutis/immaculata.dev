@@ -1,6 +1,6 @@
 import * as immaculata from 'immaculata'
 import { registerHooks } from 'module'
-import ts from 'typescript'
+import { compileJsx } from './site/transpile.ts'
 
 const tree = new immaculata.LiveTree('site', import.meta.url)
 registerHooks(tree.enableImportsModuleHook())
@@ -24,14 +24,4 @@ else {
 async function processSite() {
   const mod = await import("./site/build.ts")
   return await mod.processSite(tree)
-}
-
-export function compileJsx(str: string) {
-  return ts.transpileModule(str, {
-    compilerOptions: {
-      inlineSourceMap: true,
-      jsx: ts.JsxEmit.ReactJSX,
-      module: ts.ModuleKind.ESNext,
-    }
-  }).outputText
 }
