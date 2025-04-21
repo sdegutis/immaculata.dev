@@ -1,4 +1,4 @@
-export function mainPage(content: string) {
+export function template(content: string) {
 
   return <>
 

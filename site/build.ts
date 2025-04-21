@@ -1,9 +1,11 @@
 import * as immaculata from 'immaculata'
-import { mainPage } from "./index.html.tsx"
 import { md } from "./markdown.ts"
+import { template } from "./template.tsx"
 
 let reloader = ''
-if (process.argv[2] === 'dev') reloader = `<script>new EventSource('/reload').onmessage = () => location.reload()</script>`
+if (process.argv[2] === 'dev') reloader = `
+<script>new EventSource('/reload').onmessage = () => location.reload()</script>
+`
 
 export async function processSite(tree: immaculata.LiveTree) {
   return tree.processFiles(async (files) => {
@@ -11,8 +13,10 @@ export async function processSite(tree: immaculata.LiveTree) {
     files.without('/public/').remove()
     files.do(f => f.path = f.path.slice('/public'.length))
 
-    const content = tree.files.get('/rationale.md')!.content.toString()
-    files.add('/index.html', mainPage(reloader + md.render(content)))
+    files.with(/\.md$/).do(f => {
+      f.path = f.path.replace('.md', '.html')
+      f.text = template(reloader + md.render(f.text))
+    })
 
   })
 }
