@@ -31,8 +31,13 @@ html {
 
   body nav a {
     color: #777;
+    text-decoration: none;
+    padding-left: 10px;
+    margin-left: -11px;
+    border-left: 1px solid transparent;
 
     &:is(.current, :hover) {
+      border-left-color: currentColor;
       color: var(--link-color);
     }
 
