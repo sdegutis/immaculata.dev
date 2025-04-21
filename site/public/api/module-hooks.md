@@ -1,6 +1,6 @@
-## Module hooks
+# Module hooks
 
-### API
+## API
 
 ```typescript
 // enables Node.js to try .ts, .tsx, and .jsx extensions
@@ -16,7 +16,7 @@ function compileJsxTsxModuleHook(
 function jsxRuntimeModuleHook(jsx: string): ModuleHook
 ```
 
-### Usage
+## Usage
 
 ```typescript
 import * as immaculata from 'immaculata'

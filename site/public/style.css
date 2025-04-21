@@ -1,6 +1,6 @@
 html {
 
-  background-color: #2e2e2e;
+  background-color: #211d1d;
   color: #bbb;
   display: flex;
   justify-content: center;
@@ -15,11 +15,11 @@ html {
   }
 
   h1 {
-    /* color: #ff0; */
+    color: rgb(220, 220, 141);
   }
 
   a {
-    color: #19f;
+    color: rgb(89, 154, 203);
 
     &:not(:hover) {
       text-decoration: none;
@@ -51,6 +51,12 @@ html {
         gap: .5em;
       }
 
+      footer {
+        margin: 3em 0;
+        font-size: small;
+        opacity: .5;
+      }
+
     }
 
   }
@@ -58,6 +64,7 @@ html {
   pre:has(>code) {
     padding: 1em;
     border-radius: 7px;
+    background-color: #2c2929 !important;
   }
 
 }

@@ -1,6 +1,6 @@
-## Pipeline
+# Pipeline
 
-### API
+## API
 
 ```typescript
 class Pipeline {

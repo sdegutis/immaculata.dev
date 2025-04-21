@@ -37,7 +37,13 @@ export function template(content: string) {
         </nav>
 
         <main>
+
           {content}
+
+          <footer>
+            Copyright &copy; 2025
+          </footer>
+
         </main>
 
       </body>
