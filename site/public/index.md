@@ -25,9 +25,10 @@ import MarkdownIt from "markdown-it"
 
 export const md = new MarkdownIt()
 
+// load all files under 'site' into memory
 const tree = new immaculata.LiveTree('site', import.meta.url)
 
-// enable HMR in node.js
+// enable HMR in Node.js for all modules under 'site'
 registerHooks(tree.enableImportsModuleHook())
 
 // enable JSX inside Node.js and make it become a string-builder
