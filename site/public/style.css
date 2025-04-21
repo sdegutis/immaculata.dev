@@ -16,10 +16,10 @@ html {
   }
 
   h1 {
-    color: rgb(220, 220, 141);
+    color: #dcdc8d;
   }
 
-  --link-color: rgb(89, 154, 203);
+  --link-color: rgb(77, 178, 255);
 
   a {
     color: var(--link-color);
@@ -30,7 +30,7 @@ html {
   }
 
   body nav a {
-    color: #777;
+    color: #616970;
     text-decoration: none;
     padding-left: 10px;
     margin-left: -11px;
