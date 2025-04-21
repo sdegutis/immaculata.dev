@@ -4,7 +4,7 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "immaculata": "^0.1.6",
+    "immaculata": "^0.1.9",
     "markdown-it": "^14.1.0"
   },
   "type": "module",

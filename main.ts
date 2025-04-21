@@ -8,7 +8,7 @@ registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 registerHooks(immaculata.compileJsxTsxModuleHook(compileJsx))
 
 if (process.argv[2] === 'dev') {
-  const server = new immaculata.DevServer(8085, '/reload')
+  const server = new immaculata.DevServer(8085, { hmrPath: '/reload' })
   server.files = await processSite()
 
   tree.watch({}, async (paths) => {
