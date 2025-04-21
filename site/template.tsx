@@ -19,6 +19,11 @@ export function template(content: string) {
             <img src="/github-mark-white.svg" />
           </a>
 
+          <h3>Guides</h3>
+          <a href='/guides/enabling-jsx.html'>JSX for Node.js</a>
+          <a href='/guides/enabling-hmr.html'>HMR for Node.js</a>
+          <a href='/guides/enabling-ts.html'>TS/TSX for Node.js</a>
+
           <h3>API</h3>
           <a href='/api/live-tree.html'>LiveTree</a>
           <a href='/api/dev-server.html'>DevServer</a>
