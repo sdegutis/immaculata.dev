@@ -43,10 +43,17 @@ if (process.argv[2] === 'dev') {
   const server = new immaculata.DevServer(8080, { hmrPath: '/reload' })
   server.files = await processSite()
 
+  // watch all files under 'site' for changes
+  // the options arg takes an `ignored(path)` fn
   tree.watch({}, async (paths) => {
+
+    // reprocess the files and give to server
     try { server.files = await processSite() }
     catch (e) { console.error(e) }
+
+    // trigger HMR/SSE
     server.reload()
+
   })
 }
 else {
@@ -119,7 +126,7 @@ function Head() {
 
 ### Real-world example
 
-[This website](https://github.com/thesoftwarephilosopher/immaculata.dev/tree/website)
+[This website](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts)
 was generated using `immaculata`, and in fact most of the guides here
 were adapted from this site's source code, including the above example.
 
