@@ -32,7 +32,7 @@ exports that are implemented as a highly efficient HTML string builder.
 registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 ```
 
-## Using a file
+## Using your own JSX implementation
 
 To use a JSX implementation within a `LiveTree`, use prepend its root:
 

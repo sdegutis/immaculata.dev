@@ -1,60 +1,63 @@
 html {
+
   background-color: #2e2e2e;
   color: #bbb;
   display: flex;
   justify-content: center;
-  align-items: center;
   font-family: system-ui;
   scrollbar-gutter: stable both-edges;
-}
 
-* {
-  box-sizing: border-box;
-}
+  :is(h1, h2, h3) {
+    font-family: "Martel", serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+  }
 
-body {
-  margin: 3em;
-  width: 40em;
-  max-width: 90%;
-  display: flex;
+  h1 {
+    /* color: #ff0; */
+  }
 
-  > nav {
-    flex: 0 0 10em;
+  a {
+    color: #19f;
 
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    gap: 0.25em;
-    align-self: flex-start;
-    top: 0;
-
-    > a > img {
-      height: 20px;
+    &:not(:hover) {
+      text-decoration: none;
     }
   }
-}
 
-a {
-  color: #19f;
+  body {
+    width: 40em;
+    max-width: 90%;
+    margin: 0;
 
-  &:not(:hover) {
-    text-decoration: none;
+    display: flex;
+    gap: 3em;
+
+    nav {
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    main {
+
+      header {
+        display: flex;
+        gap: .5em;
+      }
+
+    }
+
   }
-}
 
-pre:has(>code) {
-  padding: 1em;
-  border-radius: 7px;
-}
+  pre:has(>code) {
+    padding: 1em;
+    border-radius: 7px;
+  }
 
-:is(h1, h2, h3) {
-  color: #fff;
-  margin-top: 2em;
-}
-
-:not(pre) > code {
-  background-color: #0003;
-  padding: 3px;
-  border-radius: 3px;
-  /* font-family: monospace, monospace; */
 }

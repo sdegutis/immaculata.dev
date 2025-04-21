@@ -55,9 +55,3 @@ class MemFile {
 
 }
 ```
-
-### Usage
-
-```typescript
-TODO
-```

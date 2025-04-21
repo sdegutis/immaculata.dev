@@ -24,7 +24,7 @@ Note that `onRequest` takes `res` which includes `res.req`.
 ## `server.files`
 
 ```ts
-files: Map<string, Buffer | string> | undefined
+files: Map<string, string|Buffer>
 ```
 
 The files to serve. Has the same path format as `tree.files`.

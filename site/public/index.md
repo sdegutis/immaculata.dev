@@ -1,4 +1,6 @@
-*TypeScript DX primitives*
+# Immaculata.dev
+
+## TypeScript DX primitives
 
 ```bash
 npm i immaculata
