@@ -38,7 +38,7 @@ html {
   }
 
   body {
-    width: 40em;
+    /* width: 40em; */
     max-width: 90%;
     margin: 0;
 
@@ -56,6 +56,8 @@ html {
     }
 
     main {
+
+      width: 38em;
 
       header {
         display: flex;

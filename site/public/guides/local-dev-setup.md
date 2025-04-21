@@ -22,7 +22,10 @@ the rest of the work.
       "program": "${workspaceFolder}/main.ts",
       "args": [ "dev" ],
       "skipFiles": [ "<node_internals>/**" ],
-      "runtimeArgs": [ "--watch-path=main.ts", "--disable-warning=ExperimentalWarning" ],
+      "runtimeArgs": [
+        "--watch-path=main.ts",
+        "--disable-warning=ExperimentalWarning"
+      ],
     }
   ]
 }
