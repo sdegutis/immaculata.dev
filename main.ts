@@ -1,6 +1,6 @@
-import { transformSync } from '@swc/core'
 import * as immaculata from 'immaculata'
 import { registerHooks } from 'module'
+import ts from 'typescript'
 
 const tree = new immaculata.LiveTree('site', import.meta.url)
 registerHooks(tree.enableImportsModuleHook())
@@ -27,20 +27,12 @@ async function processSite() {
   return await mod.processSite(tree)
 }
 
-function compileJsx(str: string) {
-  return transformSync(str, {
-    isModule: true,
-    sourceMaps: 'inline',
-    jsc: {
-      keepClassNames: true,
-      target: 'esnext',
-      parser: { syntax: 'typescript', tsx: true, decorators: true },
-      transform: {
-        react: {
-          throwIfNamespace: false,
-          runtime: 'automatic'
-        },
-      },
-    },
-  }).code
+export function compileJsx(str: string) {
+  return ts.transpileModule(str, {
+    compilerOptions: {
+      inlineSourceMap: true,
+      jsx: ts.JsxEmit.ReactJSX,
+      module: ts.ModuleKind.ESNext,
+    }
+  }).outputText
 }
