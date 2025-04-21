@@ -1,7 +1,5 @@
 export function template(content: string) {
-
   return <>
-
     {'<!DOCTYPE html>'}
     <html lang="en">
 
@@ -37,5 +35,4 @@ export function template(content: string) {
 
     </html>
   </>
-
 }
