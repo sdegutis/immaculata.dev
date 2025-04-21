@@ -15,19 +15,22 @@ export function template(content: string) {
 
       <body>
 
+        <nav>
+          <a href='/'>Immaculata.dev</a>
+          <a href='https://github.com/thesoftwarephilosopher/immaculata.dev' target="_blank">
+            <img src="/github-mark-white.svg" />
+          </a>
+
+          <h3>API</h3>
+          <a href='/api/live-tree.html'>LiveTree</a>
+          <a href='/api/dev-server.html'>DevServer</a>
+          <a href='/api/generate-files.html'>generateFiles</a>
+          <a href='/api/module-hooks.html'>Module hooks</a>
+          <a href='/api/pipeline.html'>Pipeline</a>
+        </nav>
+
         <main>
-
-          <header>
-            <h1>Immaculata.dev</h1>
-            <a href='https://github.com/thesoftwarephilosopher/immaculata.dev' target="_blank">
-              <img src="./github-mark-white.svg" />
-            </a>
-          </header>
-
-          <section>
-            {content}
-          </section>
-
+          {content}
         </main>
 
       </body>

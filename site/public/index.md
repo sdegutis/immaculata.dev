@@ -1,10 +1,8 @@
-*Surgical web build tool.*
+*TypeScript DX primitives*
 
 ```bash
 npm i immaculata
 ```
-
-**NOTE**: These docs are halfway outdated. Will try to update soon.
 
 ### In memory file tree
 

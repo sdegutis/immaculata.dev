@@ -1,3 +1,5 @@
+## Module hooks
+
 ### API
 
 ```typescript

@@ -13,8 +13,24 @@ html {
 
 body {
   margin: 3em;
-  width: 30em;
+  width: 40em;
   max-width: 90%;
+  display: flex;
+
+  > nav {
+    flex: 0 0 10em;
+
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    gap: 0.25em;
+    align-self: flex-start;
+    top: 0;
+
+    > a > img {
+      height: 20px;
+    }
+  }
 }
 
 a {
@@ -22,18 +38,6 @@ a {
 
   &:not(:hover) {
     text-decoration: none;
-  }
-}
-
-main {
-  > header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-
-    > a > img {
-      height: 20px;
-    }
   }
 }
 

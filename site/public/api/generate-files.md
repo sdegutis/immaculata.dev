@@ -1,3 +1,5 @@
+## generateFiles
+
 ### API
 
 ```typescript
