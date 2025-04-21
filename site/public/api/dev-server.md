@@ -1,39 +1,57 @@
-## DevServer
+# `class DevServer`
 
-### API
+## `constructor`
 
-```typescript
-class DevServer {
-
-  // list of files to serve
-  files: Map<string, Buffer | string> | undefined
-
-  // optional not-found handler
-  notFound?: (path: string) => string
-
-  // call this to reload pages via SSE/HMR
-  reload(): void
-
-  // onRequest takes a res (which includes req)
-  // and can optionally clsoe (end) the res itself
-  constructor(port: number, opts?: {
-    hmrPath?: string,
-    onRequest?: (res: http.ServerResponse) => 'handled' | void,
-  })
-
-}
-```
-
-### Usage
-
-```typescript
-import * as immaculata from 'immaculata'
-
-const server = new immaculata.DevServer(8080)
-server.files = myFileMapGenerator()
-
-whenMySiteCodeChanges(() => {
-  server.files = myFileMapGenerator()
-  server.reload()
+```ts
+constructor(port: number, opts?: {
+  hmrPath?: string,
+  onRequest?: (res: http.ServerResponse) => 'handled' | void,
 })
 ```
+
+Creates a new http server and begins listening immediately
+at the given port.
+
+```ts
+const server = new DevServer(8080)
+```
+
+If `onRequest` closes the request, it must return `handled`.
+Note that `onRequest` takes `res` which includes `res.req`.
+
+
+
+## `server.files`
+
+```ts
+files: Map<string, Buffer | string> | undefined
+```
+
+The files to serve. Has the same path format as `tree.files`.
+
+```ts
+server.files = new Map([
+  ['/index.html', 'hello world!'],
+])
+```
+
+
+
+## `server.notFound`
+
+```ts
+notFound?: (path: string) => string
+```
+
+Handler that returns 404 and the given content
+when the path isn't present in `server.files`.
+
+
+
+## `server.reload`
+
+```ts
+reload(): void
+```
+
+Triggers SSE for listeners of `hmrPath` (see constructor).

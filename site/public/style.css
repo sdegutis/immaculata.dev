@@ -5,6 +5,7 @@ html {
   justify-content: center;
   align-items: center;
   font-family: system-ui;
+  scrollbar-gutter: stable both-edges;
 }
 
 * {

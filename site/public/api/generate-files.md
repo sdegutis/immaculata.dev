@@ -1,6 +1,4 @@
-## generateFiles
-
-### API
+# `function generateFiles`
 
 ```typescript
 function generateFiles(
@@ -10,10 +8,24 @@ function generateFiles(
 ): void
 ```
 
-### Usage
+Creates dirs and files on disk at the given
+subroot based on the given file map.
+
+The map has the same path format as
+that of `LiveTree.files`, where the
+absolute root is relative to the tree.
 
 ```typescript
 import * as immaculata from 'immaculata'
 
-immaculata.generateFiles(myFileMapGenerator())
+immaculata.generateFiles(new Map([
+  ['/index.html', 'hello world'],
+  ['/about.html', 'about my site'],
+  ['/css/main.css', 'body{...}'],
+]))
+
+// writefile: docs/index.html
+// writefile: docs/about.html
+// mkdir: docs/css
+// writefile: docs/css/main.css
 ```
