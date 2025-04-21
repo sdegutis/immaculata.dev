@@ -4,7 +4,11 @@ import { template } from "./template.tsx"
 
 let reloader = ''
 if (process.argv[2] === 'dev') reloader = `
-<script>new EventSource('/reload').onmessage = () => location.reload()</script>
+<script type="module">
+const es = new EventSource('/reload')
+es.onmessage = () => location.reload()
+window.onbeforeunload = () => es.close()
+</script>
 `
 
 export async function processSite(tree: immaculata.LiveTree) {
