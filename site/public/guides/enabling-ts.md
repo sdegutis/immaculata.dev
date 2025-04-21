@@ -4,9 +4,9 @@ By default, the native Node.js module system requires a module
 be imported with `.js`, and disallows `.ts`, `.tsx`, and `.jsx`.
 Even in new versions, while `.ts` allowed, `.tsx` and `.jsx` aren't.
 
-On top of that, many code bases import `.js` files in code,
+But for legacy reasons, many code bases import `.js` files in code,
 expecting the file to exist, but on disk the file exists with
-another extension (`.{ts,tsx,jsx}`).
+another extension like `.{ts,tsx,jsx}`
 
 Using `immaculata`, you can hook into Node.js's module system
 and tell it to look for `.{ts,tsx,jsx}` when `.js` isn't found:
