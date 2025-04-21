@@ -1,6 +1,6 @@
 import * as immaculata from 'immaculata'
-import { md } from "./highlight.ts"
 import { mainPage } from "./index.html.tsx"
+import { md } from "./markdown.ts"
 
 let reloader = ''
 if (process.argv[2] === 'dev') reloader = `<script>new EventSource('/reload').onmessage = () => location.reload()</script>`
