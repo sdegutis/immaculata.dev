@@ -8,7 +8,9 @@ sufficient for simple scripts.
 But for more complex programs, or when some portion of the program
 takes a while to load (e.g. [shiki](https://shiki.matsu.io/)),
 or some operations are resource-expensive (e.g. loading files from
-disk) and to be done as few times as possible, we need better.
+disk) and to be done as few times as possible, we don't want
+to throw away the entire runtime when files change, but only
+reload files that need to be reloaded, and decache some modules.
 
 Using `immaculata`, you can:
 
