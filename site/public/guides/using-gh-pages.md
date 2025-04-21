@@ -1,7 +1,8 @@
-# Using GH Pages
+# Publishing to GitHub Pages
 
 ```json
 // package.json
+
 {
   "scripts": {
     "generate": "node main.ts generate"

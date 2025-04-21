@@ -29,6 +29,7 @@ export function template(content: string) {
           <a href='/guides/simple-build-tool.html'>Simple build tool</a>
           <a href='/guides/simple-md-ssg.html'>Simple MD SSG</a>
           <a href='/guides/using-gh-pages.html'>Using GH Pages</a>
+          <a href='/guides/local-dev-setup.html'>Local dev setup</a>
 
           <h3>API</h3>
           <a href='/api/live-tree.html'>LiveTree</a>
