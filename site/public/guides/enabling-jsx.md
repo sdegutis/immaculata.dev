@@ -51,6 +51,23 @@ To use a JSX implementation within a `LiveTree`, use prepend its root:
 registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/my-jsx.js'))
 ```
 
+## VS Code support
+
+If you're not using a library that provides JSX types,
+you'll need to add your own. Here's a basic starter:
+
+```ts
+declare namespace JSX {
+
+  type IntrinsicElements = Record<string, any>
+
+  interface ElementChildrenAttribute {
+    children: any
+  }
+
+}
+```
+
 ## Using React.js
 
 Since the path just needs to be a valid module that Node.js knows
