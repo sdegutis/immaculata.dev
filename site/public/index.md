@@ -10,6 +10,7 @@ npm i immaculata
 
 * [Enable JSX](/guides/enabling-jsx.html) in Node.js's native module system
 * [Enable HMR](/guides/enabling-hmr.html) in Node.js's native module system
+* [Enable MD](/guides/enabling-md.html) in Node.js's native module system
 * Small (~420 loc) highly readable [source code](https://github.com/thesoftwarephilosopher/immaculata.dev)
 * Almost no dependencies (just `mime-types`)
 
