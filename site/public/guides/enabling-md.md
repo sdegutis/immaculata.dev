@@ -12,7 +12,7 @@ import * as immaculata from "immaculata"
 
 const tree = new immaculata.LiveTree('site', import.meta.url)
 registerHooks(tree.enableImportsModuleHook())
-registerHooks(immaculata.markdownModuleHook)
+registerHooks(immaculata.exportAsStringModuleHook({ bareExt: 'md' }))
 
 import('./somefile.md').then((text: string) => {
   console.log(text)
