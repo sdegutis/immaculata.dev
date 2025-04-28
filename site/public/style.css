@@ -273,8 +273,8 @@ pre:has(>code) {
 :not(pre) > code {
   font-family: inherit;
   font-size: 80%;
-  background-color: #0005;
-  padding: 7px 4px 4px;
+  background-color: #0004;
+  padding: 3px 7px 4px;
   border-radius: 3px;
 }
 
