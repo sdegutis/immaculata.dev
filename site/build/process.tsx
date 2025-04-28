@@ -39,9 +39,7 @@ export async function processSite() {
 
     files.with('\.md$').do(f => {
       f.path = f.path.replace('.md', '.html')
-      const env: Env = {
-        license,
-      }
+      const env: Env = { license }
       const result = md.render(f.text, env)
       f.text = <Html>
         <Head />

@@ -61,6 +61,7 @@ export function Navbar(data: {
     links: 'Links',
     api: 'Api',
     guides: 'Guides',
+    blog: 'Blog',
   })
 
   return <nav id='nav' class='navbar'>

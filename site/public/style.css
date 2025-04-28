@@ -270,6 +270,12 @@ pre:has(>code) {
   }
 }
 
+blockquote {
+  background-color: #3d213899;
+  padding: 1px 0;
+  margin: -1px 0;
+}
+
 :not(pre) > code {
   font-family: inherit;
   font-size: 80%;
