@@ -124,7 +124,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
   font-family: "Martel", serif;
   transition: color 200ms ease-in-out;
   color: light-dark(#ea2, #ea2);
-  &:hover { color: #fff; }
+  &:hover { color: var(--link-color); }
 }
 
 #mobileheader {
