@@ -80,7 +80,7 @@
   background-color: light-dark(var(--blue), var(--blue));
   color: light-dark(#959595, #ccc);
   font-optical-sizing: auto;
-  font-family: "Oxanium", sans-serif;
+  font-family: "Oxanium Variable", sans-serif;
 
   &.light { color-scheme: light }
   &.dark  { color-scheme: dark  }

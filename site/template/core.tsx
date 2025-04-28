@@ -11,11 +11,13 @@ export function Head() {
   return <head>
     <script src="/script/theme.js"></script>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/fonts/martel/index.css" />
+    <link rel="stylesheet" href="/fonts/martel/700.css" />
+    <link rel="stylesheet" href="/fonts/gemunulibre/index.css" />
+    <link rel="stylesheet" href="/fonts/gemunulibre/700.css" />
+    <link rel="stylesheet" href="/fonts/oxanium/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Immaculata.dev</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin='' />
-    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&family=Martel:wght@200;300;400;600;700;800;900&family=Oxanium:wght@200..800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
     <script type="module" src="/script/nav.js"></script>
     <script type="module" src="/script/toc.js"></script>
   </head>

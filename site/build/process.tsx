@@ -1,6 +1,7 @@
 import fm from 'front-matter'
+import { Pipeline } from 'immaculata'
 import ts from 'typescript'
-import { license, tree } from '../../static.ts'
+import { gemunulibre, license, martel, oxanium, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
@@ -77,6 +78,10 @@ export async function processSite() {
         <Sidebar toc={''} />
       </body>
     </Html>)
+
+    files.graft('/fonts/martel', Pipeline.from(martel.files))
+    files.graft('/fonts/oxanium', Pipeline.from(oxanium.files))
+    files.graft('/fonts/gemunulibre', Pipeline.from(gemunulibre.files))
 
   })
 }
