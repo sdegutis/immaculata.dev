@@ -30,6 +30,7 @@ and [in the browser](https://github.com/thesoftwarephilosopher/immaculata.dev/bl
 This code is pure and simple engineering:
 
 * The build-time script (52 loc) exports `generateToc(md: MarkdownIt)` and ` tocToHtml(toc: Toc)`
+
 * The client-side script (39 loc) uses `IntersectionObserver` to highlight the nearest link
 
 But more importantly, it's *not a framework*.
@@ -53,7 +54,9 @@ restarts the *entire process*. But that's too slow.
 Immaculata provides three primitives to help with this:
 
 1. [LiveTree](../api/live-tree.md#livetree), an in-memory representation of a given directory recursively
+
 2. [Livetree.watch](../api/live-tree.md#livetreewatch) which keeps the tree up to date with minimal fs-reads
+
 3. [LiveTree.enableImportsModuleHook](../api/live-tree.md#livetreeenableimportsmodulehook) which invalidates stale modules
 
 In [just a dozen or two lines of code](http://localhost:8585/guides/simple-build-tool.html),
