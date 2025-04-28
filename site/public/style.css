@@ -71,7 +71,7 @@
   --nav-bgcolor: light-dark(var(--blue), var(--blue));
   --nav-linkcolor: light-dark(#555, #777);
 
-  --header-color: light-dark(#986407, #cbb284);
+  --header-color: light-dark(#ccc, #ccc);
 
   --mobileheader-height: 40px;
   --link-color: light-dark(#19f, #19f);
@@ -122,7 +122,7 @@ a { color: var(--link-color) }
   font-weight: bold;
   font-family: "Martel", serif;
   transition: color 200ms ease-in-out;
-  color: light-dark(#f77, #f77);
+  color: light-dark(#ea2, #ea2);
   &:hover { color: #fff; }
 }
 
