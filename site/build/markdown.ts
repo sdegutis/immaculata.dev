@@ -4,11 +4,13 @@ import anchors from 'markdown-it-anchor'
 import inlineAttrs from 'markdown-it-attrs'
 import containers from 'markdown-it-container'
 import { tree } from "../../static.ts"
+import { evalCode } from "./eval.ts"
 import { highlightCode } from "./highlighter.ts"
 import { generateToc } from "./toc.ts"
 
 export const md = new MarkdownIt({ html: true })
 md.use(renameMarkdownLinks)
+md.use(evalCode)
 md.use(inlineAttrs)
 md.use(generateToc)
 md.use(highlightCode)

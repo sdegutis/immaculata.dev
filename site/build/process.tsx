@@ -1,6 +1,6 @@
 import fm from 'front-matter'
 import ts from 'typescript'
-import { tree } from '../../static.ts'
+import { license, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
@@ -39,7 +39,9 @@ export async function processSite() {
 
     files.with('\.md$').do(f => {
       f.path = f.path.replace('.md', '.html')
-      const env: Env = {}
+      const env: Env = {
+        license,
+      }
       const result = md.render(f.text, env)
       f.text = <Html>
         <Head />

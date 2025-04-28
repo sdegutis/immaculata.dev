@@ -135,7 +135,11 @@ were adapted from this site's source code, including the above example.
 
 ### License
 
-Standard MIT
+``` tsx eval
+return <>
+<pre><code>{env.license}</code></per>
+</>
+```
 
 ### Special thanks
 
