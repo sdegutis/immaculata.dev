@@ -1,4 +1,4 @@
-# `function generateFiles`
+# File generator
 
 ```typescript
 function generateFiles(

@@ -38,4 +38,4 @@ Remaps the `react/jsx-runtime` import to the given module specifier.
 
 ## `liveTree.enableImportsModuleHook`
 
-See [LiveTree](/api/live-tree.html)
+See [LiveTree](live-tree.md#livetreeenableimportsmodulehook) page.

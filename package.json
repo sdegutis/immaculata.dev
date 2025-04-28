@@ -1,17 +1,27 @@
 {
+  "name": "mywebsite",
+  "private": true,
+  "version": "0.0.1",
   "scripts": {
-    "generate": "node main.ts generate",
+    "generate": "node --disable-warning=ExperimentalWarning main.ts generate",
     "watch": "tsc --watch"
-  },
-  "dependencies": {
-    "immaculata": "^0.1.9",
-    "markdown-it": "^14.1.0"
   },
   "type": "module",
   "devDependencies": {
-    "@shikijs/markdown-it": "^3.2.1",
+    "@shikijs/markdown-it": "^3.3.0",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.13.10",
+    "@types/markdown-it-attrs": "^4.1.3",
+    "@types/markdown-it-container": "^2.0.10",
+    "@types/node": "^22.13.16",
+    "immaculata": "^0.1.13",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "front-matter": "^4.0.2",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1",
+    "markdown-it-container": "^4.0.0",
+    "shiki": "^3.3.0"
   }
 }

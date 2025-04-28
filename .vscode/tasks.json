@@ -5,12 +5,10 @@
 			"type": "npm",
 			"script": "watch",
 			"group": "build",
-			"problemMatcher": [],
+			"problemMatcher": [ ],
 			"label": "npm: watch",
 			"detail": "tsc --watch",
-			"runOptions": {
-				"runOn": "folderOpen"
-			}
+			"runOptions": { "runOn": "folderOpen" }
 		}
 	]
 }

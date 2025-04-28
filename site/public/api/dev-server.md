@@ -1,4 +1,4 @@
-# `class DevServer`
+# DevServer
 
 ## `constructor`
 

@@ -5,13 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Program",
+      "name": "Launch site",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/main.ts",
       "args": [ "dev" ],
       "skipFiles": [ "<node_internals>/**" ],
-      "runtimeArgs": [ "--watch-path=main.ts", "--disable-warning=ExperimentalWarning" ],
+      "runtimeArgs": [ "--watch-path=main.ts", "--disable-warning=ExperimentalWarning" ]
     }
   ]
 }

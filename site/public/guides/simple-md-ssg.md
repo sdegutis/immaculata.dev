@@ -3,7 +3,7 @@
 In the manner of the time honored tradition
 of writing every site in markdown, this code
 implements `processSite` as referenced by the
-[Simple build tool](/guides/simple-build-tool.html) guide.
+[Simple build tool](simple-build-tool.md#simple-build-tool) guide.
 
 ```ts
 import * as immaculata from 'immaculata'

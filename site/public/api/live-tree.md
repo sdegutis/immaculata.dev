@@ -1,4 +1,4 @@
-# `class LiveTree`
+# LiveTree
 
 
 

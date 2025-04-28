@@ -38,7 +38,11 @@ import('site/foo.js')
 //   site/foo.jsx
 ```
 
-*Note:* This doesn't strictly require the JSX/TSX hook,
+::: section box note
+### Note
+
+This doesn't strictly require the JSX/TSX hook,
 as it's still useful when importing `.ts` files using
 the extension `.js`. But `compileJsxTsxModuleHook` is
 included above since it's a very common use-case.
+:::

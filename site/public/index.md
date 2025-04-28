@@ -1,6 +1,6 @@
 # Immaculata.dev
 
-## TypeScript DX primitives
+*TypeScript DX primitives* {.homesubheader}
 
 ```bash
 npm i immaculata
@@ -8,10 +8,9 @@ npm i immaculata
 
 ### Features
 
-* [Enable JSX](/guides/enabling-jsx.html) in Node.js's native module system
-* [Enable HMR](/guides/enabling-hmr.html) in Node.js's native module system
-* [Enable MD](/guides/enabling-md.html) in Node.js's native module system
-* Small (~420 loc) highly readable [source code](https://github.com/thesoftwarephilosopher/immaculata.dev)
+* [Enable JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs) in Node.js's native module system
+* [Enable HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs) in Node.js's native module system
+* Small (~420 loc) highly readable [source code](https://github.com/thesoftwarephilosopher/immaculata/tree/main/src)
 * Almost no dependencies (just `mime-types`)
 
 ### Example
@@ -127,7 +126,7 @@ function Head() {
 
 ### Real-world example
 
-[This website](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts)
+[This website](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/main/main.ts)
 was generated using `immaculata`, and in fact most of the guides here
 were adapted from this site's source code, including the above example.
 
