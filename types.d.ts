@@ -14,3 +14,6 @@ declare namespace JSX {
     | string
     | ((data: any) => JSX.Element)
 }
+
+// otherwise it has errors
+declare module '@shikijs/core/types' { }

@@ -21,6 +21,5 @@
     "esModuleInterop": true,
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
-    "skipLibCheck": true,
   },
 }
