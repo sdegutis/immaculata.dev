@@ -132,7 +132,6 @@ For example, you might want to use JSX string building
 directly after parsing Markdown:
 
 ```tsx
-import { license, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
