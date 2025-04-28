@@ -18,7 +18,7 @@ Node's `http` module with static files.
 You may say that React or Vue add so much convenience.
 
 Really? Look at [Vitepress's source code](https://github.com/vuejs/vitepress/tree/main/src).
-Where is the code for the "on this page" plugin? Can you find it?
+Where is the code for the "on this page" TOC plugin? Can you find it?
 How long is it? Can you follow it?
 
 Now look at how this very website does it,
