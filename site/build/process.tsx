@@ -21,7 +21,7 @@ export async function processSite() {
 
     const pages = files.with('\.md$').all().map(p => {
       const path = p.path.replace('.md', '.html')
-      const title = p.text.match(/[^#]*# *(.+)/)![1]
+      const title = md.renderInline(p.text.match(/[^#]*# *(.+)/)![1])
       const section = p.path.match('/(.+?)/')?.[1]
       const frontmatter = fm<{ order?: number }>(p.text)
       p.text = frontmatter.body
