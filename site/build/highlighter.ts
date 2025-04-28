@@ -4,6 +4,6 @@ import type MarkdownIt from 'markdown-it'
 // In it's own file since it must be a long-lived singleton
 const shiki = await Shiki({ theme: 'dark-plus' })
 
-export const highlightCode = (md: MarkdownIt) => {
+export function highlightCode(md: MarkdownIt) {
   md.use(shiki)
 }
