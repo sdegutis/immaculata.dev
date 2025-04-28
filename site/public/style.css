@@ -106,6 +106,7 @@ body {
 }
 
 a { color: var(--link-color) }
+h1,h2,h3,h4 { --outline-color: #7ff; }
 
 ::selection {
   background-color: light-dark(#5a194e, #5a194e);
