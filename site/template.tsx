@@ -20,7 +20,8 @@ export function template(content: string) {
         <nav>
           <h3>About</h3>
           <a href='/'>Immaculata.dev</a>
-          <a href='https://github.com/thesoftwarephilosopher/immaculata.dev'>GitHub</a>
+          <a href='https://github.com/thesoftwarephilosopher/immaculata'>GitHub project</a>
+          <a href='https://github.com/thesoftwarephilosopher/immaculata.dev'>Fork site</a>
 
           <h3>Guides</h3>
           <a href='/guides/enabling-jsx.html'>JSX for Node.js</a>
