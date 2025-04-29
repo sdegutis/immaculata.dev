@@ -8,6 +8,8 @@ import { evalCode } from "./eval.ts"
 import { highlightCode } from "./highlighter.ts"
 import { generateToc } from "./toc.ts"
 
+export interface Env { }
+
 export const md = new MarkdownIt({ html: true })
 md.use(renameMarkdownLinks)
 md.use(evalCode)
