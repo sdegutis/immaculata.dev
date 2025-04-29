@@ -80,7 +80,7 @@
   background-color: light-dark(var(--blue), var(--blue));
   color: light-dark(#959595, #ccc);
   font-optical-sizing: auto;
-  font-family: "Oxanium Variable", sans-serif;
+  font-family: "Exo 2 Variable", sans-serif;
 
   &.light { color-scheme: light }
   &.dark  { color-scheme: dark  }
@@ -160,7 +160,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
 :is(h1,h2,h3,h4) {
   color: var(--header-color);
   font-optical-sizing: auto;
-  font-family: "Gemunu Libre", sans-serif;
+  font-family: "Monda Variable", sans-serif;
   scroll-margin-top: 5px;
   @media (width < 1024px) { scroll-margin-top: calc(5px + var(--mobileheader-height)); }
 }
@@ -193,7 +193,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
     color: var(--nav-linkcolor);
     text-decoration: none;
     display: inline-block;
-    font-family: "Gemunu Libre", sans-serif;
+    font-family: "Monda Variable", sans-serif;
 
     transition: all 120ms ease-in-out;
 

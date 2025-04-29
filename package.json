@@ -17,8 +17,8 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@fontsource-variable/oxanium": "^5.2.5",
-    "@fontsource/gemunu-libre": "^5.2.5",
+    "@fontsource-variable/exo-2": "^5.2.5",
+    "@fontsource-variable/monda": "^5.2.6",
     "@fontsource/martel": "^5.2.5",
     "front-matter": "^4.0.2",
     "markdown-it": "^14.1.0",
