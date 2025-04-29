@@ -113,29 +113,21 @@ function vendorFonts(fonts: {
   const subtrees: { root: string, files: Pipeline }[] = []
 
   for (const font of fonts) {
-    const used: string[] = []
-    const pipeline = Pipeline.from(font.tree.files)
+    const pipeline = new Pipeline()
+    subtrees.push({ root: font.root, files: pipeline })
 
     for (const file of font.files) {
       const content = font.tree.files.get(file)?.content.toString()!
 
       for (const match of content.matchAll(/url\((.+?)\)/g)) {
         const path = match[1]!.replace(/^\.\//, '/')
-        used.push(path)
+        pipeline.add(path, font.tree.files.get(path)!.content)
         links.push(<link rel="preload" href={font.root + path} as="font" type="font/woff" crossorigin />)
       }
 
-      used.push(file)
+      pipeline.add(file, content)
       links.push(<link rel="stylesheet" href={font.root + file} />)
     }
-
-    for (const path of pipeline.paths()) {
-      if (!used.includes(path)) {
-        pipeline.del(path)
-      }
-    }
-
-    subtrees.push({ root: font.root, files: pipeline })
   }
 
   return { subtrees, links }
