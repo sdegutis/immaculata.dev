@@ -57,7 +57,6 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
 .sitelogo {
   text-decoration: none;
   font-weight: bold;
-  font-family: "Martel", serif;
   transition: all 120ms ease-in-out;
   color: light-dark(#ea2, #ea2);
   outline: 3px solid transparent;
@@ -107,7 +106,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
 }
 
 .navbar {
-  .sitelogo { font-size: 120%; }
+  .sitelogo { font-size: 150%; }
   :is(ul,ol) { list-style-type: none; }
 
   > * { margin: 2rem }

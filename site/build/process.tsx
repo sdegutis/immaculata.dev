@@ -1,7 +1,7 @@
 import fm from 'front-matter'
 import { Pipeline, type FileTree } from 'immaculata'
 import ts from 'typescript'
-import { exo2, license, martel, monda, tree } from '../../static.ts'
+import { exo2, license, monda, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
@@ -39,7 +39,6 @@ export async function processSite() {
     })
 
     const fonts = vendorFonts([
-      { tree: martel, root: '/fonts/martel', files: ['/index.css', '/700.css'] },
       { tree: monda, root: '/fonts/monda', files: ['/index.css'] },
       { tree: exo2, root: '/fonts/exo2', files: ['/index.css'] },
     ])
