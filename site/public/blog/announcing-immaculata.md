@@ -12,7 +12,7 @@ These 5 loc enable HMR inside Node.js *natively*.
 
 ```ts
 // keep an in-memory version of "./site" in memory
-const tree = new immaculata.LiveTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.url)
 
 // keep it up to date
 tree.watch({}, reload)
@@ -71,11 +71,11 @@ restarts the *entire process*. But that's too slow.
 
 Immaculata provides three primitives to help with this:
 
-1. [LiveTree](../api/live-tree.md#livetree), an in-memory representation of a given directory recursively
+1. [FileTree](../api/live-tree.md#filetree), an in-memory representation of a given directory recursively
 
-2. [Livetree.watch](../api/live-tree.md#livetreewatch) which keeps the tree up to date with minimal fs-reads
+2. [FileTree.watch](../api/live-tree.md#filetreewatch) which keeps the tree up to date with minimal fs-reads
 
-3. [LiveTree.enableImportsModuleHook](../api/live-tree.md#livetreeenableimportsmodulehook) which invalidates stale modules
+3. [FileTree.enableImportsModuleHook](../api/live-tree.md#filetreeenableimportsmodulehook) which invalidates stale modules
 
 In [just 5 lines of code](#module-reloading),
 you can use these to create a workflow where saving any file
@@ -134,7 +134,7 @@ registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 registerHooks(immaculata.jsxRuntimeModuleHook('another-jsx-lib/jsx.js'))
 
 // or bring your own impl
-export const tree = new immaculata.LiveTree('site', import.meta.url)
+export const tree = new immaculata.FileTree('site', import.meta.url)
 registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/myjsx.js'))
 ```
 

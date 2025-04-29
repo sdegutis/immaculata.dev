@@ -12,7 +12,7 @@ Creates dirs and files on disk at the given
 subroot based on the given file map.
 
 The map has the same path format as
-that of `LiveTree.files`, where the
+that of `FileTree.files`, where the
 absolute root is relative to the tree.
 
 ```typescript

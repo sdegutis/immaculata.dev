@@ -15,7 +15,7 @@ and tell it to look for `.{ts,tsx,jsx}` when `.js` isn't found:
 import * as immaculata from "immaculata"
 import ts from 'typescript'
 
-const tree = new immaculata.LiveTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.url)
 
 // to use .js to import .jsx or .tsx files:
 registerHooks(immaculata.tryTsTsxJsxModuleHook)

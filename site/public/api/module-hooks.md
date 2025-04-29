@@ -36,6 +36,6 @@ Remaps the `react/jsx-runtime` import to the given module specifier.
 
 
 
-## `liveTree.enableImportsModuleHook`
+## `fileTree.enableImportsModuleHook`
 
-Docs for this are on the [LiveTree](live-tree.md#livetreeenableimportsmodulehook) page.
+Docs for this are on the [FileTree](live-tree.md#filetreeenableimportsmodulehook) page.

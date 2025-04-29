@@ -27,7 +27,7 @@ import * as immaculata from "immaculata"
 import { registerHooks } from 'module'
 import ts from 'typescript'
 
-const tree = new immaculata.LiveTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.url)
 registerHooks(tree.enableImportsModuleHook())
 
 const myModule = await import('site/myModule.js')

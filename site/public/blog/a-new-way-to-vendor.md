@@ -18,7 +18,7 @@ and repeating this step if any file changes. So if I have a folder called
 an out tree, transpiling and renaming as needed:
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 tree.watch({}, process)
 process()
@@ -66,16 +66,16 @@ so it *just works*.
 In fact, that's how the page you're reading right now was generated:
 
 ```tsx
-import { Pipeline, LiveTree } from 'immaculata'
+import { Pipeline, FileTree } from 'immaculata'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
 
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
-const martel = new LiveTree('node_modules/@fontsource/martel', import.meta.url)
-const exo2 = new LiveTree('node_modules/@fontsource-variable/exo-2', import.meta.url)
-const monda = new LiveTree('node_modules/@fontsource-variable/monda', import.meta.url)
+const martel = new FileTree('node_modules/@fontsource/martel', import.meta.url)
+const exo2 = new FileTree('node_modules/@fontsource-variable/exo-2', import.meta.url)
+const monda = new FileTree('node_modules/@fontsource-variable/monda', import.meta.url)
 
 export async function processSite() {
   return tree.processFiles(files => {
@@ -116,7 +116,7 @@ export async function processSite() {
 }
 
 function vendorFonts(fonts: {
-  tree: LiveTree,
+  tree: FileTree,
   root: string,
   files: string[],
 }[]) {

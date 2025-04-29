@@ -7,11 +7,11 @@ use it heavily in a few codebases.
 ## Rationale
 
 Technically you don't need a pipeline object to transform
-a `LiveTree.files` into a map compatible with `DevServer`
+a `FileTree.files` into a map compatible with `DevServer`
 and `generateFiles`. You can just do this:
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 let files = tree.files.values().toArray()
 
@@ -44,29 +44,29 @@ So the `Pipeline` class was created as a convenience.
 ```typescript
 class Pipeline {
 
-  static from(files: LiveTree['files']): Pipeline
+  static from(files: FileTree['files']): Pipeline
 
-  private constructor(files: MemFile[], filters: Filter[])
+  private constructor(files: PipelineFile[], filters: Filter[])
 
   // filter files for the next action
   with(regex: RegExp | string): Pipeline
   without(regex: RegExp | string): Pipeline
 
   // add/remove individual files
-  add(path: string, content: string | Buffer | MemFile): void
+  add(path: string, content: string | Buffer | PipelineFile): void
   del(path: string): void
 
   // add/remove entire subtrees
-  graft(prefix: string, files: Pipeline | LiveTree): void
+  graft(prefix: string, files: Pipeline | FileTree): void
   remove(): void
 
   // foreach conveniences
-  do(fn: (file: MemFile) => void): void
-  async doAsync(fn: (file: MemFile) => void | Promise<void>):
+  do(fn: (file: PipelineFile) => void): void
+  async doAsync(fn: (file: PipelineFile) => void | Promise<void>):
     Promise<void>
 
   // map conveniences
-  all(): MemFile[]
+  all(): PipelineFile[]
   paths(): string[]
 
   // ill give you three guesses what this does
@@ -77,7 +77,7 @@ class Pipeline {
 
 }
 
-class MemFile {
+class PipelineFile {
 
   path: string
   content: Buffer
@@ -90,7 +90,7 @@ class MemFile {
   // return text ?? content
   textOrContent() { return this.#text ?? this.content }
 
-  copy(path = this.path): MemFile
+  copy(path = this.path): PipelineFile
 
 }
 ```

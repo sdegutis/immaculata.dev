@@ -10,7 +10,7 @@ import * as immaculata from 'immaculata'
 import { md } from "./markdown.ts"
 import { template } from "./template.tsx"
 
-export async function processSite(tree: immaculata.LiveTree) {
+export async function processSite(tree: immaculata.FileTree) {
   return tree.processFiles(async (files) => {
 
     // make `site/public/` be the file tree

@@ -1,4 +1,4 @@
-# LiveTree
+# FileTree
 
 
 
@@ -11,21 +11,21 @@ constructor(path: string, importMetaUrl: string)
 Loads the tree from disk into memory immediately.
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 ```
 
 
 
-## `liveTree.files`
+## `fileTree.files`
 
 ```typescript
-files: Map<string, LiveFile>
+files: Map<string, TreeFile>
 ```
 
 A list of all files (recursively) at the given path.
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 // if cwd contains:
 //   ./site/index.html
@@ -44,7 +44,7 @@ assertMatches(tree.files, {
 Each file has this format:
 
 ```ts
-type LiveFile = {
+type TreeFile = {
   path: string,    // always the same as its key in the map
   content: Buffer, // always a buffer (see Pipeline)
   version: number, // increments with changes for decaching
@@ -54,7 +54,7 @@ type LiveFile = {
 
 
 
-## `liveTree.watch`
+## `fileTree.watch`
 
 ```typescript
 watch(
@@ -71,13 +71,13 @@ The paths in `ignored` and `onchange` have
 the same format as in `files`.
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 tree.watch()
 ```
 
 
 
-## `liveTree.enableImportsModuleHook`
+## `fileTree.enableImportsModuleHook`
 
 ```typescript
 enableImportsModuleHook(): ModuleHook
@@ -100,7 +100,7 @@ are never stale modules.
 ```ts
 import module from 'node:module'
 
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 module.registerHooks(tree.enableImportsModuleHook)
 
@@ -109,7 +109,7 @@ import('site/myfile.js')
 
 
 
-## `liveTree.processFiles`
+## `fileTree.processFiles`
 
 ```typescript
 processFiles(
@@ -121,7 +121,7 @@ Allows transforming a tree for site processing. Returns
 a map compatible with `generateFiles` and `DevServer.files`.
 
 ```ts
-const tree = new LiveTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 const fileMap = tree.processFiles()
 

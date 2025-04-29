@@ -15,7 +15,7 @@ Using `immaculata`, you can:
 import * as immaculata from "immaculata"
 import ts from 'typescript'
 
-const tree = new immaculata.LiveTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.url)
 
 // only needed if you want importing .js to look for .jsx/tsx files
 registerHooks(immaculata.tryTsTsxJsxModuleHook)
@@ -45,7 +45,7 @@ registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
 ## Using your own JSX implementation
 
-To use a JSX implementation within a `LiveTree`, use prepend its root:
+To use a JSX implementation within a `FileTree`, use prepend its root:
 
 ```ts
 registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/my-jsx.js'))

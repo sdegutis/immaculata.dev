@@ -20,7 +20,7 @@ npm i immaculata
 
 ```ts
 // keep an in-memory version of "./site" in memory
-const tree = new immaculata.LiveTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.url)
 
 // keep it up to date
 tree.watch({}, reload)
