@@ -47,7 +47,7 @@
     @media (width < 1024px) {
       grid-template-columns: auto minmax(var(--main-min-width), 1fr);
       #side { position: fixed; z-index: 100; right: 0; margin-right: -256px; }
-      &.navmenu2 #side { margin-right: 0; }
+      &.navmenu2 #side, #side:focus-within { margin-right: 0; }
       #mobileheader span:last-child { display: unset; }
       #mobileheader .sitelogo { display: none; }
     }
@@ -55,7 +55,7 @@
     @media (width < 768px) {
       grid-template-columns: minmax(var(--main-min-width), 1fr);
       #nav { position: fixed; z-index: 100; left: 0; margin-left: -256px; }
-      &.navmenu1 #nav { margin-left: 0; }
+      &.navmenu1 #nav, #nav:focus-within { margin-left: 0; }
       #mobileheader span:first-child { display: unset; }
       #mobileheader .sitelogo { display: unset; }
     }
