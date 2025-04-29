@@ -60,7 +60,7 @@ export function Navbar(data: {
 
   const sections = Object.entries({
     links: 'Links',
-    api: 'Api',
+    api: 'API Reference',
     guides: 'Guides',
     blog: 'Blog',
   })
