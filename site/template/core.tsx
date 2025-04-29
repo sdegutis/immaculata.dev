@@ -35,8 +35,8 @@ export function Main(data: { content: string }) {
     <footer>
       Copyright &copy; {new Date().getFullYear()}
       {' / '}
-      <a href='mailto:admin@example.com'>Contact</a>
-      {' / '}
+      {/* <a href='mailto:admin@example.com'>Contact</a>
+      {' / '} */}
       Made with <a href='https://immaculata.dev/'>immaculata.dev</a>
     </footer>
   </main>
