@@ -26,8 +26,8 @@ process()
 function process() {
   let files = tree.files.values().toArray()
   
-  files = files.filter(isTypeScript).forEach(transpileTsx)
-  files = files.filter(isSass).forEach(transpileSass)
+  files = files.filter(isTypeScript).forEach(transpileAndRenameTsx)
+  files = files.filter(isSass).forEach(transpileAndRenameSass)
   
   const out = new Map(files.map(f => [f.path, f.content]))
   
