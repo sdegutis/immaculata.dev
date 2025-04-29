@@ -173,6 +173,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
   > * { margin: 2rem }
 
   &#nav>p:first-child { margin-top: 0; }
+  &#nav { padding-top: 1em; }
   &#side h3+* { margin-top: .25em; }
 
   #toggledarkmode { display: flex; gap: .25em }
