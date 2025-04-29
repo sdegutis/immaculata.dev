@@ -46,9 +46,10 @@ export async function processSite() {
     files.with('\.md$').do(f => {
       f.path = f.path.replace('.md', '.html')
       const env: Env = { license }
+      const title = md.renderInline(f.text.match(/[^#]*# *(.+)/)![1])
       const result = md.render(f.text, env)
       f.text = hoistHeaders(files, <Html>
-        <Head files={fonts.links} />
+        <Head files={fonts.links} title={title} />
         <body>
           <Navbar pages={pages} />
           <Main content={result} />
@@ -69,7 +70,7 @@ export async function processSite() {
     if (reloader) files.with(/\.html$/).do(f => { f.text = f.text.replace('<head>', '$&' + reloader) })
 
     files.add('/404.html', hoistHeaders(files, <Html>
-      <Head files={fonts.links} />
+      <Head title='Page not found' files={fonts.links} />
       <body>
         <Navbar pages={pages} />
         <Main content={

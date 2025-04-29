@@ -8,13 +8,13 @@ export function Html(data: { children: any }) {
   </>
 }
 
-export function Head(data: { files: string[] }) {
+export function Head(data: { title: string, files: string[] }) {
   return <head>
     <script src="/script/theme.js"></script>
     <link rel="stylesheet" href="/style.css" />
     {...data.files}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Immaculata.dev</title>
+    <title>Immaculata.dev - {data.title}</title>
     <script type="module" src="/script/nav.js"></script>
     <script type="module" src="/script/toc.js"></script>
   </head>
