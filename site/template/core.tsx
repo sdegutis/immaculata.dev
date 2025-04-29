@@ -7,14 +7,11 @@ export function Html(data: { children: any }) {
   </>
 }
 
-export function Head() {
+export function Head(data: { files: string[] }) {
   return <head>
     <script src="/script/theme.js"></script>
     <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/fonts/martel/index.css" />
-    <link rel="stylesheet" href="/fonts/martel/700.css" />
-    <link rel="stylesheet" href="/fonts/exo2/index.css" />
-    <link rel="stylesheet" href="/fonts/monda/index.css" />
+    {...data.files}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Immaculata.dev</title>
     <script type="module" src="/script/nav.js"></script>

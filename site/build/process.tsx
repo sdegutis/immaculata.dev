@@ -1,5 +1,5 @@
 import fm from 'front-matter'
-import { Pipeline } from 'immaculata'
+import { Pipeline, type LiveTree } from 'immaculata'
 import ts from 'typescript'
 import { exo2, license, martel, monda, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
@@ -38,12 +38,18 @@ export async function processSite() {
       return 0
     })
 
+    const fonts = vendorFonts([
+      { tree: martel, root: '/fonts/martel', files: ['/index.css', '/700.css'] },
+      { tree: monda, root: '/fonts/monda', files: ['/index.css'] },
+      { tree: exo2, root: '/fonts/exo2', files: ['/index.css'] },
+    ])
+
     files.with('\.md$').do(f => {
       f.path = f.path.replace('.md', '.html')
       const env: Env = { license }
       const result = md.render(f.text, env)
       f.text = <Html>
-        <Head />
+        <Head files={fonts.links} />
         <body>
           <Navbar pages={pages} />
           <Main content={result} />
@@ -64,7 +70,7 @@ export async function processSite() {
     if (reloader) files.with(/\.html$/).do(f => { f.text = f.text.replace('<head>', '$&' + reloader) })
 
     files.add('/404.html', <Html>
-      <Head />
+      <Head files={fonts.links} />
       <body>
         <Navbar pages={pages} />
         <Main content={
@@ -79,9 +85,9 @@ export async function processSite() {
       </body>
     </Html>)
 
-    files.graft('/fonts/martel', Pipeline.from(martel.files))
-    files.graft('/fonts/monda', Pipeline.from(monda.files))
-    files.graft('/fonts/exo2', Pipeline.from(exo2.files))
+    fonts.subtrees.forEach(t => {
+      files.graft(t.root, t.files)
+    })
 
   })
 }
@@ -96,4 +102,32 @@ function compileTsx(str: string, filename: string) {
       sourceMap: true,
     }
   })
+}
+
+function vendorFonts(fonts: {
+  tree: LiveTree,
+  root: string,
+  files: string[],
+}[]) {
+  const links = fonts.flatMap(f => {
+    return f.files.flatMap(file => {
+      const content = f.tree.files.get(file)?.content.toString()!
+      const preloads = content.matchAll(/url\((.+?)\)/g).map(m => {
+        const url = (f.root + '/' + m[1]!).replace(/\/\.\//g, '/')
+        return <link rel="preload" href={url} as="font" type="font/woff" crossorigin />
+      })
+      const link = <link rel="stylesheet" href={f.root + file} />
+      return [link, ...preloads]
+    })
+  })
+
+  const subtrees = fonts.map(f => {
+    const pipeline = Pipeline.from(f.tree.files)
+    return {
+      root: f.root,
+      files: pipeline,
+    }
+  })
+
+  return { subtrees, links }
 }
