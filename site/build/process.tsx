@@ -109,25 +109,34 @@ function vendorFonts(fonts: {
   root: string,
   files: string[],
 }[]) {
-  const links = fonts.flatMap(f => {
-    return f.files.flatMap(file => {
-      const content = f.tree.files.get(file)?.content.toString()!
-      const preloads = content.matchAll(/url\((.+?)\)/g).map(m => {
-        const url = (f.root + '/' + m[1]!).replace(/\/\.\//g, '/')
-        return <link rel="preload" href={url} as="font" type="font/woff" crossorigin />
-      })
-      const link = <link rel="stylesheet" href={f.root + file} />
-      return [link, ...preloads]
-    })
-  })
+  const links: string[] = []
+  const subtrees: { root: string, files: Pipeline }[] = []
 
-  const subtrees = fonts.map(f => {
-    const pipeline = Pipeline.from(f.tree.files)
-    return {
-      root: f.root,
-      files: pipeline,
+  for (const font of fonts) {
+    const used: string[] = []
+    const pipeline = Pipeline.from(font.tree.files)
+
+    for (const file of font.files) {
+      const content = font.tree.files.get(file)?.content.toString()!
+
+      for (const match of content.matchAll(/url\((.+?)\)/g)) {
+        const path = match[1]!.replace(/^\.\//, '/')
+        used.push(path)
+        links.push(<link rel="preload" href={font.root + path} as="font" type="font/woff" crossorigin />)
+      }
+
+      used.push(file)
+      links.push(<link rel="stylesheet" href={font.root + file} />)
     }
-  })
+
+    for (const path of pipeline.paths()) {
+      if (!used.includes(path)) {
+        pipeline.del(path)
+      }
+    }
+
+    subtrees.push({ root: font.root, files: pipeline })
+  }
 
   return { subtrees, links }
 }
