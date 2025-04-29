@@ -1,5 +1,5 @@
 import fm from 'front-matter'
-import { Pipeline, type LiveTree } from 'immaculata'
+import { Pipeline, type FileTree } from 'immaculata'
 import ts from 'typescript'
 import { exo2, license, martel, monda, tree } from '../../static.ts'
 import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
@@ -105,7 +105,7 @@ function compileTsx(str: string, filename: string) {
 }
 
 function vendorFonts(fonts: {
-  tree: LiveTree,
+  tree: FileTree,
   root: string,
   files: string[],
 }[]) {

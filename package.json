@@ -13,7 +13,7 @@
     "@types/markdown-it-attrs": "^4.1.3",
     "@types/markdown-it-container": "^2.0.10",
     "@types/node": "^22.13.16",
-    "immaculata": "^0.2.0",
+    "immaculata": "^1.0.0",
     "typescript": "^5.8.2"
   },
   "dependencies": {
