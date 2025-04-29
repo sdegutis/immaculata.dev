@@ -8,6 +8,8 @@ using DX primitives.
 
 ### Module reloading
 
+These 5 loc enable HMR inside Node.js *natively*.
+
 ```ts
 // keep an in-memory version of "./site" in memory
 const tree = new immaculata.LiveTree('site', import.meta.url)
@@ -26,6 +28,8 @@ async function reload() {
 ```
 
 ### Native JSX
+
+These 3 loc enable importing JSX files in Node.js *natively*.
 
 ```ts
 // enable JSX inside Node.js and make it become a string-builder
@@ -73,7 +77,7 @@ Immaculata provides three primitives to help with this:
 
 3. [LiveTree.enableImportsModuleHook](../api/live-tree.md#livetreeenableimportsmodulehook) which invalidates stale modules
 
-In [just a dozen or two lines of code](http://localhost:8585/guides/simple-build-tool.html),
+In [just 5 lines of code](#module-reloading),
 you can use these to create a workflow where saving any file
 will re-execute any modules that depend on it, and *only* those modules.
 
