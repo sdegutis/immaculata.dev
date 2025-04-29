@@ -6,7 +6,7 @@ I made a library that makes it trivial
 to build a modern build tool in Node.js
 using DX primitives.
 
-### Module hot-reloading in Node.js
+### Module reloading
 
 ```ts
 // keep an in-memory version of "./site" in memory
@@ -25,7 +25,7 @@ async function reload() {
 }
 ```
 
-### Native JSX in Node.js
+### Native JSX
 
 ```ts
 // enable JSX inside Node.js and make it become a string-builder
@@ -50,36 +50,12 @@ But
 [*same*](https://www.reddit.com/r/linux/comments/1ikt1fq/can_anyone_eli5_the_general_rust_in_linux_kernel/)
 [*way*](https://go.dev/blog/loopvar-preview).
 
-The best framework for web apps is probably
-Node's `http` module with static files.
 
-You may say that React or Vue add so much convenience.
+So instead of making another framework like Vite or Astro,
+I made a library that just exports the DX primitives
+that allow you to build exactly the build tool you need.
 
-Really? Look at [Vitepress's source code](https://github.com/vuejs/vitepress/tree/main/src).
-Where is the code for the "on this page" TOC plugin? Can you find it?
-How long is it? Can you follow it?
-
-Now look at how this very website does it,
-both [at build time](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/main/site/build/toc.ts)
-and [in the browser](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/main/site/public/script/toc.ts).
-
-"But that's unreadable, unlike Vue." *All code* is unreadable until you try, *including* Vue.
-
-This code is pure and simple engineering:
-
-* The build-time script (52 loc) exports `generateToc(md: MarkdownIt)` and ` tocToHtml(toc: Toc)`
-
-* The client-side script (39 loc) uses `IntersectionObserver` to highlight the nearest link
-
-But more importantly, it's *not a framework*.
-This site template is meant to be *cloned*, not *installed*.
-So if it doesn't work the way you want, the code is *right there* for you to edit.
-
-This site's code is the perfect showcase of immaculata's strengths:
-instead of providing features, it provides DX primitives
-that make those features as trivial as possible to implement.
-
-## HMR in Node.js
+### HMR in Node.js
 
 At the heart of the development cycle is
 *discarding as little runtime state as possible*.
@@ -103,7 +79,7 @@ will re-execute any modules that depend on it, and *only* those modules.
 
 [Learn more about HMR in Node.js](../guides/enabling-hmr.md#enabling-hmr-in-nodejs)
 
-## JSX in Node.js
+### JSX in Node.js
 
 Producing HTML from a server is just string building.
 When writing a website, JSX can be *very* convenient
