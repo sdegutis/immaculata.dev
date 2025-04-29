@@ -16,9 +16,9 @@ that of `FileTree.files`, where the
 absolute root is relative to the tree.
 
 ```typescript
-import * as immaculata from 'immaculata'
+import { generateFiles } from 'immaculata'
 
-immaculata.generateFiles(new Map([
+generateFiles(new Map([
   ['/index.html', 'hello world'],
   ['/about.html', 'about my site'],
   ['/css/main.css', 'body{...}'],

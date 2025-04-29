@@ -23,11 +23,11 @@ Using `immaculata`, you can:
 A simple example of enabling HMR in Node.js:
 
 ```ts
-import * as immaculata from "immaculata"
+import { FileTree } from "immaculata"
 import { registerHooks } from 'module'
 import ts from 'typescript'
 
-const tree = new immaculata.FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 registerHooks(tree.enableImportsModuleHook())
 
 const myModule = await import('site/myModule.js')

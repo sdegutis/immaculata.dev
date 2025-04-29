@@ -6,11 +6,11 @@ implements `processSite` as referenced by the
 [Simple build tool](simple-build-tool.md#simple-build-tool) guide.
 
 ```ts
-import * as immaculata from 'immaculata'
+import { type FileTree } from 'immaculata'
 import { md } from "./markdown.ts"
 import { template } from "./template.tsx"
 
-export async function processSite(tree: immaculata.FileTree) {
+export async function processSite(tree: FileTree) {
   return tree.processFiles(async (files) => {
 
     // make `site/public/` be the file tree

@@ -11,8 +11,10 @@ using DX primitives.
 These 5 loc enable HMR inside Node.js *natively*.
 
 ```ts
+import { FileTree } from 'immaculata'
+
 // keep an in-memory version of "./site" in memory
-const tree = new immaculata.FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 // keep it up to date
 tree.watch({}, reload)
@@ -32,11 +34,13 @@ async function reload() {
 These 3 loc enable importing JSX files in Node.js *natively*.
 
 ```ts
+import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
+
 // remap "react-jsx/runtime" to any import you want
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
 // compile jsx using something like swc or tsc
-registerHooks(immaculata.compileJsxTsxModuleHook(compileJsxSomehow))
+registerHooks(compileJsxTsxModuleHook(compileJsxSomehow))
 
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
@@ -98,10 +102,10 @@ files at runtime using Node's native module system,
 complete with working source maps for debugging.
 
 ```tsx
-import * as immaculata from 'immaculata'
+import { compileJsxTsxModuleHook } from 'immaculata'
 import ts from 'typescript'
 
-registerHooks(immaculata.compileJsxTsxModuleHook((src, url) =>
+registerHooks(compileJsxTsxModuleHook((src, url) =>
   compileTsx(src, fileURLToPath(url)).outputText))
 
 function compileTsx(str: string, filename: string) {

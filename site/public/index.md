@@ -19,8 +19,10 @@ npm i immaculata
 ### Module hot-reloading in Node.js
 
 ```ts
+import { FileTree } from 'immaculata'
+
 // keep an in-memory version of "./site" in memory
-const tree = new immaculata.FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.url)
 
 // keep it up to date
 tree.watch({}, reload)
@@ -36,13 +38,14 @@ async function reload() {
 ```
 
 ### Native JSX in Node.js
+import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
 
 ```ts
 // remap "react-jsx/runtime" to any import you want
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
 // compile jsx using something like swc or tsc
-registerHooks(immaculata.compileJsxTsxModuleHook(compileJsxSomehow))
+registerHooks(compileJsxTsxModuleHook(compileJsxSomehow))
 
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
