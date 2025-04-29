@@ -38,4 +38,4 @@ Remaps the `react/jsx-runtime` import to the given module specifier.
 
 ## `fileTree.enableImportsModuleHook`
 
-Docs for this are on the [FileTree](live-tree.md#filetreeenableimportsmodulehook) page.
+Docs for this are on the [FileTree](filetree.md#filetreeenableimportsmodulehook) page.

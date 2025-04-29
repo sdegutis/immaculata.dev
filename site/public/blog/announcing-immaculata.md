@@ -75,11 +75,11 @@ restarts the *entire process*. But that's too slow.
 
 Immaculata provides three primitives to help with this:
 
-1. [FileTree](../api/live-tree.md#filetree), an in-memory representation of a given directory recursively
+1. [FileTree](../api/filetree.md#filetree), an in-memory representation of a given directory recursively
 
-2. [FileTree.watch](../api/live-tree.md#filetreewatch) which keeps the tree up to date with minimal fs-reads
+2. [FileTree.watch](../api/filetree.md#filetreewatch) which keeps the tree up to date with minimal fs-reads
 
-3. [FileTree.enableImportsModuleHook](../api/live-tree.md#filetreeenableimportsmodulehook) which invalidates stale modules
+3. [FileTree.enableImportsModuleHook](../api/filetree.md#filetreeenableimportsmodulehook) which invalidates stale modules
 
 In [just 5 lines of code](#module-reloading),
 you can use these to create a workflow where saving any file
