@@ -119,8 +119,8 @@ function vendorFonts(fonts: {
     for (const file of font.files) {
       const content = font.tree.files.get(file)?.content.toString()!
 
-      for (const match of content.matchAll(/url\((.+?)\)/g)) {
-        const path = match[1]!.replace(/^\.\//, '/')
+      for (const match of content.matchAll(/url\(\.(.+?)\)/g)) {
+        const path = match[1]!
         pipeline.add(path, font.tree.files.get(path)!.content)
         links.push(<link rel="preload" href={font.root + path} as="font" type="font/woff" crossorigin />)
       }
