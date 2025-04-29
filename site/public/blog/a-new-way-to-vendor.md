@@ -1,4 +1,4 @@
-# A new way to vendor
+# Post-bundler front-end vendoring
 
 We are close to the future of bundle-less front-end development. ESM modules are
 prevalent in browsers. [JSON](https://caniuse.com/?search=import%20type%20json)
