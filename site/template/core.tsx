@@ -51,7 +51,7 @@ export function Navbar(data: {
   const pages = [
     ...data.pages,
     { section: 'links', title: 'Github project', path: 'https://github.com/thesoftwarephilosopher/immaculata' },
-    { section: 'links', title: 'Fork site template', path: 'https://github.com/thesoftwarephilosopher/immaculata.dev' },
+    { section: 'links', title: 'Site template', path: 'https://github.com/thesoftwarephilosopher/immaculata.dev' },
   ]
 
   const groups = Map.groupBy(pages, p => p.section)
