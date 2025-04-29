@@ -1,6 +1,7 @@
 export function Html(data: { children: any }) {
   return <>
     {'<!DOCTYPE html>'}
+    <link rel='stylesheet' href={import.meta.resolve('./html.css')} />
     <html lang="en">
       {data.children}
     </html>
