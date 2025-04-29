@@ -18,7 +18,6 @@
 
     display: grid;
     grid-template-columns: auto minmax(var(--main-min-width), 1fr) auto;
-    align-items: baseline;
 
     position: relative;
     :is(#nav, #side) {
