@@ -32,7 +32,7 @@ async function reload() {
 These 3 loc enable importing JSX files in Node.js *natively*.
 
 ```ts
-// enable JSX inside Node.js and make it become a string-builder
+// remap "react-jsx/runtime" to any import you want
 registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
 // compile jsx using something like swc or tsc
