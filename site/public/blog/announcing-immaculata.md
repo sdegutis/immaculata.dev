@@ -3,7 +3,8 @@
 ## tldr
 
 I made a library that makes it trivial
-to build a modern build tool in Node.js.
+to build a modern build tool in Node.js
+using DX primitives.
 
 ### Module hot-reloading in Node.js
 
@@ -36,7 +37,6 @@ registerHooks(immaculata.compileJsxTsxModuleHook(compileJsxSomehow))
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
 ```
-
 
 ## Rationale
 
