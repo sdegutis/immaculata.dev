@@ -1,4 +1,7 @@
-# Publishing to GitHub Pages
+# Publishing to GH Pages
+
+Using the [Simple build tool guide](simple-build-tool.md#simple-build-tool)
+as a starting point, it's trivial to publish to GitHub pages:
 
 ```json
 // package.json

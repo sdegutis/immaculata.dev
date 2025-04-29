@@ -1,4 +1,4 @@
-# Enabling TS/TSX in Node.js
+# Enabling TSX in Node.js
 
 By default, the native Node.js module system requires a module
 be imported with `.js`, and disallows `.ts`, `.tsx`, and `.jsx`.
