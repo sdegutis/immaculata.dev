@@ -38,9 +38,10 @@ async function reload() {
 ```
 
 ### Native JSX in Node.js
-import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
 
 ```ts
+import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
+
 // remap "react-jsx/runtime" to any import you want
 registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
