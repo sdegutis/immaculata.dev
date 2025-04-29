@@ -279,7 +279,7 @@ blockquote {
 :not(pre) > code {
   font-family: inherit;
   font-size: 80%;
-  background-color: #0004;
+  background-color: #fff1;
   padding: 3px 7px 4px;
   border-radius: 3px;
 }
