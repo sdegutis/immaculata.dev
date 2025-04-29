@@ -1,5 +1,43 @@
 # Announcing Immaculata
 
+## tldr
+
+I made a library that makes it trivial
+to build a modern build tool in Node.js.
+
+### Module hot-reloading in Node.js
+
+```ts
+// keep an in-memory version of "./site" in memory
+const tree = new immaculata.LiveTree('site', import.meta.url)
+
+// keep it up to date
+tree.watch({}, reload)
+
+// invalidate modules under "site" when they change
+registerHooks(tree.enableImportsModuleHook())
+
+// importing modules under 'site' now re-executes them
+async function reload() {
+  const { something } = await import("site/dostuff.js")
+  // "something" is never stale
+}
+```
+
+### Native JSX in Node.js
+
+```ts
+// enable JSX inside Node.js and make it become a string-builder
+registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+
+// compile jsx using something like swc or tsc
+registerHooks(immaculata.compileJsxTsxModuleHook(compileJsxSomehow))
+
+// you can now import tsx files!
+const { template } = await import('./site/template.tsx')
+```
+
+
 ## Rationale
 
 Years ago, I got tired of using frameworks.
