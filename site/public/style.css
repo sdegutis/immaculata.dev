@@ -58,9 +58,14 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
   text-decoration: none;
   font-weight: bold;
   font-family: "Martel", serif;
-  transition: color 200ms ease-in-out;
+  transition: all 120ms ease-in-out;
   color: light-dark(#ea2, #ea2);
-  &:hover { color: var(--link-color); }
+  outline: 3px solid transparent;
+  &:hover {
+    background-color: color(from var(--outline-color) srgb r g b / .07 ) !important;
+    outline-color: color(from var(--outline-color) srgb r g b / .33 );
+    outline-offset: 3px;
+  }
 }
 
 #mobileheader {
