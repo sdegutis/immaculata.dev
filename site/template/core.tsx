@@ -12,6 +12,7 @@ export function Head(data: { title: string, files: string[] }) {
   return <head>
     <script src="/script/theme.js"></script>
     <link rel="stylesheet" href="/style.css" />
+    <meta charset="utf-8" />
     {...data.files}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Immaculata.dev - {data.title}</title>
