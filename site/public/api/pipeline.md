@@ -1,12 +1,13 @@
 # Pipeline
 
-The Pipeline API is a recent addition, somewhat experimental
-and likely to change, though not that much, since I already
-use it heavily in a few codebases.
+The Pipeline API is convenience class for
+arbitrarily manipulating an array of files,
+usually to produce a front-end file tree,
+but isn't specific to that purpose.
 
 ## Rationale
 
-Technically you don't need a pipeline object to transform
+You don't need a pipeline object to transform
 a `FileTree.files` into a map compatible with `DevServer`
 and `generateFiles`. You can just do this:
 
