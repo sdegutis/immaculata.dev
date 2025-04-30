@@ -2,17 +2,21 @@
 
 ## 1.1.0
 
-Removed `tree.processFiles` as too trivial and restrictive. To upgrade:
+### Removed `tree.processFiles`
+
+It was too trivial and restrictive.
+
+To upgrade, replace:
 
 ```ts
-// replace:
-
 const result = tree.processFiles(files => {
   // ...
 })
+```
 
-// with:
+with:
 
+```ts
 const files = Pipeline.from(tree.files)
 // ...
 return files.results()
