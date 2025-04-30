@@ -106,25 +106,3 @@ module.registerHooks(tree.enableImportsModuleHook)
 
 import('site/myfile.js')
 ```
-
-
-
-## `fileTree.processFiles`
-
-```typescript
-processFiles(
-  fn: (pipeline: Pipeline) => void | Promise<void>
-): Promise<Map<string, string|Buffer>>
-```
-
-Allows transforming a tree for site processing. Returns
-a map compatible with `generateFiles` and `DevServer.files`.
-
-```ts
-const tree = new FileTree('site', import.meta.url)
-
-const fileMap = tree.processFiles()
-
-server.files = fileMap
-generateFiles(fileMap)
-```
