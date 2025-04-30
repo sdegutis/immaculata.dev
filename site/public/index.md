@@ -8,9 +8,9 @@ npm i immaculata
 
 ### Developer experience (DX) primitives
 
-* Use [JSX hooks](guides/enabling-jsx.md#enabling-jsx-in-nodejs) with Node.js's native module system
+* Use [JSX module transpilation hooks](guides/enabling-jsx.md#enabling-jsx-in-nodejs) in Node.js's native module system
 
-* Use [HMR hooks](guides/enabling-hmr.md#enabling-hmr-in-nodejs) with Node.js's native module system
+* Use [Module reloading (HMR) hooks](guides/enabling-hmr.md#enabling-hmr-in-nodejs) in Node.js's native module system
 
 * Use [FileTree](api/filetree.md#filetree) to keep a recursive dir in memory
 
