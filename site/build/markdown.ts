@@ -3,7 +3,6 @@ import MarkdownIt from "markdown-it"
 import anchors from 'markdown-it-anchor'
 import inlineAttrs from 'markdown-it-attrs'
 import containers from 'markdown-it-container'
-import { tree } from "../../static.ts"
 import { evalCode } from "./eval.ts"
 import { highlightCode } from "./highlighter.ts"
 import { generateToc } from "./toc.ts"
@@ -29,9 +28,6 @@ function renameMarkdownLinks(md: MarkdownIt) {
       hash = href.slice(hashi)
       href = href.slice(0, hashi)
     }
-
-    const prefix = `/${tree.path}/public`
-    if (href.startsWith(prefix)) href = href.slice(prefix.length)
 
     href = href.replace(/\.md$/, '.html')
     href += hash
