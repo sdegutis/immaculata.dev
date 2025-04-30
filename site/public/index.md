@@ -25,19 +25,20 @@ npm i immaculata
 ```ts
 import { FileTree } from 'immaculata'
 
-// keep an in-memory version of "./site" in memory
-const tree = new FileTree('site', import.meta.url)
+// keep an in-memory version of "./src" in memory
+const tree = new FileTree('src', import.meta.url)
 
-// keep it up to date
-tree.watch({}, reload)
-
-// invalidate modules under "site" when they change
+// invalidate modules under "src" when they change
 registerHooks(tree.enableImportsModuleHook())
 
-// importing modules under 'site' now re-executes them
-async function reload() {
-  const { something } = await import("site/dostuff.js")
-  // "something" is never stale
+// keep it up to date
+tree.watch({}, doStuff)
+doStuff()
+
+// importing modules under 'src' now re-executes them
+async function doStuff() {
+  const { stuff } = await import("src/dostuff.js")
+  // "stuff" is never stale
 }
 ```
 
