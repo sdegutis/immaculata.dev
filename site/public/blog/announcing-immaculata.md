@@ -69,7 +69,7 @@ At the heart of the development cycle is
 *discarding as little runtime state as possible*.
 The less we have to re-run, the faster we can code.
 
-We already have SSE for HMR in the browser.
+We already have server-side events (SSE) for hot-module-reloading (HMR) in the browser.
 And recently Node.js added `--watch` which
 restarts the *entire process*. But that's too slow.
 
