@@ -1,20 +1,26 @@
 # Immaculata.dev
 
-*TypeScript DX primitives* {.homesubheader}
+*Node.js DX primitives* {.homesubheader}
 
 ```bash
 npm i immaculata
 ```
 
-### Features
+### Low-level conveniences
 
-* [Enable JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs) in Node.js's native module system
+For a better Developer Experience (DX), `immaculata` helps you to:
 
-* [Enable HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs) in Node.js's native module system
+* Use [JSX hooks](guides/enabling-jsx.md#enabling-jsx-in-nodejs) with Node.js's native module system
 
-* Small (~420 loc) highly readable [source code](https://github.com/thesoftwarephilosopher/immaculata/tree/main/src)
+* Use [HMR hooks](guides/enabling-hmr.md#enabling-hmr-in-nodejs) with Node.js's native module system
 
-* Almost no dependencies (just `mime-types`)
+* Use [FileTree](api/filetree.md#filetree) to keep a recursive dir in memory
+
+* Use [Pipeline](api/pipeline.md#pipeline) to map FileTree to front-end files
+
+* Use [DevServer](api/dev-server.md#devserver) to serve PipeLine output
+
+* Use [generateFiles](api/generate-files.md#generatefiles) to write PipeLine files to disk
 
 ### Module hot-reloading in Node.js
 
