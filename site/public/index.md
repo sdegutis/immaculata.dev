@@ -6,9 +6,7 @@
 npm i immaculata
 ```
 
-### Low-level conveniences
-
-For a better Developer Experience (DX), `immaculata` helps you to:
+### Developer experience (DX) primitives
 
 * Use [JSX hooks](guides/enabling-jsx.md#enabling-jsx-in-nodejs) with Node.js's native module system
 
