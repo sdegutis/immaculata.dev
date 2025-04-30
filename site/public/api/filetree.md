@@ -22,6 +22,15 @@ const tree = new FileTree('site', import.meta.url)
 files: Map<string, TreeFile>
 ```
 
+```ts
+type TreeFile = {
+  path: string,    // always the same as its key in the map
+  content: Buffer, // always a buffer (see Pipeline)
+  version: number, // increments with changes for decaching
+  requiredBy: (requiredBy: string) => void, // for invalidation
+}
+```
+
 A list of all files (recursively) at the given path.
 
 ```ts
@@ -41,16 +50,6 @@ assertMatches(tree.files, {
 })
 ```
 
-Each file has this format:
-
-```ts
-type TreeFile = {
-  path: string,    // always the same as its key in the map
-  content: Buffer, // always a buffer (see Pipeline)
-  version: number, // increments with changes for decaching
-  requiredBy: (requiredBy: string) => void, // for invalidation
-}
-```
 
 
 
