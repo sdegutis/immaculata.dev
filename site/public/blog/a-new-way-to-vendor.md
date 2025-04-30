@@ -77,42 +77,42 @@ const martel = new FileTree('node_modules/@fontsource/martel', import.meta.url)
 const exo2 = new FileTree('node_modules/@fontsource-variable/exo-2', import.meta.url)
 const monda = new FileTree('node_modules/@fontsource-variable/monda', import.meta.url)
 
-export async function processSite() {
-  return tree.processFiles(files => {
+export function processSite() {
+  const files = Pipeline.from(tree.files)
 
-    // ...
+  // ...
 
-    const fonts = vendorFonts([
-      { tree: martel, root: '/fonts/martel', files: ['/index.css', '/700.css'] },
-      { tree: monda, root: '/fonts/monda', files: ['/index.css'] },
-      { tree: exo2, root: '/fonts/exo2', files: ['/index.css'] },
-    ])
+  const fonts = vendorFonts([
+    { tree: martel, root: '/fonts/martel', files: ['/index.css', '/700.css'] },
+    { tree: monda, root: '/fonts/monda', files: ['/index.css'] },
+    { tree: exo2, root: '/fonts/exo2', files: ['/index.css'] },
+  ])
 
-    files.with('\.md$').do(f => {
-      f.path = f.path.replace('.md', '.html')
-      const env: Env = { /* ... */ }
-      const result = md.render(f.text, env)
-      f.text = <Html>
-        <Head files={fonts.links} />
-        <body>
-          <Navbar pages={pages} />
-          <Main content={result} />
-          <Sidebar toc={tocToHtml(env.toc!)} />
-        </body>
-      </Html>
-    })
-
-    files.with(/\.tsx?$/).do(f => {
-      // ...
-      f.text = out.outputText
-      f.path = jsPath
-    })
-
-    fonts.subtrees.forEach(t => {
-      files.graft(t.root, t.files)
-    })
-
+  files.with('\.md$').do(f => {
+    f.path = f.path.replace('.md', '.html')
+    const env: Env = { /* ... */ }
+    const result = md.render(f.text, env)
+    f.text = <Html>
+      <Head files={fonts.links} />
+      <body>
+        <Navbar pages={pages} />
+        <Main content={result} />
+        <Sidebar toc={tocToHtml(env.toc!)} />
+      </body>
+    </Html>
   })
+
+  files.with(/\.tsx?$/).do(f => {
+    // ...
+    f.text = out.outputText
+    f.path = jsPath
+  })
+
+  fonts.subtrees.forEach(t => {
+    files.graft(t.root, t.files)
+  })
+
+  return files.results()
 }
 
 function vendorFonts(fonts: {

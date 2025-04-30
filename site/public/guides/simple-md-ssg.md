@@ -10,19 +10,19 @@ import { type FileTree } from 'immaculata'
 import { md } from "./markdown.ts"
 import { template } from "./template.tsx"
 
-export async function processSite(tree: FileTree) {
-  return tree.processFiles(async (files) => {
+export function processSite(tree: FileTree) {
+  const files = Pipeline.from(tree.files)
 
-    // make `site/public/` be the file tree
-    files.without('/public/').remove()
-    files.do(f => f.path = f.path.slice('/public'.length))
+  // make `site/public/` be the file tree
+  files.without('/public/').remove()
+  files.do(f => f.path = f.path.slice('/public'.length))
 
-    // find all .md files and render in a jsx template
-    files.with(/\.md$/).do(f => {
-      f.path = f.path.replace('.md', '.html')
-      f.text = template(md.render(f.text))
-    })
-
+  // find all .md files and render in a jsx template
+  files.with(/\.md$/).do(f => {
+    f.path = f.path.replace('.md', '.html')
+    f.text = template(md.render(f.text))
   })
+
+  return files.results()
 }
 ```
