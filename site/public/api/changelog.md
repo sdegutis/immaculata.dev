@@ -2,7 +2,7 @@
 
 ## 1.1.0
 
-Removed `tree.processFiles` as too trivial. To upgrade:
+Removed `tree.processFiles` as too trivial and restrictive. To upgrade:
 
 ```ts
 // replace:
