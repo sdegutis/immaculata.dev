@@ -41,7 +41,7 @@ async function reload() {
 }
 ```
 
-[Learn more about enabling native HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
+Learn more about [enabling native HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
 
 ### Native JSX in Node.js
 
@@ -58,7 +58,7 @@ registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 const { template } = await import('./site/template.tsx')
 ```
 
-[Learn more about enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
+Learn more about [enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
 
 ### Check out some recipes
 
