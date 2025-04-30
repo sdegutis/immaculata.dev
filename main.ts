@@ -26,7 +26,7 @@ else {
 
 async function processSite() {
   const mod = await import("./site/build/process.tsx")
-  return await mod.processSite()
+  return mod.processSite()
 }
 
 function compileTsx(str: string, filename: string) {
