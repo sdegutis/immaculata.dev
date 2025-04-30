@@ -1,6 +1,6 @@
 # Change log
 
-## 1.0.1
+## 1.1.0
 
 Removed `tree.processFiles` as too trivial. To upgrade:
 
