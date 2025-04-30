@@ -8,9 +8,9 @@ npm i immaculata
 
 ### Developer experience (DX) primitives
 
-* Use [JSX module transpilation hooks](guides/enabling-jsx.md#enabling-jsx-in-nodejs) in Node.js's native module system
+* Use [Module reloading (HMR) hooks](#module-hot-reloading-in-nodejs) in Node.js's native module system
 
-* Use [Module reloading (HMR) hooks](guides/enabling-hmr.md#enabling-hmr-in-nodejs) in Node.js's native module system
+* Use [JSX module transpilation hooks](#native-jsx-in-nodejs) in Node.js's native module system
 
 * Use [FileTree](api/filetree.md#filetree) to keep a recursive dir in memory
 
@@ -41,20 +41,24 @@ async function reload() {
 }
 ```
 
+[Learn more about enabling native HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
+
 ### Native JSX in Node.js
 
 ```ts
 import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
 
-// remap "react-jsx/runtime" to any import you want
-registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
-
 // compile jsx using something like swc or tsc
 registerHooks(compileJsxTsxModuleHook(compileJsxSomehow))
+
+// remap "react-jsx/runtime" to any import you want (optional)
+registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
 ```
+
+[Learn more about enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
 
 ### Check out some recipes
 
