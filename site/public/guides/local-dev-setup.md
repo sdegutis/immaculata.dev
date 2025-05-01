@@ -5,7 +5,7 @@ If you use VS Code, this launch script runs `main.ts`
 and enables reloading the process when `main.ts` changes.
 
 Then `main.ts` can setup the bare minimum dev environment
-(see [Simple build tool](simple-build-tool#simple-build-tool)
+(see [Simple build tool](simple-build-tool#simple-build-tool))
 that loads a module within a HMR-enabled subtree to do
 the rest of the work.
 
