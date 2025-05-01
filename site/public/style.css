@@ -220,7 +220,7 @@ blockquote {
 
 :not(pre) > code {
   font-family: "Fira Code Variable";
-  font-size: 12px;
+  font-size: 75%;
   background-color: #fff1;
   padding: 1px 3px;
   border-radius: 3px;
