@@ -1,8 +1,8 @@
-import type { Options, Renderer, Token } from "markdown-it"
 import MarkdownIt from "markdown-it"
 import anchors from 'markdown-it-anchor'
 import inlineAttrs from 'markdown-it-attrs'
 import containers from 'markdown-it-container'
+import type { RenderRule } from "markdown-it/lib/renderer.d.mts"
 import { evalCode } from "./eval.ts"
 import { highlightCode } from "./highlighter.ts"
 import { generateToc } from "./toc.ts"
@@ -45,6 +45,5 @@ function sectionMacro(md: MarkdownIt) {
   })
 }
 
-export function defaultRender(tokens: Token[], idx: number, opts: Options, env: any, self: Renderer) {
-  return self.renderToken(tokens, idx, opts)
-}
+export const defaultRender: RenderRule = (tokens, idx, opts, env, self) =>
+  self.renderToken(tokens, idx, opts)
