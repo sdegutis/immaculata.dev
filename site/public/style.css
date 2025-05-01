@@ -219,10 +219,10 @@ blockquote {
 }
 
 :not(pre) > code {
-  font-family: inherit;
-  font-size: 90%;
+  font-family: "Fira Code Variable";
+  font-size: 12px;
   background-color: #fff1;
-  padding: 0px 4px 2px;
+  padding: 1px 3px;
   border-radius: 3px;
 }
 
