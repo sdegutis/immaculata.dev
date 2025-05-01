@@ -10,12 +10,33 @@ import { generateToc } from "./toc.ts"
 export interface Env { }
 
 export const md = new MarkdownIt({ html: true })
+md.use(renameMarkdownLinks)
 md.use(evalCode)
 md.use(inlineAttrs)
 md.use(generateToc)
 md.use(highlightCode)
 md.use(addHeaderPermalinks)
 md.use(sectionMacro)
+
+function renameMarkdownLinks(md: MarkdownIt) {
+  const linkopen = md.renderer.rules["link_open"] ?? defaultRender
+  md.renderer.rules["link_open"] = (tokens, idx, opts, env, self) => {
+    let href = tokens[idx].attrGet('href')!
+    let hash = ''
+    const hashi = href.indexOf('#')
+    if (hashi !== -1) {
+      hash = href.slice(hashi)
+      href = href.slice(0, hashi)
+    }
+
+    href = href.replace(/\.md$/, '.html')
+    href += hash
+
+    tokens[idx].attrSet('href', href)
+
+    return linkopen(tokens, idx, opts, env, self)
+  }
+}
 
 function addHeaderPermalinks(md: MarkdownIt) {
   anchors(md, {

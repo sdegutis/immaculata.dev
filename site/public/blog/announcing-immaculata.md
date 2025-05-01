@@ -75,17 +75,17 @@ restarts the *entire process*. But that's too slow.
 
 Immaculata provides three primitives to help with this:
 
-1. [FileTree](../api/filetree#filetree), an in-memory representation of a given directory recursively
+1. [FileTree](../api/filetree.md#filetree), an in-memory representation of a given directory recursively
 
-2. [FileTree.watch](../api/filetree#filetreewatch) which keeps the tree up to date with minimal fs-reads
+2. [FileTree.watch](../api/filetree.md#filetreewatch) which keeps the tree up to date with minimal fs-reads
 
-3. [FileTree.enableImportsModuleHook](../api/filetree#filetreeenableimportsmodulehook) which invalidates stale modules
+3. [FileTree.enableImportsModuleHook](../api/filetree.md#filetreeenableimportsmodulehook) which invalidates stale modules
 
 In [just 5 lines of code](#module-reloading),
 you can use these to create a workflow where saving any file
 will re-execute any modules that depend on it, and *only* those modules.
 
-[Learn more about HMR in Node.js](../guides/enabling-hmr#enabling-hmr-in-nodejs)
+[Learn more about HMR in Node.js](../guides/enabling-hmr.md#enabling-hmr-in-nodejs)
 
 ### JSX in Node.js
 
@@ -142,7 +142,7 @@ export const tree = new immaculata.FileTree('site', import.meta.url)
 registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/myjsx.js'))
 ```
 
-[Learn more about JSX/TSX in Node.js](../guides/enabling-jsx#enabling-jsx-in-nodejs)
+[Learn more about JSX/TSX in Node.js](../guides/enabling-jsx.md#enabling-jsx-in-nodejs)
 
 ## Innovative solutions
 
