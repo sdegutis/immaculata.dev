@@ -75,7 +75,7 @@ export function Navbar(data: {
         <h3>{title}</h3>
         <ul>
           {pages.map(page => <li>
-            <a href={page.path}>{page.title}</a>
+            <a href={page.path.replace(/\/index\.html$/, '')}>{page.title}</a>
           </li>)}
         </ul>
       </>

@@ -14,6 +14,11 @@ es.onmessage = () => location.reload()
 window.onbeforeunload = () => es.close()
 </script>`
 
+function fixpath(path: string) {
+  if (path.endsWith('index.md')) return path.replace('.md', '.html')
+  return path.replace('.md', '/index.html')
+}
+
 export function processSite() {
   const files = Pipeline.from(tree.files)
 
@@ -21,7 +26,7 @@ export function processSite() {
   files.with('/public').do(f => f.path = f.path.replace(/^\/public/, ''))
 
   const pages = files.with('\.md$').all().map(p => {
-    const path = p.path.replace('.md', '.html')
+    const path = fixpath(p.path)
     const title = md.renderInline(p.text.match(/[^#]*# *(.+)/)![1])
     const section = p.path.match('/(.+?)/')?.[1]
     const frontmatter = fm<{ order?: number }>(p.text)
@@ -44,7 +49,7 @@ export function processSite() {
   ])
 
   files.with('\.md$').do(f => {
-    f.path = f.path.replace('.md', '.html')
+    f.path = fixpath(f.path)
     const env: Env = { license }
     const title = md.renderInline(f.text.match(/[^#]*# *(.+)/)![1])
     const result = md.render(f.text, env)

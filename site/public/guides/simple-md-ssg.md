@@ -3,7 +3,7 @@
 In the manner of the time honored tradition
 of writing every site in markdown, this code
 implements `processSite` as referenced by the
-[Simple build tool](simple-build-tool.md#simple-build-tool) guide.
+[Simple build tool](simple-build-tool#simple-build-tool) guide.
 
 ```ts
 import { type FileTree } from 'immaculata'

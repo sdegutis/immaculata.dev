@@ -12,13 +12,13 @@ npm i immaculata
 
 * Use [JSX module transpilation hooks](#native-jsx-in-nodejs) in Node.js's native module system
 
-* Use [FileTree](api/filetree.md#filetree) to keep a recursive dir in memory
+* Use [FileTree](api/filetree#filetree) to keep a recursive dir in memory
 
-* Use [Pipeline](api/pipeline.md#pipeline) to map FileTree to front-end files
+* Use [Pipeline](api/pipeline#pipeline) to map FileTree to front-end files
 
-* Use [DevServer](api/dev-server.md#devserver) to serve PipeLine output
+* Use [DevServer](api/dev-server#devserver) to serve PipeLine output
 
-* Use [generateFiles](api/generate-files.md#generatefiles) to write PipeLine files to disk
+* Use [generateFiles](api/generate-files#generatefiles) to write PipeLine files to disk
 
 ### Module hot-reloading in Node.js
 
@@ -42,7 +42,7 @@ async function doStuff() {
 }
 ```
 
-Learn more about [enabling native HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
+Learn more about [enabling native HMR](guides/enabling-hmr#enabling-hmr-in-nodejs)
 
 ### Native JSX in Node.js
 
@@ -59,23 +59,23 @@ registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
 const { template } = await import('./site/template.tsx')
 ```
 
-Learn more about [enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
+Learn more about [enabling native JSX](guides/enabling-jsx#enabling-jsx-in-nodejs)
 
 ### Check out some recipes
 
-* [Enabling HMR in Node.js](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
+* [Enabling HMR in Node.js](guides/enabling-hmr#enabling-hmr-in-nodejs)
 
-* [Enabling JSX in Node.js](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
+* [Enabling JSX in Node.js](guides/enabling-jsx#enabling-jsx-in-nodejs)
 
-* [Enabling TS/TSX in Node.js](guides/enabling-ts.md#enabling-tsx-in-nodejs)
+* [Enabling TS/TSX in Node.js](guides/enabling-ts#enabling-tsx-in-nodejs)
 
-* [Local development setup](guides/local-dev-setup.md#local-developer-setup)
+* [Local development setup](guides/local-dev-setup#local-developer-setup)
 
-* [Build tool example](guides/simple-build-tool.md#simple-build-tool)
+* [Build tool example](guides/simple-build-tool#simple-build-tool)
 
-* [Simple Markdown static site generator](guides/simple-md-ssg.md#simple-md-ssg)
+* [Simple Markdown static site generator](guides/simple-md-ssg#simple-md-ssg)
 
-* [Publishing to GitHub pages](guides/using-gh-pages.md#publishing-to-gh-pages)
+* [Publishing to GitHub pages](guides/using-gh-pages#publishing-to-gh-pages)
 
 ### License
 

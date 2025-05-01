@@ -2,6 +2,7 @@
   "css.format.enable": false,
   "markdown.editor.updateLinksOnPaste.enabled": true,
   "markdown.occurrencesHighlight.enabled": true,
+  "markdown.preferredMdPathExtensionStyle": "removeExtension",
   "markdown.updateLinksOnFileMove.enabled": "always",
   "markdown.updateLinksOnFileMove.enableForDirectories": true,
   "markdown.validate.duplicateLinkDefinitions.enabled": "error",
