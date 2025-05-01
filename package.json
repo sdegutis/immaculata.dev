@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@fontsource-variable/exo-2": "^5.2.5",
+    "@fontsource-variable/fira-code": "^5.2.5",
     "@fontsource-variable/monda": "^5.2.6",
     "front-matter": "^4.0.2",
     "markdown-it": "^14.1.0",

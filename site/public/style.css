@@ -205,6 +205,8 @@ pre:has(>code) {
 
   overflow: auto;
   > code {
+    font-family: "Fira Code Variable";
+    font-size: 12px;
     margin: 1rem;
     display: block;
   }
