@@ -9,6 +9,9 @@ import { generateToc } from "./toc.ts"
 
 export interface Env { }
 
+export const defaultRender: RenderRule = (tokens, idx, opts, env, self) =>
+  self.renderToken(tokens, idx, opts)
+
 export const md = new MarkdownIt({ html: true })
 md.use(evalCode)
 md.use(inlineAttrs)
@@ -40,6 +43,3 @@ function sectionMacro(md: MarkdownIt) {
     }
   })
 }
-
-export const defaultRender: RenderRule = (tokens, idx, opts, env, self) =>
-  self.renderToken(tokens, idx, opts)
