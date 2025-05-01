@@ -22,15 +22,11 @@ function addHeaderPermalinks(md: MarkdownIt) {
     permalink: anchors.permalink.linkInsideHeader({
       placement: 'before',
     }),
-    slugify,
+    slugify: s => s
+      .toLowerCase()
+      .replace(/ +/g, '-')
+      .replace(/[^a-z0-9-]/g, ''),
   })
-}
-
-function slugify(s: string) {
-  return s
-    .toLowerCase()
-    .replace(/ +/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
 }
 
 function sectionMacro(md: MarkdownIt) {
