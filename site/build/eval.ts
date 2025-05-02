@@ -32,6 +32,8 @@ function compileTsx(str: string, filename: string) {
       module: ts.ModuleKind.NodeNext,
       jsx: ts.JsxEmit.ReactJSX,
       sourceMap: true,
+      inlineSourceMap: true,
+      inlineSources: true,
     }
   })
 }
