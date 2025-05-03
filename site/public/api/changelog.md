@@ -26,9 +26,7 @@ export type FileTreeChange = { path: string, change: 'add' | 'dif' | 'rem' }
 
 ## 1.1.0
 
-### Removed `tree.processFiles`
-
-It was too trivial and restrictive.
+Removed `tree.processFiles` as being too trivial and restrictive.
 
 To upgrade, replace:
 
@@ -45,3 +43,5 @@ const files = Pipeline.from(tree.files)
 // ...
 return files.results()
 ```
+
+(In fact, that's literally all the method originally did.)
