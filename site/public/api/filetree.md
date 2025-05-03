@@ -5,7 +5,9 @@
 ## `constructor`
 
 ```ts
-constructor(path: string, importMetaUrl: string)
+constructor(path: string, importMetaUrl: string, opts?: {
+  exclude?: (path: string, stat: fs.Stats) => any,
+})
 ```
 
 Loads the tree from disk into memory immediately.
@@ -57,22 +59,30 @@ assertMatches(tree.files, {
 
 ```typescript
 watch(
-  opts?: { ignored?: (path: string) => boolean },
-  onchange?: (paths: Set<string>) => void
+  opts?: { debounceMs?: number },
+  onChanges?: (changes: FileTreeChange[]) => void
 ): FSWatcher
+
+type FileTreeChange = { path: string, change: 'add' | 'dif' | 'rem' }
 ```
 
 Begins watching the path recursively for changes,
 and updates the contents of `files`. Uses `fs.watch`
-internally, with `100ms` debouncing.
-
-The paths in `ignored` and `onchange` have
-the same format as in `files`.
+internally, defaults to `100ms` debouncing.
 
 ```ts
 const tree = new FileTree('site', import.meta.url)
 tree.watch()
 ```
+
+
+## `fileTree.addDependency`
+
+```ts
+addDependency(requiredBy: string, requiring: string)
+```
+
+Makes changes to file at `requiring` invalidate module at `requiredBy`.
 
 
 
