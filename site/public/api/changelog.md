@@ -45,3 +45,5 @@ return files.results()
 ```
 
 (In fact, that's literally all the method originally did.)
+
+[Full Changelog](https://github.com/thesoftwarephilosopher/immaculata/compare/1.0.0...1.1.0)
