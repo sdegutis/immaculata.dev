@@ -5,9 +5,13 @@
 ## `constructor`
 
 ```ts
-constructor(path: string, importMetaUrl: string, opts?: {
-  exclude?: (path: string, stat: fs.Stats) => any,
-})
+constructor(
+  path: string, // e.g. "site" or "."
+  importMetaUrl: string,
+  opts?: {
+    exclude?: (path: string, stat: fs.Stats) => any,
+  }
+)
 ```
 
 Loads the tree from disk into memory immediately.
@@ -15,6 +19,17 @@ Loads the tree from disk into memory immediately.
 ```ts
 const tree = new FileTree('site', import.meta.url)
 ```
+
+
+## `fileTree.root`
+
+```ts
+public root: string
+```
+
+The full file URL of the tree's root based on constructor's `path` and `importMetaUrl`.
+
+Never includes a trailing `'/'`
 
 
 
