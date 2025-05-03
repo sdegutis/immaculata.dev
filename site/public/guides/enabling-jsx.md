@@ -36,8 +36,9 @@ registerHooks(immaculata.compileJsxTsxModuleHook(str =>
 
 ## Simple JSX string-builder
 
-The module `'immaculata/dist/jsx-strings.js'` provides React-compatible
-exports that are implemented as a highly efficient HTML string builder.
+The module `'immaculata/dist/jsx-strings.js'` provides
+`react/jsx-runtime`-compatible exports that are
+implemented as a highly efficient HTML string builder.
 
 ```ts
 registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
