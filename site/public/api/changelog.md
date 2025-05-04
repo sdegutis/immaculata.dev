@@ -40,7 +40,7 @@ The `ignore` option of `.watch(...)` was from when it just forwarded options to 
 But we usually also want to exclude files with given paths from the tree *itself*.
 So the option has been removed in favor of a new `exclude` option in the constructor.
 
-And since we already keep a in-memory file tree (that's the whole *point* of `FileTree`),
+And since we already keep an in-memory file tree (that's the whole *point* of `FileTree`),
 it turned out to be very easy to give a highly detailed report of what actually changed.
 So the `onChange` callback to `.watch(...)` now receives `FileTreeChange[]` where:
 
