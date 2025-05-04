@@ -6,6 +6,8 @@ import { Head, Html, Main, Navbar, Sidebar } from "../template/core.tsx"
 import { md, type Env } from "./markdown.ts"
 import { tocToHtml } from './toc.ts'
 
+const Fm = fm as unknown as typeof fm.default
+
 let reloader = ''
 if (true && process.argv[2] === 'dev') reloader = `
 <script type="module">
@@ -24,7 +26,7 @@ export function processSite() {
     const path = p.path.replace('.md', '.html')
     const title = md.renderInline(p.text.match(/[^#]*# *(.+)/)![1])
     const section = p.path.match('/(.+?)/')?.[1]
-    const frontmatter = fm<{ order?: number }>(p.text)
+    const frontmatter = Fm<{ order?: number }>(p.text)
     p.text = frontmatter.body
     const meta = frontmatter.attributes
     return { path, title, section, meta }

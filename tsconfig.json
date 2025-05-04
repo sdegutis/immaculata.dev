@@ -4,11 +4,11 @@
     "types": [ "node", ],
     "moduleDetection": "force",
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "NodeNext",
     "jsx": "react-native",
     "rootDir": ".",
     "noEmit": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
 
     "forceConsistentCasingInFileNames": true,

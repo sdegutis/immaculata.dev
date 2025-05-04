@@ -1,8 +1,9 @@
-import type { Options, Renderer, Token } from "markdown-it"
+import type { Options } from "markdown-it"
 import MarkdownIt from "markdown-it"
 import anchors from 'markdown-it-anchor'
 import inlineAttrs from 'markdown-it-attrs'
 import containers from 'markdown-it-container'
+import type { Renderer, Token } from "markdown-it/index.js"
 import { evalCode } from "./eval.ts"
 import { highlightCode } from "./highlighter.ts"
 import { generateToc } from "./toc.ts"
