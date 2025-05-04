@@ -4,17 +4,18 @@ import ts from 'typescript'
 import { fileURLToPath } from 'url'
 import { isDev, tree } from './static.ts'
 
-registerHooks(tree.enableImportsModuleHook())
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
-registerHooks(immaculata.compileJsxTsxModuleHook((src, url) => compileTsx(src, fileURLToPath(url)).outputText))
+registerHooks(immaculata.hooks.useTree(tree))
+registerHooks(immaculata.hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
+registerHooks(immaculata.hooks.compileJsx((src, url) => compileTsx(src, fileURLToPath(url)).outputText))
 
 if (isDev) {
   const server = new immaculata.DevServer(8585, { hmrPath: '/reload' })
   server.notFound = () => '/404.html'
   server.files = await processSite()
 
-  tree.watch({}, async (paths) => {
-    console.log('Paths changed:', [...paths].map(path => '\n  ' + path).join(''))
+  tree.watch().on('filesUpdated', async changes => {
+    console.log('Paths changed:', [...changes].map(ch => '\n  ' + ch.path).join(''))
+
     try { server.files = await processSite() }
     catch (e) { console.error(e) }
     server.reload(null)

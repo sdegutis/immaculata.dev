@@ -1,4 +1,4 @@
-import * as jsx from 'immaculata/dist/jsx-strings.js'
+import * as jsx from 'immaculata/jsx-strings.js'
 import type MarkdownIt from 'markdown-it'
 import ts from 'typescript'
 import { defaultRender } from './markdown.ts'
