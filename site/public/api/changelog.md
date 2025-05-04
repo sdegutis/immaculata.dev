@@ -17,12 +17,13 @@ Changed export paths to not use `/dist/`, e.g.:
 * Added `fileTree.onModuleInvalidated` to be called *inside* modules
 * Added `fileTree.addDependency` for module invalidation
 * Added `moduleInvalidated` event to `fileTree.watch()` events
+* Moved `fileTree.enableImportsModuleHook` to `hooks.useTree`
 
 ### Hook changes
 
 * Put all hooks under `hooks` namespace from main export
   * Also exported individually from `'immaculata/hooks.js'`
-* Moved `FileTree.enableImportsModuleHook` to `hooks.useTree`
+* Moved `fileTree.enableImportsModuleHook` to `hooks.useTree`
 * Removed `jsxRuntimeModuleHook` as too specific
 * Added `hooks.mapImport` to replace `jsxRuntimeModuleHook`
 * Renamed `exportAsStringModuleHook` => `hooks.exportAsString`
