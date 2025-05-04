@@ -1,5 +1,33 @@
 # Change log
 
+## 2.0.0
+
+### Export changes
+
+Changed export paths to not use `/dist/`, e.g.:
+
+* `'immaculata/dist/jsx-strings.js'` => `'immaculata/jsx-strings.js'`
+* `'immaculata/dist/*.js'` => `'immaculata/*.js'`
+
+### FileTree changes
+
+* Changed `fileTree.watch` to not take `fn` but return `EventEmitter`
+* Changed `fileTree.watch` to take `debounce` instead of `opts`
+* Added `fileTree.onModuleInvalidated` to be called *inside* modules
+* Added `fileTree.addDependency` for module invalidation
+
+### Hook changes
+
+* Put all hooks under `hooks` namespace from main export
+  * Also exported individually from `'immaculata/hooks.js'`
+* Moved `FileTree.enableImportsModuleHook` to `hooks.useTree`
+* Removed `jsxRuntimeModuleHook` as too specific
+* Added `hooks.mapImport` to replace `jsxRuntimeModuleHook`
+* Renamed `exportAsStringModuleHook` => `hooks.exportAsString`
+* Renamed `tryTsTsxJsxModuleHook` => `hooks.tryAltExts`
+* Renamed `compileJsxTsxModuleHook` => `hooks.compileJsx`
+
+
 ## 1.2.0
 
 The `ignore` option of `.watch(...)` was from when it just forwarded options to `chokidar`.
