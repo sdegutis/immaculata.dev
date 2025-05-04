@@ -98,35 +98,3 @@ addDependency(requiredBy: string, requiring: string)
 ```
 
 Makes changes to file at `requiring` invalidate module at `requiredBy`.
-
-
-
-## `fileTree.enableImportsModuleHook`
-
-```typescript
-enableImportsModuleHook(): ModuleHook
-```
-
-Returns a hook for [module.registerHooks](https://nodejs.org/api/module.html#moduleregisterhooksoptions)
-that hooks into Node.js's built in `import` and `require`
-and returns the contents from `tree.files` instead of
-loading from disk.
-
-A query string including the current version of the file
-is appended to the import path to enable cache busting,
-so that when a file changes under the tree, it can be
-imported again, and will be re-run.
-
-This cache invalidation also extends to any file that
-has required the file that has changed, so that there
-are never stale modules.
-
-```ts
-import module from 'node:module'
-
-const tree = new FileTree('site', import.meta.url)
-
-module.registerHooks(tree.enableImportsModuleHook)
-
-import('site/myfile.js')
-```
