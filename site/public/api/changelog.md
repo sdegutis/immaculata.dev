@@ -14,6 +14,7 @@ Changed export paths to not use `/dist/`, e.g.:
 * Changed `fileTree.watch` to not take `fn` anymore
 * Changed `fileTree.watch` to return `EventEmitter` with `filesUpdated` event
 * Changed `fileTree.watch` to take `debounce` instead of `opts: { debounceMs }`
+* Fixed `fileTree.watch` when called multiple times (no-op, returns same emitter)
 * Added `fileTree.onModuleInvalidated` to be called *inside* modules
 * Added `fileTree.addDependency` for module invalidation
 * Added `moduleInvalidated` event to `fileTree.watch()` events
