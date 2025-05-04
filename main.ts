@@ -1,15 +1,15 @@
-import * as immaculata from 'immaculata'
+import { DevServer, generateFiles, hooks } from 'immaculata'
 import { registerHooks } from 'module'
 import ts from 'typescript'
 import { fileURLToPath } from 'url'
 import { isDev, tree } from './static.ts'
 
-registerHooks(immaculata.hooks.useTree(tree))
-registerHooks(immaculata.hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
-registerHooks(immaculata.hooks.compileJsx((src, url) => compileTsx(src, fileURLToPath(url)).outputText))
+registerHooks(hooks.useTree(tree))
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
+registerHooks(hooks.compileJsx((src, url) => compileTsx(src, fileURLToPath(url)).outputText))
 
 if (isDev) {
-  const server = new immaculata.DevServer(8585, { hmrPath: '/reload' })
+  const server = new DevServer(8585, { hmrPath: '/reload' })
   server.notFound = () => '/404.html'
   server.files = await processSite()
 
@@ -22,7 +22,7 @@ if (isDev) {
   })
 }
 else {
-  immaculata.generateFiles(await processSite())
+  generateFiles(await processSite())
 }
 
 async function processSite() {
