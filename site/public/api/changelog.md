@@ -11,10 +11,12 @@ Changed export paths to not use `/dist/`, e.g.:
 
 ### FileTree changes
 
-* Changed `fileTree.watch` to not take `fn` but return `EventEmitter`
-* Changed `fileTree.watch` to take `debounce` instead of `opts`
+* Changed `fileTree.watch` to not take `fn` anymore
+* Changed `fileTree.watch` to return `EventEmitter` with `filesUpdated` event
+* Changed `fileTree.watch` to take `debounce` instead of `opts: { debounceMs }`
 * Added `fileTree.onModuleInvalidated` to be called *inside* modules
 * Added `fileTree.addDependency` for module invalidation
+* Added `moduleInvalidated` event to `fileTree.watch()` events
 
 ### Hook changes
 
