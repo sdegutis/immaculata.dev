@@ -30,6 +30,9 @@ Changed export paths to not use `/dist/`, e.g.:
 * Renamed `tryTsTsxJsxModuleHook` => `hooks.tryAltExts`
 * Renamed `compileJsxTsxModuleHook` => `hooks.compileJsx`
 
+### DevServer changes
+
+* Fixed double-encode of default data on HMR reload
 
 ## 1.2.0
 
