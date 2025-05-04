@@ -6,6 +6,14 @@
 npm i immaculata
 ```
 
+::: section box note
+### Note
+Docs are not yet updated for 2.0.0 released this morning.
+
+See the [2.0.0 changelog](http://localhost:8585/api/changelog.html#200) to migrate from website samples.
+:::
+
+
 ### Developer experience (DX) primitives
 
 * Use [Module reloading (HMR) hooks](#module-hot-reloading-in-nodejs) in Node.js's native module system
@@ -23,16 +31,16 @@ npm i immaculata
 ### Module hot-reloading in Node.js
 
 ```ts
-import { FileTree } from 'immaculata'
+import { FileTree, hooks } from 'immaculata'
 
 // keep an in-memory version of "./src" in memory
 const tree = new FileTree('src', import.meta.url)
 
 // invalidate modules under "src" when they change
-registerHooks(tree.enableImportsModuleHook())
+registerHooks(hooks.useTree(tree))
 
 // keep it up to date
-tree.watch({}, doStuff)
+tree.watch().on('filesUpdated', doStuff)
 doStuff()
 
 // importing modules under 'src' now re-executes them
