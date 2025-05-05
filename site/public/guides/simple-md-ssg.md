@@ -6,7 +6,7 @@ implements `processSite` as referenced by the
 [Simple build tool](simple-build-tool.md#simple-build-tool) guide.
 
 ```ts
-import { type FileTree } from 'immaculata'
+import { Pipeline, type FileTree } from 'immaculata'
 import { md } from "./markdown.ts"
 import { template } from "./template.tsx"
 
