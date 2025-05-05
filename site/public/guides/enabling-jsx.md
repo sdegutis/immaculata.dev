@@ -89,6 +89,8 @@ import { hooks } from "immaculata"
 import { registerHooks } from "module"
 
 registerHooks(hooks.tryAltExts)
+
+import('./foo.js') // now works even though only foo.tsx exists
 ```
 
 
