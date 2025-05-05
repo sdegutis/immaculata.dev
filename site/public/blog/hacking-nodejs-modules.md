@@ -1,4 +1,4 @@
-# Hacking Node.js modules for fun and profit
+# (ab?)using Node Module hooks to speed up development
 
 I wanted a much faster way to develop the front-end of my site.
 
