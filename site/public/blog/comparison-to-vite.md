@@ -102,14 +102,28 @@ Vite is multiple moderately sized packages.
 
 Immaculata is 487 lines of highly readable and maintainable code.
 
-For perspective, immaculata *in its entirety* is smaller than [Vite's custom module system](https://github.com/vitest-dev/vitest/blob/165fb0e8ae398440fc62cd95992e1ea97a1d2388/packages/vite-node/src/client.ts).
+For perspective, [*all of immaculata*](https://github.com/thesoftwarephilosopher/immaculata/tree/main/src) is smaller than [Vite's custom Node.js module system](https://github.com/vitest-dev/vitest/blob/165fb0e8ae398440fc62cd95992e1ea97a1d2388/packages/vite-node/src/client.ts).
 
 
 ## "Which should I use?"
 
-If you're making a cookie cutter front-end, and want an out of the box solution, use Vite.
+Use Vite if
 
-If you're making a highly customized front-end,
-or want surgical control over your front-end output,
-or you want to experiment with making bundle-less sites,
-*maybe* use immaculata.
+* You want to make a cookie cutter front-end
+* You want an out of the box solution
+
+Use most of immaculata if
+
+* You want to make a highly customized front-end
+* You want surgical control over your front-end output
+* You want to experiment with making bundle-less sites
+
+Use *some* of immaculata if
+
+* You want to use HMR in Node.js for a faster development cycle
+* You want to use JSX in Node.js with your own custom implementation
+* You want to use JSX in Node.js as a simple string builder
+* You want to remap specific imports in Node.js
+* You want to write a map of files to disk conveniently
+* You want to load a tree of file from disk into memory
+* You want to serve a map of in-memory files over HTTP
