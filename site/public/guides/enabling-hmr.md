@@ -5,20 +5,16 @@ The new `--watch` and `--watch-paths` CLI param allows reloading
 the entire runtime when the given paths change. This workflow is
 sufficient for simple scripts.
 
-But for more complex programs, or when some portion of the program
-takes a while to load (e.g. [shiki](https://shiki.matsu.io/)),
-or some operations are resource-expensive (e.g. loading files from
-disk) and to be done as few times as possible, we don't want
-to throw away the entire runtime when files change, but only
-reload files that need to be reloaded, and decache some modules.
+But for a fast development cycle, we should avoid discarding state,
+whether singletons, data files, or code modules, unless they change.
 
 Using `immaculata`, you can:
 
 * Load a file tree into memory and keep it updated
-* Transpile JSX/TSX modules using any code you need
 * Tell the Node.js module system to load from this tree
 * Invalidate modules when changed for re-execution
-* Invalidate modules when their dependencies change
+* Invalidate modules when any of their dependencies change
+* Optionally transpile JSX/TSX modules however you want
 
 A simple example of enabling HMR in Node.js:
 
