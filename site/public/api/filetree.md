@@ -69,14 +69,15 @@ assertMatches(tree.files, {
 
 
 
-
 ## `fileTree.watch`
 
 ```typescript
-watch(
-  opts?: { debounceMs?: number },
-  onChanges?: (changes: FileTreeChange[]) => void
-): FSWatcher
+watch(debounce?: number): EventEmitter<FileTreeEvents>
+
+type FileTreeEvents = {
+  filesUpdated: [changes: FileTreeChange[]],
+  moduleInvalidated: [path: string],
+}
 
 type FileTreeChange = { path: string, change: 'add' | 'dif' | 'rem' }
 ```
@@ -89,6 +90,19 @@ internally, defaults to `100ms` debouncing.
 const tree = new FileTree('site', import.meta.url)
 tree.watch()
 ```
+
+
+## `fileTree.onModuleInvalidated`
+
+```ts
+onModuleInvalidated(importMetaUrl: string, fn: () => void): void
+```
+
+Calls `fn` once when the module is invalidated, directly or indirectly.
+
+* Requires [hooks.useTree](module-hooks.md#hooksusetree) to be called first.
+* Must be called *from within module*, passing `import.meta.url`.
+
 
 
 ## `fileTree.addDependency`
