@@ -80,6 +80,19 @@ registerHooks(hooks.mapImport('react/jsx-runtime', tree.root + '/my-jsx.ts'))
 
 
 
+## Importing with .js
+
+To allow importing `.jsx/.tsx` files but using the `.js` extension:
+
+```ts
+import { hooks } from "immaculata"
+import { registerHooks } from "module"
+
+registerHooks(hooks.tryAltExts)
+```
+
+
+
 ## JSX Types
 
 If you're not using a library
