@@ -134,6 +134,8 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
     text-decoration: none;
     display: inline-block;
     font-family: "Monda Variable", sans-serif;
+    font-size: 80%;
+    margin-top: .5rem;
 
     transition: all 120ms ease-in-out;
 
