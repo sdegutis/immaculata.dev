@@ -24,14 +24,16 @@ See the [2.0.0 changelog](http://localhost:8585/api/changelog.html#200) along wi
 
 * Use [Pipeline](api/pipeline.md#pipeline) to map FileTree to front-end files
 
-* Use [DevServer](api/dev-server.md#devserver) to serve PipeLine output
+* Use [DevServer](api/dev-server.md#devserver) to serve Pipeline output
 
-* Use [generateFiles](api/generate-files.md#generatefiles) to write PipeLine files to disk
+* Use [generateFiles](api/generate-files.md#generatefiles) to write Pipeline files to disk
+
 
 ### Module hot-reloading in Node.js
 
 ```ts
 import { FileTree, hooks } from 'immaculata'
+import { registerHooks } from 'module'
 
 // keep an in-memory version of "./src" in memory
 const tree = new FileTree('src', import.meta.url)
@@ -52,22 +54,25 @@ async function doStuff() {
 
 Learn more about [enabling native HMR](guides/enabling-hmr.md#enabling-hmr-in-nodejs)
 
+
 ### Native JSX in Node.js
 
 ```ts
-import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
+import { hooks } from 'immaculata'
+import { registerHooks } from 'module'
 
 // compile jsx using something like swc or tsc
-registerHooks(compileJsxTsxModuleHook(compileJsxSomehow))
+registerHooks(hooks.compileJsx(compileJsxSomehow))
 
 // remap "react-jsx/runtime" to any import you want (optional)
-registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
 ```
 
 Learn more about [enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
+
 
 ### Check out some recipes
 
@@ -85,6 +90,7 @@ Learn more about [enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-no
 
 * [Publishing to GitHub pages](guides/using-gh-pages.md#publishing-to-gh-pages)
 
+
 ### License
 
 ``` tsx eval
@@ -92,6 +98,7 @@ return <>
 <pre><code>{env.license}</code></per>
 </>
 ```
+
 
 ### Special thanks
 
