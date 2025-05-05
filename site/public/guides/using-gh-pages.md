@@ -43,7 +43,7 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: node --disable-warning=ExperimentalWarning main.ts generate
+        run: node main.ts generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
