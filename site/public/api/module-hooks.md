@@ -50,6 +50,11 @@ registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 useTree(tree: FileTree): ModuleHook
 ```
 
+This actually has two different but inherently correlated purposes:
+
+* Module invalidation
+* Loading from memory
+
 Returns a hook that hooks into Node.js's
 built in `import` and `require`
 and returns the contents from [tree.files](filetree.md#files)

@@ -7,7 +7,7 @@
   --nav-bgcolor: light-dark(var(--blue), var(--blue));
   --nav-linkcolor: light-dark(#555, #777);
 
-  --header-color: light-dark(#ccc, #ccc);
+  --header-color: light-dark(#986407, #cbb284);
 
   --mobileheader-height: 40px;
   --link-color: light-dark(#19f, #19f);
@@ -58,7 +58,7 @@ h1,h2,h3,h4 { --outline-color: #7ff; }
   text-decoration: none;
   font-weight: bold;
   transition: all 120ms ease-in-out;
-  color: light-dark(#ea2, #ea2);
+  color: #fff;
   outline: 3px solid transparent;
   &:hover {
     background-color: color(from var(--outline-color) srgb r g b / .07 ) !important;

@@ -80,8 +80,6 @@ Learn more about [enabling native JSX](guides/enabling-jsx.md#enabling-jsx-in-no
 
 * [Enabling JSX in Node.js](guides/enabling-jsx.md#enabling-jsx-in-nodejs)
 
-* [Enabling TS/TSX in Node.js](guides/enabling-ts.md#enabling-tsx-in-nodejs)
-
 * [Local development setup](guides/local-dev-setup.md#local-developer-setup)
 
 * [Build tool example](guides/simple-build-tool.md#simple-build-tool)
