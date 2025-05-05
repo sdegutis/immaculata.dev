@@ -3,17 +3,6 @@
 Using the [Simple build tool guide](simple-build-tool.md#simple-build-tool)
 as a starting point, it's trivial to publish to GitHub pages:
 
-```json
-// package.json
-
-{
-  "scripts": {
-    "generate": "node main.ts generate"
-  },
-  // ...
-}
-```
-
 ```yaml
 # .github/workflows/static.yml
 
@@ -54,7 +43,7 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: npm run generate
+        run: node --disable-warning=ExperimentalWarning main.ts generate
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
