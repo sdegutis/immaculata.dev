@@ -72,7 +72,7 @@ Vite offers a kitchen sink, at the cost of scanning all your front-end files for
 Immaculata offers *minimal* browser-side HMR support via a triggerable SSE path in [DevServer](../api/dev-server.md#devserver).
 Look for `reload()` and `hmrPath` in the docs.
 
-### Server-side
+### Node.js-side
 
 Vite offers Node-side HMR, but at the cost of
 [*creating an entire module system* on top of Node's](https://github.com/vitest-dev/vitest/blob/165fb0e8ae398440fc62cd95992e1ea97a1d2388/packages/vite-node/src/client.ts).
