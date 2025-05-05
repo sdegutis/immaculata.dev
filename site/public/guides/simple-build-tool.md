@@ -10,23 +10,25 @@ is updated and any SSE watchers of `/reload` are notified.
 It enables JSX within Node.js and turns JSX expressions into
 highly efficient string builders.
 
-The code is adapted from [this site's source code](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/website/main.ts).
+The code is adapted from [this site's source code](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/main/main.ts).
 
 ```ts
 import * as immaculata from 'immaculata'
+import * as hooks from 'immaculata/hooks.js'
 import { registerHooks } from 'module'
 import ts from 'typescript'
+import { fileURLToPath } from 'url'
 
 const tree = new immaculata.FileTree('site', import.meta.url)
-registerHooks(tree.enableImportsModuleHook())
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
-registerHooks(immaculata.compileJsxTsxModuleHook(compileJsx))
+registerHooks(hooks.useTree(tree))
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
+registerHooks(hooks.compileJsx(compileViaTypescript))
 
 if (process.argv[2] === 'dev') {
   const server = new immaculata.DevServer(8080, { hmrPath: '/reload' })
   server.files = await processSite()
 
-  tree.watch({}, async (paths) => {
+  tree.watch().on('filesUpdated', async (paths) => {
     try { server.files = await processSite() }
     catch (e) { console.error(e) }
     server.reload()
@@ -41,12 +43,16 @@ async function processSite() {
   return await mod.processSite(tree)
 }
 
-function compileJsx(str: string) {
+function compileViaTypescript(str: string, url: string) {
   return ts.transpileModule(str, {
+    fileName: fileURLToPath(url),
     compilerOptions: {
-      inlineSourceMap: true,
-      jsx: ts.JsxEmit.ReactJSX,
+      target: ts.ScriptTarget.ESNext,
       module: ts.ModuleKind.ESNext,
+      jsx: ts.JsxEmit.ReactJSX,
+      sourceMap: true,
+      inlineSourceMap: true,
+      inlineSources: true,
     }
   }).outputText
 }
