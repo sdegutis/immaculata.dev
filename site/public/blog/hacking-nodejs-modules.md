@@ -1,4 +1,4 @@
-# (ab?)using Node Module hooks to speed up development
+# (ab?)using Node module hooks to speed up development
 
 I wanted a much faster way to develop the front-end of my site.
 
