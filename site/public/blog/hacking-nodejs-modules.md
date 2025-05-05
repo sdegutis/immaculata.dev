@@ -30,7 +30,7 @@ Now I can import `foo.tsx` as `foo.js` which helps with client code sharing.
 
 <br>
 
-The last one works with [FileTree](../api/filetree.md#filetree).
+The final one works with [FileTree](../api/filetree.md#filetree).
 
 It resolves to the latest version of a file using query string cache busting.
 
