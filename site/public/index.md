@@ -6,13 +6,6 @@
 npm i immaculata
 ```
 
-::: section box note
-### Note
-Docs are not yet updated for 2.0.0 released this morning.
-
-See the [2.0.0 changelog](http://localhost:8585/api/changelog.html#200) along with docs/samples.
-:::
-
 
 ### Developer experience (DX) primitives
 
