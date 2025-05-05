@@ -125,5 +125,5 @@ Use *some* of immaculata if
 * You want to use JSX in Node.js as a simple string builder
 * You want to remap specific imports in Node.js
 * You want to write a map of files to disk conveniently
-* You want to load a tree of file from disk into memory
+* You want to load a file tree from disk into memory
 * You want to serve a map of in-memory files over HTTP
