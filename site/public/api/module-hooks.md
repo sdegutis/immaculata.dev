@@ -21,7 +21,7 @@ function compileJsx(
 ): ModuleHook
 ```
 
-Loader hook for JSX/JSX files which just passes the
+Loader hook for JSX/TSX files which just passes the
 source code and file URL to your function to compile.
 
 
