@@ -221,8 +221,10 @@ blockquote {
 :not(pre) > code {
   font-family: "Fira Code Variable";
   font-size: 75%;
-  color: #b39d49;
-  background: color(from currentColor srgb r g b / .1);
+  /* color: #b39d49; */
+  /* background: color(from currentColor srgb r g b / .1); */
+  /* color: #fff; */
+  background: #fff1;
   padding: 1px 3px;
   border-radius: 3px;
 }
