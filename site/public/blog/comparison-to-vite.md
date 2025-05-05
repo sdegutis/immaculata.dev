@@ -46,6 +46,7 @@ Immaculata has a few small features that make Node.js more convenient to develop
 * [DevServer](../api/dev-server.md#devserver) to serve files from a file map
 * [generateFiles](../api/generate-files.md#generatefiles) to write a file map to disk
 * [Pipeline](../api/pipeline.md#pipeline) as a convenient way to turn a file tree into a file map
+* [jsx-strings](../guides/enabling-jsx.md#simple-jsx-string-builder) to optionally turn JSX into an efficient string builder
 
 ## The bundling war
 
