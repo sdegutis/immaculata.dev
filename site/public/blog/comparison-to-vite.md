@@ -110,12 +110,12 @@ For perspective, [*all of immaculata*](https://github.com/thesoftwarephilosopher
 Use Vite if
 
 * You want to make a cookie cutter front-end
-* You want an out of the box solution
+* You want to have an out of the box solution
 
 Use most of immaculata if
 
 * You want to make a highly customized front-end
-* You want surgical control over your front-end output
+* You want to have surgical control over your front-end output
 * You want to experiment with making bundle-less sites
 
 Use *some* of immaculata if
