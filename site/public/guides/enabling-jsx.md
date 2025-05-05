@@ -12,50 +12,81 @@ Using `immaculata`, you can:
 * Remap the default `react/jsx-runtime` to another module
 
 ```ts
-import * as immaculata from "immaculata"
+import { compileJsx } from "immaculata/hooks.js"
+import { registerHooks } from "module"
 import ts from 'typescript'
-
-const tree = new immaculata.FileTree('site', import.meta.url)
-
-// only needed if you want importing .js to look for .jsx/tsx files
-registerHooks(immaculata.tryTsTsxJsxModuleHook)
-
-// tells Node.js where to look for `react/jsx-runtime` module
-registerHooks(immaculata.jsxRuntimeModuleHook(myJsxModuleSpecifier))
+import { fileURLToPath } from "url"
 
 // transpiles tsx into javascript when Node.js loads it
-registerHooks(immaculata.compileJsxTsxModuleHook(str =>
+registerHooks(compileJsx((str, url) =>
   ts.transpileModule(str, {
+    fileName: fileURLToPath(url),
     compilerOptions: {
-      jsx: ts.JsxEmit.ReactJSX,
+      target: ts.ScriptTarget.ESNext,
       module: ts.ModuleKind.ESNext,
+      jsx: ts.JsxEmit.ReactJSX,
+      sourceMap: true,
+      inlineSourceMap: true,
+      inlineSources: true,
     }
   }).outputText
 ))
 ```
 
+
+
+## Remapping JSX implementation
+
+By default, using JSX will auto-import `react/jsx-runtime` like usual.
+
+You'll almost definitely want to remap that import to *anything else*:
+
+```ts
+import { hooks } from "immaculata"
+import { registerHooks } from "module"
+
+registerHooks(hooks.mapImport('react/jsx-runtime', 'another-jsx-impl'))
+```
+
+
+
 ## Simple JSX string-builder
 
-The module `'immaculata/dist/jsx-strings.js'` provides
+The module `'immaculata/jsx-strings.js'` provides
 `react/jsx-runtime`-compatible exports that are
 implemented as a highly efficient HTML string builder.
 
 ```ts
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+import { hooks } from "immaculata"
+import { registerHooks } from "module"
+
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 ```
+
+
 
 ## Using your own JSX implementation
 
-To use a JSX implementation within a `FileTree`, use prepend its root:
+To use a JSX implementatoin within a [FileTree](../api/filetree.md#filetree), prepend its `root`:
 
-```ts
-registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/my-jsx.js'))
-```
+~~~ts
+import { FileTree, hooks } from "immaculata"
+import { registerHooks } from "module"
 
-## VS Code support
+const tree = new FileTree('site', import.meta.url)
 
-If you're not using a library that provides JSX types,
-you'll need to add your own. Here's a basic starter:
+registerHooks(hooks.mapImport('react/jsx-runtime', tree.root + '/my-jsx.ts'))
+~~~
+
+
+
+## JSX Types
+
+If you're not using a library
+that provides JSX types,
+you'll need to add your own.
+
+Here's a basic starter:
 
 ```ts
 declare namespace JSX {
@@ -69,8 +100,32 @@ declare namespace JSX {
 }
 ```
 
-## Using React.js
+For HTML tag autocompletion and good-enough attr validation:
 
-Since the path just needs to be a valid module that Node.js knows
-how to find, you can probably use React.js SSR here if you want I guess.
-But where's the fun in that?
+```ts
+declare namespace JSX {
+
+  type jsxify<T extends HTMLElement> = {
+    [A in keyof T as A extends string ? Lowercase<Exclude<A, 'children'>> : never]?:
+    string | boolean |
+    (T[A] extends (string | boolean | null | number)
+      ? T[A]
+      : never)
+
+  } & { children?: any, class?: string }
+
+  type IntrinsicElements =
+    & { [K in keyof HTMLElementTagNameMap]: jsxify<HTMLElementTagNameMap[K]> }
+    // add special cases here as necessary like this:
+    & { meta: jsxify<HTMLMetaElement> & { charset?: 'utf-8' } }
+
+  type ElementChildrenAttribute = { children: any }
+
+  type Element = string
+
+  type ElementType =
+    | string
+    | ((data: any) => JSX.Element)
+
+}
+```

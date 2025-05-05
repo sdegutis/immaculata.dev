@@ -24,11 +24,11 @@ A simple example of enabling HMR in Node.js:
 
 ```ts
 import { FileTree } from "immaculata"
+import { useTree } from "immaculata/hooks.js"
 import { registerHooks } from 'module'
-import ts from 'typescript'
 
 const tree = new FileTree('site', import.meta.url)
-registerHooks(tree.enableImportsModuleHook())
+registerHooks(useTree(tree))
 
 const myModule = await import('site/myModule.js')
 // site/myModule.js is executed
@@ -36,7 +36,7 @@ const myModule = await import('site/myModule.js')
 const myModule2 = await import('site/myModule.js')
 // site/myModule.js is NOT executed
 
-tree.watch({}, async () => {
+tree.watch().on('filesUpdated', async () => {
   const myModule = await import('site/myModule.js')
   // site/myModule.js IS executed again if invalidated
 })
