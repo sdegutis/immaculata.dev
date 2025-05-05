@@ -11,9 +11,7 @@ function generateFiles(
 Creates dirs and files on disk at the given
 subroot based on the given file map.
 
-The map has the same path format as
-that of `FileTree.files`, where the
-absolute root is relative to the tree.
+Paths are absolute, and made relative to `outDir`.
 
 ```typescript
 import { generateFiles } from 'immaculata'
