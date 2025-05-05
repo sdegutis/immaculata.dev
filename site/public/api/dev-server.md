@@ -1,6 +1,6 @@
 # DevServer
 
-## `constructor`
+## constructor
 
 ```ts
 constructor(port: number, opts?: {
@@ -22,7 +22,7 @@ Note that `onRequest` takes `res` which includes `res.req`.
 
 
 
-## `server.files`
+## files
 
 ```ts
 files: Map<string, string|Buffer>
@@ -38,7 +38,7 @@ server.files = new Map([
 
 
 
-## `server.notFound`
+## notFound
 
 ```ts
 notFound?: (path: string) => string
@@ -49,7 +49,7 @@ when the path isn't present in `server.files`.
 
 
 
-## `server.reload`
+## reload
 
 ```ts
 reload(): void

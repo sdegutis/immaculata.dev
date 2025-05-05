@@ -3,7 +3,7 @@
 
 Hooks for [module.registerHooks](https://nodejs.org/api/module.html#moduleregisterhooksoptions).
 
-## `hooks.tryAltExts`
+## tryAltExts
 
 ```ts
 const tryAltExts: ModuleHook
@@ -14,7 +14,7 @@ Resolver hook for `module.registerHooks` that looks for
 
 
 
-## `hooks.compileJsx`
+## compileJsx
 
 ```ts
 function compileJsx(
@@ -27,7 +27,7 @@ source code and file URL to your function to compile.
 
 
 
-## `hooks.mapImport`
+## mapImport
 
 ```ts
 function mapImport(from: string, to: string): ModuleHook
@@ -45,7 +45,7 @@ registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 
 
 
-## `hooks.useTree`
+## useTree
 
 ```typescript
 useTree(tree: FileTree): ModuleHook
@@ -53,7 +53,7 @@ useTree(tree: FileTree): ModuleHook
 
 Returns a hook that hooks into Node.js's
 built in `import` and `require`
-and returns the contents from `tree.files`
+and returns the contents from [tree.files](filetree.md#files)
 instead of loading from disk.
 
 A query string including the current version of the file

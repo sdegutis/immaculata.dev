@@ -2,7 +2,7 @@
 
 
 
-## `constructor`
+## constructor
 
 ```ts
 constructor(
@@ -21,7 +21,7 @@ const tree = new FileTree('site', import.meta.url)
 ```
 
 
-## `fileTree.root`
+## root
 
 ```ts
 public root: string
@@ -33,7 +33,7 @@ Never includes a trailing `'/'`
 
 
 
-## `fileTree.files`
+## files
 
 ```typescript
 files: Map<string, TreeFile>
@@ -69,7 +69,7 @@ assertMatches(tree.files, {
 
 
 
-## `fileTree.watch`
+## watch
 
 ```typescript
 watch(debounce?: number): EventEmitter<FileTreeEvents>
@@ -92,7 +92,7 @@ tree.watch()
 ```
 
 
-## `fileTree.onModuleInvalidated`
+## onModuleInvalidated
 
 ```ts
 onModuleInvalidated(importMetaUrl: string, fn: () => void): void
@@ -100,12 +100,12 @@ onModuleInvalidated(importMetaUrl: string, fn: () => void): void
 
 Calls `fn` once when the module is invalidated, directly or indirectly.
 
-* Requires [hooks.useTree](module-hooks.md#hooksusetree) to be called first.
+* Requires [hooks.useTree](module-hooks.md#usetree) to be called first.
 * Must be called *from within module*, passing `import.meta.url`.
 
 
 
-## `fileTree.addDependency`
+## addDependency
 
 ```ts
 addDependency(requiredBy: string, requiring: string)

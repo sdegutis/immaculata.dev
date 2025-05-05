@@ -18,7 +18,6 @@ let files = tree.files.values().toArray()
 
 // now do your site processing
 files = files.filter(f => /* ... */)
-files = files.map(f => /* ... */)
 files.forEach(f => /* ... */)
 await Promise.all(files.forEach(async f => /* ... */))
 
@@ -39,6 +38,23 @@ But that gets very inconvenient very quickly:
   is technically possible but *very* repetitious
 
 So the `Pipeline` class was created as a convenience.
+
+Here's the same code above with `Pipeline`:
+
+```ts
+const tree = new FileTree('site', import.meta.url)
+
+const pipeline = Pipeline.from(tree.files)
+
+// now do your site processing
+pipeline.without(/.../).remove()
+pipeline.with(/.../).do(f => /* ... */)
+await pipeline.with(/.../).doAsync(f => /* ... */)
+
+const fileMap = pipeline.results()
+server.files = fileMap
+generateFiles(fileMap)
+```
 
 ## API
 
