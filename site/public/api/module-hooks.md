@@ -9,8 +9,7 @@ Hooks for [module.registerHooks](https://nodejs.org/api/module.html#moduleregist
 const tryAltExts: ModuleHook
 ```
 
-Resolver hook for `module.registerHooks` that looks for
-`.{ts,tsx,jsx}` when `.js` is not found.
+Resolver hook that looks for `.{ts,tsx,jsx}` when `.js` is not found.
 
 
 

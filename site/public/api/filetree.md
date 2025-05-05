@@ -84,7 +84,7 @@ type FileTreeChange = { path: string, change: 'add' | 'dif' | 'rem' }
 
 Begins watching the path recursively for changes,
 and updates the contents of `files`. Uses `fs.watch`
-internally, defaults to `100ms` debouncing.
+internally, defaults to `100 (in ms)` debouncing.
 
 ```ts
 const tree = new FileTree('site', import.meta.url)
