@@ -18,9 +18,11 @@ and repeating this step if any file changes. So if I have a folder called
 an out tree, transpiling and renaming as needed:
 
 ```ts
+import { FileTree, generateFiles } from "immaculata"
+
 const tree = new FileTree('site', import.meta.url)
 
-tree.watch({}, process)
+tree.watch().on('filesUpdated', process)
 process()
 
 function process() {
@@ -156,14 +158,11 @@ function vendorFonts(fonts: {
 The JSX in the above is just a string builder. It's enabled by:
 
 ```ts
-import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
+import { compileJsx, mapImport } from 'immaculata/hooks.js'
+import { registerHooks } from 'module'
 
-// remap import "react/jsx-runtime" to "immaculata/dist/jsx-strings.js"
-registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
-
-// compile jsx/tsx to plain js so they can be imported normally in Node.js
-registerHooks(compileJsxTsxModuleHook((src, url) =>
-  compileTsx(src, fileURLToPath(url)).outputText))
+registerHooks(mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
+registerHooks(compileJsx((src, url) => myCompileJsx(src, url)))
 ```
 
 This allows it to have type-checking and auto-completion.

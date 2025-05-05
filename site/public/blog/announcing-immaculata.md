@@ -11,16 +11,17 @@ using DX primitives.
 These 5 loc enable HMR inside Node.js *natively*.
 
 ```ts
-import { FileTree } from 'immaculata'
+import { FileTree, hooks } from 'immaculata'
+import { registerHooks } from 'module'
 
 // keep an in-memory version of "./site" in memory
 const tree = new FileTree('site', import.meta.url)
 
 // keep it up to date
-tree.watch({}, reload)
+tree.watch().on('filesUpdated', reload)
 
 // invalidate modules under "site" when they change
-registerHooks(tree.enableImportsModuleHook())
+registerHooks(hooks.useTree(tree))
 
 // importing modules under 'site' now re-executes them
 async function reload() {
@@ -34,13 +35,11 @@ async function reload() {
 These 3 loc enable importing JSX files in Node.js *natively*.
 
 ```ts
-import { jsxRuntimeModuleHook, compileJsxTsxModuleHook } from 'immaculata'
+import { compileJsx, mapImport } from 'immaculata/hooks.js'
+import { registerHooks } from 'module'
 
-// remap "react-jsx/runtime" to any import you want
-registerHooks(jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
-
-// compile jsx using something like swc or tsc
-registerHooks(compileJsxTsxModuleHook(compileJsxSomehow))
+registerHooks(mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
+registerHooks(compileJsx((src, url) => myCompileJsx(src, url)))
 
 // you can now import tsx files!
 const { template } = await import('./site/template.tsx')
@@ -102,11 +101,14 @@ files at runtime using Node's native module system,
 complete with working source maps for debugging.
 
 ```tsx
-import { compileJsxTsxModuleHook } from 'immaculata'
+import { hooks } from 'immaculata'
+import { registerHooks } from 'module'
 import ts from 'typescript'
+import { fileURLToPath } from 'url'
 
-registerHooks(compileJsxTsxModuleHook((src, url) =>
-  compileTsx(src, fileURLToPath(url)).outputText))
+registerHooks(hooks.compileJsx((src, url) => {
+  return compileTsx(src, fileURLToPath(url)).outputText
+}))
 
 function compileTsx(str: string, filename: string) {
   return ts.transpileModule(str, {
@@ -129,17 +131,18 @@ The above example implicitly uses `react/jsx-runtime` as usual.
 But supposing you want to use anything else? Trivial.
 
 ```ts
-import * as immaculata from 'immaculata'
+import { FileTree, hooks } from 'immaculata'
+import { registerHooks } from 'module'
 
 // efficient string builder
-registerHooks(immaculata.jsxRuntimeModuleHook('immaculata/dist/jsx-strings.js'))
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/dist/jsx-strings.js'))
 
 // or use another module
-registerHooks(immaculata.jsxRuntimeModuleHook('another-jsx-lib/jsx.js'))
+registerHooks(hooks.mapImport('react/jsx-runtime', 'another-jsx-lib/jsx.js'))
 
 // or bring your own impl
-export const tree = new immaculata.FileTree('site', import.meta.url)
-registerHooks(immaculata.jsxRuntimeModuleHook(tree.root + '/myjsx.js'))
+export const tree = new FileTree('site', import.meta.url)
+registerHooks(hooks.mapImport('react/jsx-runtime', tree.root + '/myjsx.js'))
 ```
 
 [Learn more about JSX/TSX in Node.js](../guides/enabling-jsx.md#enabling-jsx-in-nodejs)
