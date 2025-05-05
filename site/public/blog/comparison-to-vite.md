@@ -102,7 +102,7 @@ Vite is multiple moderately sized packages.
 
 Immaculata is 487 lines of highly readable and maintainable code.
 
-For perspective, [*all of immaculata*](https://github.com/thesoftwarephilosopher/immaculata/tree/main/src) is smaller than [Vite's custom Node.js module system](https://github.com/vitest-dev/vitest/blob/165fb0e8ae398440fc62cd95992e1ea97a1d2388/packages/vite-node/src/client.ts).
+For perspective, [*all* of immaculata](https://github.com/thesoftwarephilosopher/immaculata/tree/main/src) is smaller than [vite-node's custom module system](https://github.com/vitest-dev/vitest/blob/165fb0e8ae398440fc62cd95992e1ea97a1d2388/packages/vite-node/src/client.ts).
 
 
 ## "Which should I use?"
