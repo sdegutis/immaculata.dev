@@ -48,11 +48,13 @@ But I made sure to use module versioning to not discard unchanged state.
 
 Modules are only invalidated and re-executed if they *or their deps* change.
 
+This also allows me to keep persisted runtime state between site rebuilds.
+
 <br>
 
 I also added `moduleInvalidated` events and the `onModuleInvalidated` method.
 
 This way, a module can run a callback when its being replaced by a newer version.
 
-Now I can call [shiki.dispose()](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/147c7aedf369e47b6b5155d147ea91dfe9d83d58/site/build/highlighter.ts#L19-L22)
-instead of restarting the process when editing that file.
+Now I can [properly dispose singletons](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/147c7aedf369e47b6b5155d147ea91dfe9d83d58/site/build/highlighter.ts#L19-L22)
+instead of restarting the whole process.
