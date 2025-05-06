@@ -13,6 +13,8 @@ if (isDev) {
   server.notFound = () => '/404.html'
   server.files = await processSite()
 
+  tree.watch().on('moduleInvalidated', mod => console.log('moduleInvalidated', mod))
+
   tree.watch().on('filesUpdated', async changes => {
     console.log('Paths changed:', [...changes].map(ch => '\n  ' + ch.path).join(''))
 
