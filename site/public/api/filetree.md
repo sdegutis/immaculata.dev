@@ -82,9 +82,14 @@ type FileTreeEvents = {
 type FileTreeChange = { path: string, change: 'add' | 'dif' | 'rem' }
 ```
 
-Begins watching the path recursively for changes,
-and updates the contents of `files`. Uses `fs.watch`
-internally, defaults to `100 (in ms)` debouncing.
+Begins watching the path recursively for changes, and updates the contents of `files`.
+
+May be called more than once, which are no-ops that just return the same `EventEmitter`.
+
+* `filesUpdated` for detailed list of *any* file changes, including non-modules
+* `moduleInvalidated` called *before* `filesUpdated` on *each* module that was invalidated
+
+Uses `fs.watch` internally; `debounce` defaults to `100` (milliseconds).
 
 ```ts
 const tree = new FileTree('site', import.meta.url)
