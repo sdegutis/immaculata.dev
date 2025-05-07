@@ -6,50 +6,6 @@ And I didn't want to be tied down to any one way of doing anything.
 
 So I made a bunch of orthogonal stuff. Half evolved into [module hooks](../api/module-hooks.md#module-hooks).
 
-## Compiling JSX
-
-I wanted to import and run JSX files natively in Node.js.
-
-So I made a [compileJsx](../api/module-hooks.md#compilejsx) module loader that transforms JSX to JS with the function you give it.
-
-```ts
-import { hooks } from 'immaculata'
-import { registerHooks } from 'module'
-
-registerHooks(hooks.compileJsx((src, url) => /* ... use swc/ts/etc ... */))
-```
-
-## Remapping imports
-
-I wanted to remap `react/jsx-runtime` to `./my-jsx-impl.js` for experimentation.
-
-So I made a [mapImport](../api/module-hooks.md#mapimport) module resolver hook that remaps imports by name.
-
-```ts
-import { hooks } from 'immaculata'
-import { registerHooks } from 'module'
-
-// experiment with your own JSX implementation
-registerHooks(hooks.mapImport('react/jsx-runtime', import.meta.resolve('my-jsx-impl.js')))
-
-// or use a highly optimized string-builder implementation
-registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
-```
-
-## Incorrect file extensions
-
-I wanted to be able to import `foo.{ts,tsx,jsx}` but using the `.js` file extension.
-
-So I made a [tryAltExts](../api/module-hooks.md#tryaltexts) module hook that looks for `.{ts,tsx,jsx}` when `.js` isn't found.
-
-```ts
-import { hooks } from 'immaculata'
-import { registerHooks } from 'module'
-
-registerHooks(hooks.tryAltExts)
-import('./foo.js') // now works even though only foo.tsx actually exists
-```
-
 ## Memory copy of file tree
 
 I wanted to reduce disk reads when reading files.
@@ -118,4 +74,48 @@ export function highlightCode(md: MarkdownIt) {
 tree.onModuleInvalidated(import.meta.url, () => {
   highlighter.dispose()
 })
+```
+
+## Incorrect file extensions
+
+I wanted to be able to import `foo.{ts,tsx,jsx}` but using the `.js` file extension.
+
+So I made a [tryAltExts](../api/module-hooks.md#tryaltexts) module hook that looks for `.{ts,tsx,jsx}` when `.js` isn't found.
+
+```ts
+import { hooks } from 'immaculata'
+import { registerHooks } from 'module'
+
+registerHooks(hooks.tryAltExts)
+import('./foo.js') // now works even though only foo.tsx actually exists
+```
+
+## Compiling JSX
+
+I wanted to import and run JSX files natively in Node.js.
+
+So I made a [compileJsx](../api/module-hooks.md#compilejsx) module loader that transforms JSX to JS with the function you give it.
+
+```ts
+import { hooks } from 'immaculata'
+import { registerHooks } from 'module'
+
+registerHooks(hooks.compileJsx((src, url) => /* ... use swc/ts/etc ... */))
+```
+
+## Remapping imports
+
+I wanted to remap `react/jsx-runtime` to `./my-jsx-impl.js` for experimentation.
+
+So I made a [mapImport](../api/module-hooks.md#mapimport) module resolver hook that remaps imports by name.
+
+```ts
+import { hooks } from 'immaculata'
+import { registerHooks } from 'module'
+
+// experiment with your own JSX implementation
+registerHooks(hooks.mapImport('react/jsx-runtime', import.meta.resolve('my-jsx-impl.js')))
+
+// or use a highly optimized string-builder implementation
+registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 ```
