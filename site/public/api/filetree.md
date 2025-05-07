@@ -89,7 +89,7 @@ May be called more than once, which are no-ops that just return the same `EventE
 * `filesUpdated` for detailed list of *any* file changes, including non-modules
 * `moduleInvalidated` called *before* `filesUpdated` on *each* module that was invalidated
 
-Uses `fs.watch` internally; `debounce` defaults to `100` (milliseconds).
+Uses `fs.watch` internally; groups multiple fs events into one via `debounce` (default `100` ms).
 
 ```ts
 const tree = new FileTree('site', import.meta.url)
