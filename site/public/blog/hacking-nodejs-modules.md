@@ -6,7 +6,7 @@ And I didn't want to be tied down to any one way of doing anything.
 
 So I made a bunch of orthogonal stuff. Half evolved into [module hooks](../api/module-hooks.md#module-hooks).
 
-<br>
+## Compiling JSX
 
 I wanted to import and run JSX files natively in Node.js.
 
@@ -19,7 +19,7 @@ import { registerHooks } from 'module'
 registerHooks(hooks.compileJsx((src, url) => /* ... use swc/ts/etc ... */))
 ```
 
-<br>
+## Remapping imports
 
 I wanted to remap `react/jsx-runtime` to `./my-jsx-impl.js` for experimentation.
 
@@ -36,7 +36,7 @@ registerHooks(hooks.mapImport('react/jsx-runtime', import.meta.resolve('my-jsx-i
 registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 ```
 
-<br>
+## Incorrect file extensions
 
 I wanted to be able to import `foo.{ts,tsx,jsx}` but using the `.js` file extension.
 
@@ -50,7 +50,7 @@ registerHooks(hooks.tryAltExts)
 import('./foo.js') // now works even though only foo.tsx actually exists
 ```
 
-<br>
+## Memory copy of file tree
 
 I wanted to reduce disk reads when reading files.
 
@@ -70,7 +70,7 @@ tree.watch().on('filesUpdated',      changes => /* ... */)
 tree.watch().on('moduleInvalidated', path    => /* ... */)
 ```
 
-<br>
+## Hot module replacement/reloading
 
 I wanted to develop modules and re-execute them without restarting the whole process.
 
@@ -93,9 +93,7 @@ function dostuff() {
 }
 ```
 
-<br>
-
-
+## Module invalidation callbacks
 
 I wanted to [properly dispose singletons](https://shiki.matsu.io/guide/best-performance#cache-the-highlighter-instance)
 instead of restarting the whole process.
