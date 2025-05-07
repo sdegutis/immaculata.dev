@@ -2,59 +2,46 @@
 
 I wanted a much faster way to develop the front-end of my site.
 
-And I wanted to use JSX as the templating language but without React.
-
 And I didn't want to be tied down to any one way of doing anything.
-
-<br>
 
 So I made a bunch of orthogonal stuff. Half evolved into [module hooks](../api/module-hooks.md#module-hooks).
 
 <br>
 
-One module loader transforms JSX to JS with the function you give it.
+I wanted to import and run JSX files natively in Node.js.
 
-Now I can import and run JSX files natively in JSX.
-
-<br>
-
-Another remaps imports arbitrarily.
-
-Now I can remap `react/jsx-runtime` to `./my-jsx-impl.js` for experimentation.
+So I made a module loader that transforms JSX to JS with the function you give it.
 
 <br>
 
-Another looks for `.{ts,tsx,jsx}` when `.js` isn't found.
+I wanted to remap `react/jsx-runtime` to `./my-jsx-impl.js` for experimentation.
 
-Now I can import `foo.tsx` as `foo.js` which helps with client code sharing.
-
-<br>
-
-The final one works with [FileTree](../api/filetree.md#filetree).
-
-It resolves to the latest version of a file using query string cache busting.
-
-And it loads the latest one from the FileTree for speed and fewer disk reads.
-
-This works because FileTree can (optionally) keep itself updated on disk changes.
+So I made a module resolver hook that remaps import `from` to import `to`.
 
 <br>
 
-I added `filesUpdated` events to the FileTree's EventEmitter.
+I wanted to be able to import `foo.{ts,tsx,jsx}` with its real file extension.
 
-Now I can rebuild my whole front-end whenever any file changes.
-
-But I made sure to use module versioning to not discard unchanged state.
-
-Modules are only invalidated and re-executed if they *or their deps* change.
-
-This also allows me to keep persisted runtime state between site rebuilds.
+So I made a module hook that looks for `.{ts,tsx,jsx}` when `.js` isn't found.
 
 <br>
 
-I also added `moduleInvalidated` events and the `onModuleInvalidated` method.
+I wanted to reduce disk reads when reading files.
 
-This way, a module can run a callback when its being replaced by a newer version.
+So I made [FileTree](../api/filetree.md#filetree) to load a file tree into memory
+and optionally keep it updated with [.watch](../api/filetree.md#watch).
 
-Now I can [properly dispose singletons](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/147c7aedf369e47b6b5155d147ea91dfe9d83d58/site/build/highlighter.ts#L19-L22)
+<br>
+
+I wanted to develop modules and re-execute them without restarting the whole process.
+
+So I created the [useTree](../api/module-hooks.md#usetree) module hook.
+
+<br>
+
+
+
+I wanted to [properly dispose singletons](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/147c7aedf369e47b6b5155d147ea91dfe9d83d58/site/build/highlighter.ts#L19-L22)
 instead of restarting the whole process.
+
+So I made `onModuleInvalidated` to run code when its being replaced with a newer version.
