@@ -29,6 +29,10 @@ So I made a [mapImport](../api/module-hooks.md#mapimport) module resolver hook t
 import { hooks } from 'immaculata'
 import { registerHooks } from 'module'
 
+// experiment with your own JSX implementation
+registerHooks(hooks.mapImport('react/jsx-runtime', import.meta.resolve('my-jsx-impl.js')))
+
+// or use a highly optimized string-builder implementation
 registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 ```
 
