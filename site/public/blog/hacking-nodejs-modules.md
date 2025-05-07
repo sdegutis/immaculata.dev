@@ -66,8 +66,8 @@ export const tree = new FileTree('site', import.meta.url)
 tree.files.get('/style.css')
 
 // and react to file system changes
-tree.watch().on('filesUpdated',      async changes => /* ... */)
-tree.watch().on('moduleInvalidated', async path    => /* ... */)
+tree.watch().on('filesUpdated',      changes => /* ... */)
+tree.watch().on('moduleInvalidated', path    => /* ... */)
 ```
 
 <br>
