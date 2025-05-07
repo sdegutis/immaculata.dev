@@ -61,7 +61,7 @@ export const tree = new FileTree('site', import.meta.url)
 // can now load files from memory rather than fs.readFileSync('site/style.css')
 tree.files.get('/style.css')
 
-// reacting to file system changes:
+// and react to file system changes
 tree.watch().on('filesUpdated',      async changes => /* ... */)
 tree.watch().on('moduleInvalidated', async path    => /* ... */)
 ```
