@@ -57,6 +57,11 @@ and optionally keep it updated with [tree.watch](../api/filetree.md#watch).
 import { FileTree } from 'immaculata'
 
 export const tree = new FileTree('site', import.meta.url)
+
+// can now load files from memory rather than fs.readFileSync('site/style.css')
+tree.files.get('/style.css')
+
+// reacting to file system changes:
 tree.watch().on('filesUpdated',      async changes => /* ... */)
 tree.watch().on('moduleInvalidated', async path    => /* ... */)
 ```
