@@ -97,7 +97,7 @@ function dostuff() {
 
 
 
-I wanted to [properly dispose singletons](https://github.com/thesoftwarephilosopher/immaculata.dev/blob/147c7aedf369e47b6b5155d147ea91dfe9d83d58/site/build/highlighter.ts#L19-L22)
+I wanted to [properly dispose singletons](https://shiki.matsu.io/guide/best-performance#cache-the-highlighter-instance)
 instead of restarting the whole process.
 
 So I made [onModuleInvalidated](../api/filetree.md#onmoduleinvalidated) to run code when its being replaced with a newer version.
