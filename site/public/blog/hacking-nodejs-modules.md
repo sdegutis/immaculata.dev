@@ -81,6 +81,12 @@ registerHooks(hooks.useTree(tree))
 
 tree.watch().on('filesUpdated', dostuff)
 dostuff()
+
+function dostuff() {
+  import(tree.root + '/myfile.js')
+  // re-executes myfile.js if and only if it changes
+  // (or anything it imports, directly or indirectly)
+}
 ```
 
 <br>
