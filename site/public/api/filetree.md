@@ -117,3 +117,8 @@ addDependency(requiredBy: string, requiring: string)
 ```
 
 Makes changes to file at `requiring` invalidate module at `requiredBy`.
+
+**NOTE:** You should *not* usually need to call this directly.
+It's used internally by [useTree](module-hooks.md#usetree).
+It's only made public so you can use it for *non-module* files.
+This allows you to invalidate a module when a data file changes.
