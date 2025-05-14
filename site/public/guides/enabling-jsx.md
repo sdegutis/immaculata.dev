@@ -120,20 +120,20 @@ If you're using `immaculata/jsx-strings.js` then you should use this:
 ```ts
 declare namespace JSX {
 
-  type ElementChildrenAttribute = {
-    children: (
-      | string
-      | false
-      | null
-      | undefined
-      | ElementChildrenAttribute['children'][])
-  }
+  type jsxChildren =
+    | string
+    | false
+    | null
+    | undefined
+    | jsxChildren[]
+
+  type ElementChildrenAttribute = { children: jsxChildren }
 
   type Element = string
 
   type ElementType =
     | string
-    | ((data: any) => ElementChildrenAttribute['children'])
+    | ((data: any) => jsxChildren)
 
 }
 ```
