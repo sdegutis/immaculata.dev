@@ -138,11 +138,9 @@ declare namespace JSX {
 }
 ```
 
-For HTML tag autocompletion and good-enough attr validation:
+For HTML tag autocompletion and good-enough attr validation, add this:
 
 ```ts
-declare namespace JSX {
-
   type jsxify<T extends HTMLElement> = {
     [A in keyof T as A extends string ? Lowercase<Exclude<A, 'children'>> : never]?:
     string | boolean |
@@ -156,14 +154,4 @@ declare namespace JSX {
     & { [K in keyof HTMLElementTagNameMap]: jsxify<HTMLElementTagNameMap[K]> }
     // add special cases here as necessary like this:
     & { meta: jsxify<HTMLMetaElement> & { charset?: 'utf-8' } }
-
-  type ElementChildrenAttribute = { children: any }
-
-  type Element = string
-
-  type ElementType =
-    | string
-    | ((data: any) => JSX.Element)
-
-}
 ```
