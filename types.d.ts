@@ -1,12 +1,12 @@
 declare namespace JSX {
 
   type jsxify<T extends HTMLElement> = {
-    [A in keyof T as A extends string ? Lowercase<Exclude<A, 'children'>> : never]?:
-    string | boolean |
-    (T[A] extends (string | boolean | null | number)
-      ? T[A]
-      : never)
-
+    [A in keyof T as A extends string ? Lowercase<Exclude<A, 'children'>> : never]?: (
+      | string
+      | boolean
+      | (T[A] extends (string | boolean | null | number)
+        ? T[A]
+        : never))
   } & { children?: any, class?: string }
 
   type IntrinsicElements =
@@ -14,13 +14,20 @@ declare namespace JSX {
     // add special cases here as necessary like this:
     & { meta: jsxify<HTMLMetaElement> & { charset?: 'utf-8' } }
 
-  type ElementChildrenAttribute = { children: any }
+  type jsxChildren =
+    | string
+    | false
+    | null
+    | undefined
+    | jsxChildren[]
+
+  type ElementChildrenAttribute = { children: jsxChildren }
 
   type Element = string
 
   type ElementType =
     | string
-    | ((data: any) => JSX.Element)
+    | ((data: any) => jsxChildren)
 
 }
 
