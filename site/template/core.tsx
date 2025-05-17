@@ -21,7 +21,7 @@ export function Head(data: { title: string, files: string[] }) {
   </head>
 }
 
-export function Main(data: { content: string }) {
+export function Main(data: { children: JSX.jsxChildren }) {
   return <main id='main'>
     <header id='mobileheader'>
       <span>☰</span>
@@ -29,7 +29,7 @@ export function Main(data: { content: string }) {
       <span>☰</span>
     </header>
 
-    {data.content}
+    {data.children}
 
     <footer>
       Copyright &copy; {new Date().getFullYear()}
@@ -93,10 +93,15 @@ export function Sidebar(data: { toc: string }) {
       <a href='#'>System</a>
     </div>
 
-    <h3>On this page</h3>
-    <nav id='toc' class='table-of-contents'>
-      {data.toc}
-    </nav>
+    {data.toc &&
+      <>
+        <h3>On this page</h3>
+        <nav id='toc' class='table-of-contents'>
+          {data.toc}
+        </nav>
+      </>
+    }
+
 
   </div>
 }

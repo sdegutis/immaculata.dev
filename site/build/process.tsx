@@ -55,7 +55,7 @@ export function processSite() {
       <Head files={fonts.links} title={title} />
       <body>
         <Navbar pages={pages} />
-        <Main content={result} />
+        <Main>{result}</Main>
         <Sidebar toc={tocToHtml(env.toc!)} />
       </body>
     </Html>)
@@ -76,14 +76,12 @@ export function processSite() {
     <Head title='Page not found' files={fonts.links} />
     <body>
       <Navbar pages={pages} />
-      <Main content={
-        <>
-          <h1>Page not found</h1>
-          <p>This page doesn't exist.</p>
-          <p>Redirecting to one that does in 3, 2, 1...</p>
-          <script>{`setTimeout(() => {location.href = '/'}, 3000)`}</script>
-        </>
-      } />
+      <Main>
+        <h1>Page not found</h1>
+        <p>This page doesn't exist.</p>
+        <p>Redirecting to one that does in 3, 2, 1...</p>
+        <script>{`setTimeout(() => {location.href = '/'}, 3000)`}</script>
+      </Main>
       <Sidebar toc={''} />
     </body>
   </Html>))
