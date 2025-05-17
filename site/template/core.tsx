@@ -102,6 +102,5 @@ export function Sidebar(data: { toc: string }) {
       </>
     }
 
-
   </div>
 }

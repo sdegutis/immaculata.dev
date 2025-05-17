@@ -16,12 +16,12 @@ If you change `c.js`, *two* module invalidation events would be emitted:
 1. Because `b.js` directly imports (depends on) it
 2. Because `a.js` directly imports (depends on) it
 
-Now changing `c.js` will only emits *one* module invalidation event.
+Now changing `c.js` will only emit *one* module invalidation event.
 
 This means you can safely call one-time cleanup functions in the `onModuleInvalidated` callback.
 
 Of course, if you re-execute `a.js` (e.g. `import("a.js")`) then it will start all over again,
-and you will get another module invalidation event for `c.js` when it changes, but still only one.
+and you will get another module invalidation event for `c.js` when `c.js` changes, but still only one.
 
 ## 2.0.0
 
