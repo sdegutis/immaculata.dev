@@ -13,13 +13,13 @@ npm i immaculata
 
 * Use [JSX module transpilation hooks](#native-jsx-in-nodejs) in Node.js's native module system
 
-* Use [FileTree](api/filetree.md#filetree) to keep a recursive dir in memory
+* Use [FileTree](api/filetree.md#filetree) to load a file tree from disk into memory
 
-* Use [Pipeline](api/pipeline.md#pipeline) to map FileTree to front-end files
+* Use [DevServer](api/dev-server.md#devserver) to serve an in-memory file tree
 
-* Use [DevServer](api/dev-server.md#devserver) to serve Pipeline output
+* Use [generateFiles](api/generate-files.md#generatefiles) to write an in-memory file tree to disk
 
-* Use [generateFiles](api/generate-files.md#generatefiles) to write Pipeline files to disk
+* Use [Pipeline](api/pipeline.md#pipeline) to conveniently transform an in-memory file tree
 
 
 ### Module hot-reloading in Node.js
