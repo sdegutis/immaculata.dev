@@ -14,7 +14,7 @@ These 5 loc enable HMR inside Node.js *natively*.
 import { FileTree, hooks } from 'immaculata'
 import { registerHooks } from 'module'
 
-// keep an in-memory version of "./site" in memory
+// keep an in-memory version of file tree under "./site"
 const tree = new FileTree('site', import.meta.url)
 
 // keep it up to date
