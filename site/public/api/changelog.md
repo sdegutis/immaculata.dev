@@ -1,5 +1,10 @@
 # Change log
 
+## 2.2.0
+
+* Changed [new FileTree()](filetree.md#constructor) to take `meta.import.dirname` instead of `meta.import.url`
+* Changed [generateFiles](generate-files.md#generatefiles) to require `parent` and move optional options to `opts` object
+
 ## 2.1.0
 
 * Added `prefix?: string` to [DevServer](dev-server.md#devserver) options
