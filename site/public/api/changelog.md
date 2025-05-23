@@ -1,5 +1,9 @@
 # Change log
 
+## 2.1.1
+
+Fix type error.
+
 ## 2.2.0
 
 * Changed [new FileTree()](filetree.md#constructor) to take `meta.import.dirname` instead of `meta.import.url`

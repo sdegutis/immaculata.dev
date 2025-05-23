@@ -12,7 +12,7 @@ a `FileTree.files` into a map compatible with `DevServer`
 and `generateFiles`. You can just do this:
 
 ```ts
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 let files = tree.files.values().toArray()
 
@@ -23,7 +23,7 @@ await Promise.all(files.forEach(async f => /* ... */))
 
 const fileMap = new Map(files.map(f => [f.path, f.content]))
 server.files = fileMap
-generateFiles(fileMap)
+generateFiles(fileMap, { parent: import.meta.dirname })
 ```
 
 But that gets very inconvenient very quickly:
@@ -42,7 +42,7 @@ So the `Pipeline` class was created as a convenience.
 Here's the same code above with `Pipeline`:
 
 ```ts
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 const pipeline = Pipeline.from(tree.files)
 
@@ -53,7 +53,7 @@ await pipeline.with(/.../).doAsync(f => /* ... */)
 
 const fileMap = pipeline.results()
 server.files = fileMap
-generateFiles(fileMap)
+generateFiles(fileMap, { parent: import.meta.dirname })
 ```
 
 ## API

@@ -24,7 +24,7 @@ if (isDev) {
   })
 }
 else {
-  generateFiles(await processSite())
+  generateFiles(await processSite(), { parent: import.meta.dirname })
 }
 
 async function processSite() {

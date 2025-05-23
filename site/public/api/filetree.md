@@ -7,7 +7,7 @@
 ```ts
 constructor(
   path: string, // e.g. "site" or "."
-  importMetaUrl: string,
+  parentDir: string, // usually import.meta.dirname
   opts?: {
     exclude?: (path: string, stat: fs.Stats) => any,
   }
@@ -17,7 +17,7 @@ constructor(
 Loads the tree from disk into memory immediately.
 
 ```ts
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 ```
 
 
@@ -27,7 +27,7 @@ const tree = new FileTree('site', import.meta.url)
 public root: string
 ```
 
-The full file URL of the tree's root based on constructor's `path` and `importMetaUrl`.
+The full file URL of the tree's root, being constructor's `parentDir` + `path`
 
 Never includes a trailing `'/'`
 
@@ -51,7 +51,7 @@ type TreeFile = {
 A list of all files (recursively) at the given path.
 
 ```ts
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 // if cwd contains:
 //   ./site/index.html
@@ -92,7 +92,7 @@ May be called more than once, which are no-ops that just return the same `EventE
 Uses `fs.watch` internally; groups multiple fs events into one via `debounce` (default `100` ms).
 
 ```ts
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 tree.watch()
 ```
 

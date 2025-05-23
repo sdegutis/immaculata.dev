@@ -19,7 +19,7 @@ import { registerHooks } from 'module'
 import ts from 'typescript'
 import { fileURLToPath } from 'url'
 
-const tree = new immaculata.FileTree('site', import.meta.url)
+const tree = new immaculata.FileTree('site', import.meta.dirname)
 registerHooks(hooks.useTree(tree))
 registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/jsx-strings.js'))
 registerHooks(hooks.compileJsx(compileViaTypescript))
@@ -35,7 +35,7 @@ if (process.argv[2] === 'dev') {
   })
 }
 else {
-  immaculata.generateFiles(await processSite())
+  immaculata.generateFiles(await processSite(), { parent: import.meta.dirname })
 }
 
 async function processSite() {

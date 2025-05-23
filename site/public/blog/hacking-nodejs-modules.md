@@ -16,7 +16,7 @@ and optionally keep it updated with [tree.watch](../api/filetree.md#watch).
 ```ts
 import { FileTree } from 'immaculata'
 
-export const tree = new FileTree('site', import.meta.url)
+export const tree = new FileTree('site', import.meta.dirname)
 
 // can now load files from memory rather than fs.readFileSync('site/style.css')
 tree.files.get('/style.css')
@@ -36,7 +36,7 @@ So I created the [useTree](../api/module-hooks.md#usetree) module hook that inva
 import { FileTree, hooks } from 'immaculata'
 import { registerHooks } from 'module'
 
-export const tree = new FileTree('site', import.meta.url)
+export const tree = new FileTree('site', import.meta.dirname)
 registerHooks(hooks.useTree(tree))
 
 tree.watch().on('filesUpdated', dostuff)

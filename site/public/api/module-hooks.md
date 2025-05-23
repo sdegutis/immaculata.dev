@@ -72,7 +72,7 @@ are never stale modules.
 ```ts
 import module from 'node:module'
 
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 module.registerHooks(hooks.useTree(tree))
 

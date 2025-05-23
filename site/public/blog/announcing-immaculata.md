@@ -15,7 +15,7 @@ import { FileTree, hooks } from 'immaculata'
 import { registerHooks } from 'module'
 
 // keep an in-memory version of file tree under "./site"
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 // keep it up to date
 tree.watch().on('filesUpdated', reload)
@@ -141,7 +141,7 @@ registerHooks(hooks.mapImport('react/jsx-runtime', 'immaculata/dist/jsx-strings.
 registerHooks(hooks.mapImport('react/jsx-runtime', 'another-jsx-lib/jsx.js'))
 
 // or bring your own impl
-export const tree = new FileTree('site', import.meta.url)
+export const tree = new FileTree('site', import.meta.dirname)
 registerHooks(hooks.mapImport('react/jsx-runtime', tree.root + '/myjsx.js'))
 ```
 

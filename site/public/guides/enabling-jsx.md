@@ -73,7 +73,7 @@ To use a JSX implementatoin within a [FileTree](../api/filetree.md#filetree), pr
 import { FileTree, hooks } from "immaculata"
 import { registerHooks } from "module"
 
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 
 registerHooks(hooks.mapImport('react/jsx-runtime', tree.root + '/my-jsx.ts'))
 ~~~

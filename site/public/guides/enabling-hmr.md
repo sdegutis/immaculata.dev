@@ -23,7 +23,7 @@ import { FileTree } from "immaculata"
 import { useTree } from "immaculata/hooks.js"
 import { registerHooks } from 'module'
 
-const tree = new FileTree('site', import.meta.url)
+const tree = new FileTree('site', import.meta.dirname)
 registerHooks(useTree(tree))
 
 const myModule = await import('site/myModule.js')
