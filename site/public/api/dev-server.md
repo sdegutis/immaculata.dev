@@ -5,6 +5,7 @@
 ```ts
 constructor(port: number, opts?: {
   hmrPath?: string,
+  prefix?: string,
   onRequest?: (res: http.ServerResponse) => 'handled' | void,
 })
 ```
@@ -16,9 +17,10 @@ at the given port.
 const server = new DevServer(8080)
 ```
 
+Optional fn `onRequest` can modify `res` or `res.req`.
+
 If `onRequest` closes the request, it must return `handled`.
 
-Note that `onRequest` takes `res` which includes `res.req`.
 
 
 

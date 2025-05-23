@@ -1,5 +1,10 @@
 # Change log
 
+## 2.1.0
+
+* Added `prefix?: string` to [DevServer](dev-server.md#devserver) options
+* Added [babel.transformImportsPlugin](babel.md#transformimportsplugin)
+
 ## 2.0.1
 
 Fixed duplicate module invalidation events.
