@@ -3,7 +3,7 @@
 ## 2.1.0
 
 * Added `prefix?: string` to [DevServer](dev-server.md#devserver) options
-* Added [babel.transformImportsPlugin](babel.md#transformimportsplugin)
+* Added [babel.transformImportsPlugin](transform-babel.md#transformimportsplugin)
 
 ## 2.0.1
 
