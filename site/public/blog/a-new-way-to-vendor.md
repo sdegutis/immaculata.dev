@@ -34,8 +34,7 @@ function process() {
   const out = new Map(files.map(f => [f.path, f.content]))
   
   server.files = out // update dev server
-                     // or write to disk:
-  generateFiles(out, { parent: import.meta.dirname })
+  generateFiles(out) // or write to disk
 }
 ```
 

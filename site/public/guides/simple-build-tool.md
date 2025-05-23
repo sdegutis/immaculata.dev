@@ -35,7 +35,7 @@ if (process.argv[2] === 'dev') {
   })
 }
 else {
-  immaculata.generateFiles(await processSite(), { parent: import.meta.dirname })
+  immaculata.generateFiles(await processSite())
 }
 
 async function processSite() {

@@ -23,7 +23,7 @@ await Promise.all(files.forEach(async f => /* ... */))
 
 const fileMap = new Map(files.map(f => [f.path, f.content]))
 server.files = fileMap
-generateFiles(fileMap, { parent: import.meta.dirname })
+generateFiles(fileMap)
 ```
 
 But that gets very inconvenient very quickly:
@@ -53,7 +53,7 @@ await pipeline.with(/.../).doAsync(f => /* ... */)
 
 const fileMap = pipeline.results()
 server.files = fileMap
-generateFiles(fileMap, { parent: import.meta.dirname })
+generateFiles(fileMap)
 ```
 
 ## API

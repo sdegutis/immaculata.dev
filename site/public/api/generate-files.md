@@ -3,10 +3,10 @@
 ```typescript
 function generateFiles(
   out: Map<string, Buffer | string>,
-  opts: {
-    parent: string,
-    dry?: boolean, // default false
-    dir?: string,  // default 'docs'
+  opts?: {
+    parent?: string, // default <cwd>
+    dry?: boolean,   // default false
+    dir?: string,    // default 'docs'
   }
 ): void
 ```
@@ -23,7 +23,7 @@ generateFiles(new Map([
   ['/index.html', 'hello world'],
   ['/about.html', 'about my site'],
   ['/css/main.css', 'body{...}'],
-]), { parent: import.meta.dirname })
+]))
 
 // writefile: docs/index.html
 // writefile: docs/about.html

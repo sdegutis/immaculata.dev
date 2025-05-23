@@ -1,8 +1,12 @@
 # Change log
 
-## 2.1.1
+## 2.2.2
 
-Fix type error.
+* Make [generateFiles](generate-files.md#generatefiles) have default `parent` of `''` (cwd)
+
+## 2.2.1
+
+* Fix type error.
 
 ## 2.2.0
 
