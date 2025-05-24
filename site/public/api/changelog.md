@@ -1,5 +1,12 @@
 # Change log
 
+## 2.3.0
+
+* Fix usage of `generateFiles.parent`.
+* Make `generateFiles` logs line up.
+* Remove trailing slashes from `DevServer` `prefix`.
+* Log `prefix` with host in `DevServer` constructor.
+
 ## 2.2.2
 
 * Make [generateFiles](generate-files.md#generatefiles) have default `parent` of `''` (cwd)
