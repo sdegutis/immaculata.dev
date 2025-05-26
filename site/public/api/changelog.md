@@ -1,5 +1,17 @@
 # Change log
 
+## 2.4.0
+
+* Added core JSX stuff to `jsx-strings.d.ts` module
+* Added HTML intrinsic elements to `jsx-strings-html.d.ts`
+
+Use like this (second line is optional):
+
+```ts
+/// <reference types="immaculata/jsx-strings.js" />
+/// <reference types="immaculata/jsx-strings-html.js" />
+```
+
 ## 2.3.0
 
 * Fix usage of `generateFiles.parent`.

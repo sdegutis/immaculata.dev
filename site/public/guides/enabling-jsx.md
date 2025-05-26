@@ -115,48 +115,41 @@ declare namespace JSX {
 }
 ```
 
-If you're using `immaculata/jsx-strings.js` then you should use this:
+If you're using `immaculata/jsx-strings.js` with [mapImport](../api/module-hooks.md#mapimport),
+then your JSX types won't be imported automatically.
+So you'll need to import the JSX types manually using [tsconfig types] or a [triple-slash directive]
+which is the same but much more convenient:
+
+```ts
+/// <reference types="immaculata/jsx-strings.js" />
+```
+
+This doesn't add anything to [IntrinsicElements], so you'll either need to create that, or import this:
+
+```ts
+/// <reference types="immaculata/jsx-strings-html.js" />
+```
+
+You can use interface augmentation to add or modify keys:
 
 ```ts
 declare namespace JSX {
 
-  type jsxChildren =
-    | string
-    | false
-    | null
-    | undefined
-    | jsxChildren[]
+  // add key-values, e.g.
+  interface IntrinsicElements {
+    div: HtmlElements['div'] & { foo: string }
+    bar: { qux: number }
+  }
 
-  type ElementChildrenAttribute = { children: jsxChildren }
+  // or just extend something or whatever,
+  // useful for extending a mapped type
+  interface IntrinsicElements extends Foo { }
 
-  type Element = string
-
-  type ElementType =
-    | string
-    | ((data: any) => jsxChildren)
+  // note that you can do both, and in either order
 
 }
 ```
 
-For HTML tag autocompletion and good-enough attr validation, add this:
-
-```ts
-declare namespace JSX {
-
-  // ...
-
-  type jsxify<T extends HTMLElement> = {
-    [A in keyof T as A extends string ? Lowercase<Exclude<A, 'children'>> : never]?: (
-      | string
-      | boolean
-      | (T[A] extends (string | boolean | null | number)
-        ? T[A]
-        : never))
-  } & { children?: any, class?: string }
-
-  type IntrinsicElements =
-    & { [K in keyof HTMLElementTagNameMap]: jsxify<HTMLElementTagNameMap[K]> }
-    & { meta: jsxify<HTMLMetaElement> & { charset?: 'utf-8' } }
-
-}
-```
+[IntrinsicElements]: https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements
+[tsconfig types]: https://www.typescriptlang.org/tsconfig/#types
+[triple-slash directive]: https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-types-
