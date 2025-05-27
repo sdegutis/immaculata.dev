@@ -117,17 +117,16 @@ declare namespace JSX {
 
 If you're using `immaculata/jsx-strings.js` with [mapImport](../api/module-hooks.md#mapimport),
 then your JSX types won't be imported automatically.
-So you'll need to import the JSX types manually using [tsconfig types] or a [triple-slash directive]
-which is the same but much more convenient:
+So you'll need to import the JSX types manually:
 
 ```ts
-/// <reference types="immaculata/jsx-strings.js" />
+import type { } from 'immaculata/jsx-strings.js'
 ```
 
 This doesn't add anything to [IntrinsicElements], so you'll either need to create that, or import this:
 
 ```ts
-/// <reference types="immaculata/jsx-strings-html.js" />
+import type { } from 'immaculata/jsx-strings-html.js'
 ```
 
 You can use interface augmentation to add or modify keys:
