@@ -150,5 +150,3 @@ declare namespace JSX {
 ```
 
 [IntrinsicElements]: https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements
-[tsconfig types]: https://www.typescriptlang.org/tsconfig/#types
-[triple-slash directive]: https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-types-
