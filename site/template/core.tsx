@@ -18,6 +18,7 @@ export function Head(data: { title: string, files: string[] }) {
     <title>Immaculata.dev - {data.title}</title>
     <script type="module" src="/script/nav.js"></script>
     <script type="module" src="/script/toc.js"></script>
+    <script src="https://bubbles.90s.dev/ssaver.js" type="module"></script>
   </head>
 }
 
