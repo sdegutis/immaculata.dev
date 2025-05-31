@@ -4,7 +4,7 @@ One of the key factors in rapid development is
 discarding as little state as possible.
 In Node.js, this means the new `--watch` flags
 are not that useful, since they throw everything away.
-The ideal is to simply invalidate module when it changes
+The ideal is to simply invalidate a module when it changes
 or when a module it depends on changes.
 This way, all imports and data are always fresh,
 but only partial module trees get re-evaluated.
