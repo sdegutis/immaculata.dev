@@ -48,7 +48,7 @@ This becomes an automatic query busting string,
 which works because Node internally uses URLs
 to represent all modules.
 
-In practice, this means that you can import a module file initially,
+In practice, this means that we can import a module file initially,
 and import the same file again after the `filesUpdated` event,
 and either the cached module object will be returned,
 or the file will be re-evaluated if it was updated.
@@ -62,7 +62,7 @@ the parent module itself also has its version updated.
 This works recursively, so that modules are always fresh,
 and updated even if a single deep dependency changes.
 
-The code to use these hooks is relatively short and simple:
+The code to use these hooks is relatively short and simple.
 
 ```ts
 import { FileTree } from "immaculata"
@@ -81,6 +81,40 @@ const myModule2 = await import('src/myModule.js')
 tree.watch().on('filesUpdated', async () => {
   const myModule = await import('src/myModule.js')
   // src/myModule.js IS executed again iff invalidated
+})
+```
+
+As a consequence of having a dependency tree,
+we can easily send a `moduleInvalidated` event
+at the same time that we update its `version`.
+And because trees are just objects,
+we can import them from a module that
+needs to cleanup resources on invalidation.
+
+This site uses Shiki for syntax highlighting,
+which requires that you use it as a singleton.
+Calling its `dispose` method on invalidation
+allows me to edit the syntax highlighting file
+without having to restart the whole process.
+(This code is taken verbatim from this site.)
+
+```ts
+import * as ShikiMd from '@shikijs/markdown-it'
+import type MarkdownIt from 'markdown-it'
+import * as Shiki from 'shiki'
+import { tree } from '../../static.ts'
+
+const highlighter = await Shiki.createHighlighter({
+  themes: ['dark-plus'],
+  langs: ['tsx', 'typescript', 'json', 'yaml', 'bash'],
+})
+
+export function highlightCode(md: MarkdownIt) {
+  md.use(ShikiMd.fromHighlighter(highlighter, { theme: 'dark-plus' }))
+}
+
+tree.onModuleInvalidated(import.meta.url, () => {
+  highlighter.dispose()
 })
 ```
 
