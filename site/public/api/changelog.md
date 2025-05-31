@@ -1,5 +1,11 @@
 # Change log
 
+## 2.5.0
+
+* Added `style?: string` to HTML element attributes in `jsx-strings-html.d.ts`
+* Removed `babel.transformImportsPlugin`
+* Added [transformImports](transform-imports.md#transformimports) that uses TypeScript directly
+
 ## 2.4.0
 
 * Added core JSX stuff to `jsx-strings.d.ts` module
@@ -30,7 +36,7 @@
 ## 2.1.0
 
 * Added `prefix?: string` to [DevServer](dev-server.md#devserver) options
-* Added [babel.transformImportsPlugin](transform-babel.md#transformimportsplugin)
+* Added [babel.transformImportsPlugin](transform-imports.md#transformimports)
 
 ## 2.0.1
 

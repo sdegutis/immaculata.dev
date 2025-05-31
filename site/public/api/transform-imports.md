@@ -1,9 +1,9 @@
-# Babel plugin
+# TypeScript plugins
 
-## transformImportsPlugin
+## transformImports
 
 ```ts
-function transformImportsPlugin(
+function transformImports(
   projectRoot: string,
   replacements?: Record<string, string>,
 ): PluginItem
@@ -16,6 +16,29 @@ to use given replacements with these rules:
 * Full matches are replaced verbatim
 * Lib matches only have the lib replaced
 * Package import roots are replaced via its "homepage" package.json key
+
+### Usage
+
+```ts
+import ts from 'typescript'
+
+function transform(text: string, path: string) {
+  return ts.transpileModule(text, {
+    fileName: path,
+    compilerOptions: {
+      module: ts.ModuleKind.ESNext,
+      target: ts.ScriptTarget.ESNext,
+      jsx: ts.JsxEmit.ReactJSX,
+      sourceMap: true,
+    },
+    transformers: {
+      after: [transformImports(import.meta.dirname, {
+        // replacements
+      })]
+    }
+  })
+}
+```
 
 ### Examples
 
