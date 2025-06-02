@@ -1,4 +1,4 @@
-# Implementing native Node.js hot modules (technical write up)
+# HMR natively in Node.js (technical write up)
 
 One of the key factors in rapid development is
 discarding as little state as possible.
