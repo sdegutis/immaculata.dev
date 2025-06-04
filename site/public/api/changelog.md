@@ -1,10 +1,16 @@
 # Change log
 
+## 2.6.0
+
+* Removed index import
+* Renamed `transformImports` to `transformExternalModuleNames`
+* Removed `"homepage"` feature of [transformExternalModuleNames](transform-imports.md#transformexternalmodulenames)
+
 ## 2.5.0
 
 * Added `style?: string` to HTML element attributes in `jsx-strings-html.d.ts`
 * Removed `babel.transformImportsPlugin`
-* Added [transformImports](transform-imports.md#transformimports) that uses TypeScript directly
+* Added [transformImports](transform-imports.md#transformexternalmodulenames) that uses TypeScript directly
 
 ## 2.4.0
 
@@ -36,7 +42,7 @@
 ## 2.1.0
 
 * Added `prefix?: string` to [DevServer](dev-server.md#devserver) options
-* Added [babel.transformImportsPlugin](transform-imports.md#transformimports)
+* Added [babel.transformImportsPlugin](transform-imports.md#transformexternalmodulenames)
 
 ## 2.0.1
 

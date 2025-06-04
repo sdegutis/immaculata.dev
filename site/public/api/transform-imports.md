@@ -1,6 +1,6 @@
 # TypeScript plugins
 
-## transformImports
+## transformExternalModuleNames
 
 ```ts
 function transformImports(
