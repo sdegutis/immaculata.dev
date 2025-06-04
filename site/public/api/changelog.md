@@ -1,5 +1,10 @@
 # Change log
 
+## 2.6.1
+
+* Fix [useTree](module-hooks.md#usetree) to properly cooperate with other resolver hooks
+  * Before this fix, it had to be used in a specific order to other resolver hooks
+
 ## 2.6.0
 
 * Removed index import
