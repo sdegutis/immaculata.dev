@@ -1,6 +1,6 @@
 # Immaculata.dev
 
-*Node.js DX primitives* {.homesubheader}
+*Conveniences for Node.js including JSX and HMR and stuff* {.homesubheader}
 
 ```bash
 npm i immaculata
